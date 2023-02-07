@@ -19,7 +19,7 @@ export default siteConfig({
   twitter: null,
   github: 'gitsunmin',
   linkedin: '선민-김-0b8b9b192',
-  youtube: 'channel/UC9ep_AwbQJDJF1N77QWz4xw', // optional youtube channel name or `channel/UCGbXXXXXXXXXXXXXXXXXXXXXX`
+  youtube: 'channel/UCkWVLGVfgQMzmYVYUOD6YHg', // optional youtube channel name or `channel/UCGbXXXXXXXXXXXXXXXXXXXXXX`
   // mastodon: '#', // optional mastodon profile URL, provides link verification
   // newsletter: '#', // optional newsletter URL
 
