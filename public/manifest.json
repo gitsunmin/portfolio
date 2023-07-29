@@ -1,11 +1,27 @@
 {
-  "name": "Next.js Notion Starter Kit",
-  "short_name": "Starter Kit",
+  "name": "Gitsunmin Blog",
+  "short_name": "Gitsunmin",
+  "description": "Gitsunmin's Blog",
   "icons": [
     {
-      "src": "/favicon.png",
+      "src": "/favicon-16x16.png",
+      "type": "image/png",
+      "sizes": "16x16"
+    },
+    {
+      "src": "/favicon-32x32.png",
       "type": "image/png",
       "sizes": "32x32"
+    },
+    {
+      "src": "/favicon-48x48.png",
+      "type": "image/png",
+      "sizes": "48x48"
+    },
+    {
+      "src": "/favicon-72x72.png",
+      "type": "image/png",
+      "sizes": "72x72"
     },
     {
       "src": "/favicon-128x128.png",
@@ -16,6 +32,11 @@
       "src": "/favicon-192x192.png",
       "type": "image/png",
       "sizes": "192x192"
+    },
+    {
+      "src": "/favicon-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512"
     }
   ],
   "theme_color": "#000000",
