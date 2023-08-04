@@ -12,12 +12,12 @@ import { NotionRenderer } from 'react-notion-x'
 import TweetEmbed from 'react-tweet-embed'
 import { useSearchParam } from 'react-use'
 
-import * as config from '@/lib/config'
-import * as types from '@/lib/types'
-import { mapImageUrl } from '@/lib/map-image-url'
-import { getCanonicalPageUrl, mapPageUrl } from '@/lib/map-page-url'
-import { searchNotion } from '@/lib/search-notion'
-import { useDarkMode } from '@/lib/use-dark-mode'
+import * as config from 'src/lib/config'
+import * as types from 'src/lib/types'
+import { mapImageUrl } from 'src/lib/map-image-url'
+import { getCanonicalPageUrl, mapPageUrl } from 'src/lib/map-page-url'
+import { searchNotion } from 'src/lib/search-notion'
+import { useDarkMode } from 'src/lib/use-dark-mode'
 
 import { Footer } from './Footer'
 import { Loading } from './Loading'
@@ -178,7 +178,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
     if (lite) params.lite = lite
 
     const searchParams = new URLSearchParams(params)
-    return mapPageUrl(site, recordMap, searchParams)
+    return site && recordMap ? mapPageUrl(site, recordMap, searchParams) : '';
   }, [site, recordMap, lite])
 
   const keys = Object.keys(recordMap?.block || {})

@@ -1,8 +1,9 @@
+import { Metadata } from 'next'
 import * as React from 'react'
 
-import { NotionPage } from '@/components/NotionPage'
-import { domain } from '@/lib/config'
-import { resolveNotionPage } from '@/lib/resolve-notion-page'
+import { NotionPage } from 'src/components/NotionPage'
+import { domain } from 'src/lib/config'
+import { resolveNotionPage } from 'src/lib/resolve-notion-page'
 
 export const getStaticProps = async () => {
   try {
@@ -16,6 +17,9 @@ export const getStaticProps = async () => {
     // let next.js know explicitly that incremental SSG failed
     throw err
   }
+}
+export const metadata: Metadata = {
+  title: 'Gitsunmin Blog',
 }
 
 export default function NotionDomainPage(props) {
