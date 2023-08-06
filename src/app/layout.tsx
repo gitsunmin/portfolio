@@ -2,8 +2,8 @@ import React from 'react'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Home',
-  description: 'Welcome to Next.js'
+  title: 'Gitsunmin Blog',
+  description: 'Gitsunmin의 블로그입니다.'
 }
 
 export default function RootLayout({

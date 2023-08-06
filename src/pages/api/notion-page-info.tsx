@@ -58,8 +58,11 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     : null
 
   const imageBlockUrl = mapImageUrl(
-    getPageProperty<string>('Social Image', block, recordMap) ||
-      (block as PageBlock).format?.page_cover,
+    (block &&
+      recordMap &&
+      getPageProperty<string>('Social Image', block, recordMap)) ||
+      (block as PageBlock).format?.page_cover ||
+      '',
     block
   )
   const imageFallbackUrl = mapImageUrl(libConfig.defaultPageCover, block)
@@ -102,21 +105,22 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       : undefined
   const detail = date || author || libConfig.domain
 
-  const pageInfo: NotionPageInfo = {
-    pageId,
-    title,
-    image,
-    imageObjectPosition,
-    author,
-    authorImage,
-    detail
-  }
-
   res.setHeader(
     'Cache-Control',
     'public, s-maxage=3600, max-age=3600, stale-while-revalidate=3600'
   )
-  res.status(200).json(pageInfo)
+
+  if (image && imageObjectPosition && authorImage) {
+    res.status(200).json({
+      pageId,
+      title,
+      image,
+      imageObjectPosition,
+      author,
+      authorImage,
+      detail
+    } as NotionPageInfo)
+  }
 }
 
 async function isUrlReachable(url: string | null): Promise<boolean> {

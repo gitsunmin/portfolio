@@ -104,10 +104,8 @@ export const navigationStyle: NavigationStyle = getSiteConfig(
   'default'
 )
 
-export const navigationLinks: Array<NavigationLink | null> = getSiteConfig(
-  'navigationLinks',
-  null
-)
+export const navigationLinks: Array<NavigationLink | null> | null =
+  getSiteConfig('navigationLinks', null)
 
 // Optional site search
 export const isSearchEnabled: boolean = getSiteConfig('isSearchEnabled', true)

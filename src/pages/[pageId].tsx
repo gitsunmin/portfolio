@@ -10,7 +10,7 @@ import { PageProps, Params } from 'src/lib/types'
 export const getStaticProps: GetStaticProps<PageProps, Params> = async (
   context
 ) => {
-  const rawPageId = context.params.pageId as string
+  const rawPageId = context.params?.pageId
 
   try {
     const props = await resolveNotionPage(domain, rawPageId)
@@ -49,5 +49,6 @@ export async function getStaticPaths() {
 }
 
 export default function NotionDomainDynamicPage(props) {
-  return <NotionPage {...props} />
+  if (props.pageId) return <NotionPage {...props} />
+  else <></>
 }

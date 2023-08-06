@@ -178,7 +178,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
     if (lite) params.lite = lite
 
     const searchParams = new URLSearchParams(params)
-    return site && recordMap ? mapPageUrl(site, recordMap, searchParams) : '';
+    return site && recordMap ? mapPageUrl(site, recordMap, searchParams) : ''
   }, [site, recordMap, lite])
 
   const keys = Object.keys(recordMap?.block || {})
@@ -192,12 +192,17 @@ export const NotionPage: React.FC<types.PageProps> = ({
   const showTableOfContents = !!isBlogPost
   const minTableOfContentsItems = 3
 
-  const pageAside = React.useMemo(
-    () => (
-      <PageAside block={block} recordMap={recordMap} isBlogPost={isBlogPost} />
-    ),
-    [block, recordMap, isBlogPost]
-  )
+  const pageAside = React.useMemo(() => {
+    if (block && recordMap)
+      return (
+        <PageAside
+          block={block}
+          recordMap={recordMap}
+          isBlogPost={isBlogPost}
+        />
+      )
+    else return null
+  }, [block, recordMap, isBlogPost])
 
   const footer = React.useMemo(() => <Footer />, [])
 
@@ -222,12 +227,17 @@ export const NotionPage: React.FC<types.PageProps> = ({
   const canonicalPageUrl =
     !config.isDev && getCanonicalPageUrl(site, recordMap)(pageId)
 
-  const socialImage = mapImageUrl(
-    getPageProperty<string>('Social Image', block, recordMap) ||
-      (block as PageBlock).format?.page_cover ||
-      config.defaultPageCover,
-    block
-  )
+  const socialImage =
+    block &&
+    block.format &&
+    recordMap &&
+    config &&
+    mapImageUrl(
+      getPageProperty<string>('Social Image', block, recordMap) ||
+        (block as PageBlock).format?.page_cover ||
+        config.defaultPageCover,
+      block
+    )
 
   const socialDescription =
     getPageProperty<string>('Description', block, recordMap) ||
@@ -235,42 +245,49 @@ export const NotionPage: React.FC<types.PageProps> = ({
 
   return (
     <>
-      <PageHead
-        pageId={pageId}
-        site={site}
-        title={title}
-        description={socialDescription}
-        image={socialImage}
-        url={canonicalPageUrl}
-      />
+      {socialImage && canonicalPageUrl && (
+        <PageHead
+          pageId={pageId}
+          site={site}
+          title={title}
+          description={socialDescription}
+          image={socialImage}
+          url={canonicalPageUrl}
+        />
+      )}
 
       {isLiteMode && <BodyClassName className='notion-lite' />}
       {isDarkMode && <BodyClassName className='dark-mode' />}
 
-      <NotionRenderer
-        bodyClassName={cs(
-          styles.notion,
-          pageId === site.rootNotionPageId && 'index-page'
+      {config.defaultPageIcon &&
+        config.defaultPageCover &&
+        siteMapPageUrl &&
+        socialImage && (
+          <NotionRenderer
+            bodyClassName={cs(
+              styles.notion,
+              pageId === site.rootNotionPageId && 'index-page'
+            )}
+            darkMode={isDarkMode}
+            components={components}
+            recordMap={recordMap}
+            rootPageId={site.rootNotionPageId}
+            rootDomain={site.domain}
+            fullPage={!isLiteMode}
+            previewImages={!!recordMap.preview_images}
+            showCollectionViewDropdown={false}
+            showTableOfContents={showTableOfContents}
+            minTableOfContentsItems={minTableOfContentsItems}
+            defaultPageIcon={config.defaultPageIcon}
+            defaultPageCover={config.defaultPageCover}
+            defaultPageCoverPosition={config.defaultPageCoverPosition}
+            mapPageUrl={siteMapPageUrl}
+            mapImageUrl={socialImage}
+            searchNotion={config.isSearchEnabled ? searchNotion : undefined}
+            pageAside={pageAside}
+            footer={footer}
+          />
         )}
-        darkMode={isDarkMode}
-        components={components}
-        recordMap={recordMap}
-        rootPageId={site.rootNotionPageId}
-        rootDomain={site.domain}
-        fullPage={!isLiteMode}
-        previewImages={!!recordMap.preview_images}
-        showCollectionViewDropdown={false}
-        showTableOfContents={showTableOfContents}
-        minTableOfContentsItems={minTableOfContentsItems}
-        defaultPageIcon={config.defaultPageIcon}
-        defaultPageCover={config.defaultPageCover}
-        defaultPageCoverPosition={config.defaultPageCoverPosition}
-        mapPageUrl={siteMapPageUrl}
-        mapImageUrl={mapImageUrl}
-        searchNotion={config.isSearchEnabled ? searchNotion : null}
-        pageAside={pageAside}
-        footer={footer}
-      />
     </>
   )
 }

@@ -7,7 +7,7 @@ import { resolveNotionPage } from 'src/lib/resolve-notion-page'
 
 export const getStaticProps = async () => {
   try {
-    const props = await resolveNotionPage(domain);
+    const props = await resolveNotionPage(domain)
 
     return { props, revalidate: 10 }
   } catch (err) {
@@ -18,10 +18,12 @@ export const getStaticProps = async () => {
     throw err
   }
 }
+
 export const metadata: Metadata = {
-  title: 'Gitsunmin Blog',
+  title: 'Gitsunmin Blog'
 }
 
 export default function NotionDomainPage(props) {
-  return <NotionPage {...props} />
+  if (props.pageId) return <NotionPage {...props} />
+  return <></>
 }
