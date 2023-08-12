@@ -16,12 +16,9 @@ export default siteConfig({
   description: '이제 슬슬 공부를 해보려고 하는 프론트엔드 개발자 입니다.',
 
   // social usernames (optional)
-  // twitter: null,
   github: 'gitsunmin',
   linkedin: '선민-김-0b8b9b192',
   // youtube: 'channel/UCkWVLGVfgQMzmYVYUOD6YHg', // optional youtube channel name or `channel/UCGbXXXXXXXXXXXXXXXXXXXXXX`
-  // mastodon: '#', // optional mastodon profile URL, provides link verification
-  // newsletter: '#', // optional newsletter URL
 
   // default notion icon and cover images for site-wide consistency (optional)
   // page-specific values will override these site-wide defaults
