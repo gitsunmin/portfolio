@@ -1,4 +1,4 @@
-import { siteConfig } from './lib/site-config'
+import { siteConfig } from './src/lib/site-config'
 
 export default siteConfig({
   // the site's root Notion page (required)
@@ -6,7 +6,7 @@ export default siteConfig({
 
   // if you want to restrict pages to a single notion workspace (optional)
   // (this should be a Notion ID; see the docs for how to extract this)
-  rootNotionSpaceId: null,
+  // rootNotionSpaceId: null,
   // basic site info (required)
   name: `Gitsnumin's Blog`,
   domain: 'gitsunmin.github.io',
@@ -16,7 +16,7 @@ export default siteConfig({
   description: '이제 슬슬 공부를 해보려고 하는 프론트엔드 개발자 입니다.',
 
   // social usernames (optional)
-  twitter: null,
+  // twitter: null,
   github: 'gitsunmin',
   linkedin: '선민-김-0b8b9b192',
   // youtube: 'channel/UCkWVLGVfgQMzmYVYUOD6YHg', // optional youtube channel name or `channel/UCGbXXXXXXXXXXXXXXXXXXXXXX`

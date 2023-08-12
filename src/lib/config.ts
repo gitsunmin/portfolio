@@ -5,7 +5,6 @@
  * for optional depenencies.
  */
 import { parsePageId } from 'notion-utils'
-import { PostHogConfig } from 'posthog-js'
 
 import { getEnv, getSiteConfig } from './get-config-value'
 import { NavigationLink } from './site-config'
@@ -104,10 +103,8 @@ export const navigationStyle: NavigationStyle = getSiteConfig(
   'default'
 )
 
-export const navigationLinks: Array<NavigationLink | null> = getSiteConfig(
-  'navigationLinks',
-  null
-)
+export const navigationLinks: Array<NavigationLink | null> | null =
+  getSiteConfig('navigationLinks', null)
 
 // Optional site search
 export const isSearchEnabled: boolean = getSiteConfig('isSearchEnabled', true)
@@ -168,7 +165,7 @@ export const fathomConfig = fathomId
   : undefined
 
 export const posthogId = process.env.NEXT_PUBLIC_POSTHOG_ID
-export const posthogConfig: Partial<PostHogConfig> = {
+export const posthogConfig = {
   api_host: 'https://app.posthog.com'
 }
 

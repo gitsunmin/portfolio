@@ -10,10 +10,9 @@ import { notion } from './notion-api'
 const uuid = !!includeNotionIdInUrls
 
 export async function getSiteMap(): Promise<types.SiteMap> {
-  const partialSiteMap = await getAllPages(
-    config.rootNotionPageId,
-    config.rootNotionSpaceId
-  )
+  const partialSiteMap =
+    config.rootNotionSpaceId &&
+    (await getAllPages(config.rootNotionPageId, config.rootNotionSpaceId))
 
   return {
     site: config.site,
@@ -50,7 +49,7 @@ async function getAllPagesImpl(
         uuid
       })
 
-      if (map[canonicalPageId]) {
+      if (canonicalPageId && map[canonicalPageId]) {
         // you can have multiple pages in different collections that have the same id
         // TODO: we may want to error if neither entry is a collection page
         console.warn('error duplicate canonical page id', {
@@ -60,12 +59,12 @@ async function getAllPagesImpl(
         })
 
         return map
-      } else {
+      } else if (typeof canonicalPageId === 'string') {
         return {
           ...map,
           [canonicalPageId]: pageId
         }
-      }
+      } else return map
     },
     {}
   )

@@ -1,12 +1,13 @@
+import { Metadata } from 'next'
 import * as React from 'react'
 
-import { NotionPage } from '@/components/NotionPage'
-import { domain } from '@/lib/config'
-import { resolveNotionPage } from '@/lib/resolve-notion-page'
+import { NotionPage } from 'src/components/NotionPage'
+import { domain } from 'src/lib/config'
+import { resolveNotionPage } from 'src/lib/resolve-notion-page'
 
 export const getStaticProps = async () => {
   try {
-    const props = await resolveNotionPage(domain);
+    const props = await resolveNotionPage(domain)
 
     return { props, revalidate: 10 }
   } catch (err) {
@@ -18,6 +19,11 @@ export const getStaticProps = async () => {
   }
 }
 
+export const metadata: Metadata = {
+  title: 'Gitsunmin Blog'
+}
+
 export default function NotionDomainPage(props) {
-  return <NotionPage {...props} />
+  if (props.pageId) return <NotionPage {...props} />
+  return <></>
 }

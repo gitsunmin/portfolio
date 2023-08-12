@@ -1,6 +1,6 @@
 import { api, host } from './config'
 
-export function getSocialImageUrl(pageId: string) {
+export function getSocialImageUrl(pageId?: string | null) {
   try {
     const url = new URL(api.getSocialImage, host)
 
