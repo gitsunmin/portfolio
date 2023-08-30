@@ -1,78 +1,25 @@
 {
-  "name": "gitsunmin-blog",
-  "version": "1.0.0",
+  "name": "next-blog",
+  "version": "0.1.0",
   "private": true,
-  "description": "gitsunmin blog with notion and next.js",
-  "author": "gitsunmin <tjsals116@gmail.com>",
-  "repository": "https://github.com/gitsunmin/next-blog",
-  "license": "MIT",
-  "engines": {
-    "node": ">=16"
-  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "deploy": "vercel deploy",
-    "deps": "run-s deps:*",
-    "deps:update": "[ -z $GITHUB_ACTIONS ] && yarn add notion-client notion-types notion-utils react-notion-x || echo 'Skipping deps:update on CI'",
-    "deps:link": "[ -z $GITHUB_ACTIONS ] && yarn link notion-client notion-types notion-utils react-notion-x || echo 'Skipping deps:link on CI'",
-    "analyze": "cross-env ANALYZE=true next build",
-    "analyze:server": "cross-env BUNDLE_ANALYZE=server next build",
-    "analyze:browser": "cross-env BUNDLE_ANALYZE=browser next build",
-    "test": "run-p test:*",
-    "test:lint": "eslint '**/*.{ts,tsx}'",
-    "test:prettier": "prettier '**/*.{js,jsx,ts,tsx}' --check"
+    "lint": "next lint"
   },
   "dependencies": {
-    "@fisch0920/use-dark-mode": "^2.4.0",
-    "@keyvhq/core": "^2.0.0",
-    "@keyvhq/redis": "^2.0.0",
-    "@react-icons/all-files": "^4.1.0",
-    "@vercel/og": "^0.5.8",
-    "classnames": "^2.3.2",
-    "date-fns": "^2.28.0",
-    "eslint-config-next": "^13.4.9",
-    "expiry-map": "^2.0.0",
-    "fathom-client": "^3.4.1",
-    "got": "^13.0.0",
-    "isomorphic-unfetch": "^4.0.2",
-    "lqip-modern": "^2.0.0",
-    "next": "^13.4.9",
-    "notion-client": "^6.16.0",
-    "notion-types": "^6.16.0",
-    "notion-utils": "^6.16.0",
-    "p-map": "^6.0.0",
-    "p-memoize": "^7.1.1",
-    "posthog-js": "^1.20.2",
-    "react": "^18.2.0",
-    "react-body-classname": "^1.3.1",
-    "react-dom": "^18.2.0",
-    "react-notion-x": "^6.16.0",
-    "react-tweet-embed": "^2.0.0",
-    "react-use": "^17.4.0",
-    "rss": "^1.2.2"
-  },
-  "devDependencies": {
-    "@next/bundle-analyzer": "^13.4.9",
-    "@trivago/prettier-plugin-sort-imports": "3.4.0",
-    "@types/got": "^9.6.12",
-    "@types/node": "^20.4.1",
-    "@types/react": "^18.2.14",
-    "@typescript-eslint/eslint-plugin": "^5.61.0",
-    "@typescript-eslint/parser": "^5.61.0",
-    "cross-env": "^7.0.2",
-    "eslint": "^8.44.0",
-    "eslint-config-prettier": "8.10.0",
-    "eslint-plugin-react": "^7.32.2",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "npm-run-all": "^4.1.5",
-    "prettier": "^3.0.0",
-    "typescript": "^5.1.6"
-  },
-  "overrides": {
-    "cacheable-request": {
-      "keyv": "npm:@keyvhq/core@~2.0.0"
-    }
+    "@types/node": "20.5.7",
+    "@types/react": "18.2.21",
+    "@types/react-dom": "18.2.7",
+    "autoprefixer": "10.4.15",
+    "eslint": "8.48.0",
+    "eslint-config-next": "13.4.19",
+    "next": "13.4.19",
+    "postcss": "8.4.29",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "tailwindcss": "3.3.3",
+    "typescript": "5.2.2"
   }
 }
