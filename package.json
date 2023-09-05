@@ -9,21 +9,30 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@mobily/ts-belt": "^3.13.1",
     "@types/node": "20.5.7",
     "@types/react": "18.2.21",
     "@types/react-dom": "18.2.7",
     "autoprefixer": "10.4.15",
     "eslint": "8.48.0",
     "eslint-config-next": "13.4.19",
+    "expiry-map": "^2.0.0",
+    "isomorphic-unfetch": "^4.0.2",
     "next": "13.4.19",
     "notion-client": "^6.16.0",
     "notion-types": "^6.16.0",
     "notion-utils": "^6.16.0",
+    "p-memoize": "^7.1.1",
     "postcss": "8.4.29",
+    "prismjs": "^1.29.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-notion-x": "^6.16.0",
+    "react-use": "^17.4.0",
     "tailwindcss": "3.3.3",
     "typescript": "5.2.2"
+  },
+  "devDependencies": {
+    "@types/prismjs": "^1.26.0"
   }
 }

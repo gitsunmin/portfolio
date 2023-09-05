@@ -4,7 +4,7 @@ export type FooterProps = React.DetailedHTMLProps<
 >;
 
 const Footer = (props: FooterProps) => {
-  return <Footer {...props}></Footer>;
+  return <footer {...props}>footer</footer>;
 };
 
 export default Footer;
