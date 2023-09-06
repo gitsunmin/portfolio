@@ -1,6 +1,6 @@
-import * as types from '@/lib/types';
+import * as types from "@/lib/types";
 
-import { O, Option } from '@mobily/ts-belt';
+import { O, Option } from "@mobily/ts-belt";
 
 export interface SiteConfig {
   rootNotionPageId: string;
@@ -45,13 +45,13 @@ export interface NavigationLink {
 
 const SiteConfig: SiteConfig = {
   name: "Gitsunmin's Blog",
-  rootNotionPageId: '60d2a1c363524af3b9936a3b3b9534fb',
-  author: 'Gitsunmin',
+  rootNotionPageId: "60d2a1c363524af3b9936a3b3b9534fb",
+  author: "Gitsunmin",
   defaultPageCover: O.None,
   defaultPageCoverPosition: O.None,
   defaultPageIcon: O.None,
   description: O.None,
-  domain: 'gitsunmin.com',
+  domain: "https://gitsunmin.dev",
   github: O.None,
   includeNotionIdInUrls: O.None,
   isPreviewImageSupportEnabled: O.None,
