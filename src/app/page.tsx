@@ -8,12 +8,7 @@ const Home = async () => {
 
   const recordMap = await notion.getPage(SiteConfig.rootNotionPageId);
   const siteMap = await getSiteMap();
-  return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <h1 className="text-4xl font-bold">Hello, world!</h1>
-      <NotionPage recordMap={recordMap} site={siteMap.site} />
-    </main>
-  );
+  return <NotionPage recordMap={recordMap} site={siteMap.site} />;
 };
 
 export default Home;
