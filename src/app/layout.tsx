@@ -21,7 +21,6 @@ export const metadata: Metadata = {
 
 const RootLayout = async ({ children }: { children: React.ReactNode }) => {
   const recordMap = await notion.getPage(SiteConfig.rootNotionPageId);
-  console.log('🚀 ~ file: layout.tsx:19 ~ RootLayout ~ recordMap:', recordMap);
 
   return (
     <html lang="kr">
