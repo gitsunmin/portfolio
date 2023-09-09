@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@keyvhq/core": "^2.0.0",
+    "@keyvhq/redis": "^2.0.0",
     "@mobily/ts-belt": "^3.13.1",
     "@types/node": "20.5.7",
     "@types/react": "18.2.21",
@@ -18,6 +20,7 @@
     "eslint-config-next": "13.4.19",
     "expiry-map": "^2.0.0",
     "isomorphic-unfetch": "^4.0.2",
+    "lqip-modern": "^2.0.0",
     "next": "13.4.19",
     "notion-client": "^6.16.0",
     "notion-types": "^6.16.0",
@@ -30,6 +33,7 @@
     "react-notion-x": "^6.16.0",
     "react-use": "^17.4.0",
     "tailwindcss": "3.3.3",
+    "ts-pattern": "^5.0.5",
     "typescript": "5.2.2"
   },
   "devDependencies": {

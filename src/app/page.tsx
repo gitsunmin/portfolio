@@ -4,10 +4,11 @@ import SiteConfig from '~/site.config';
 import { getSiteMap } from '@/lib/get-site-map';
 
 const Home = async () => {
-  const notion = new NotionAPI();
+  const notionApi = new NotionAPI();
 
-  const recordMap = await notion.getPage(SiteConfig.rootNotionPageId);
+  const recordMap = await notionApi.getPage(SiteConfig.rootNotionPageId);
   const siteMap = await getSiteMap();
+
   return <NotionPage recordMap={recordMap} site={siteMap.site} />;
 };
 

@@ -17,7 +17,7 @@ import Link from 'next/link';
 import { NotionRenderer } from 'react-notion-x';
 // import { Page404 } from './Page404';
 import { PageAside } from '@/components/notion/PageAside';
-import { PageBlock } from 'notion-types';
+import { Block, PageBlock } from 'notion-types';
 import { PageHead } from './PageHead';
 // import TweetEmbed from 'react-tweet-embed';
 import dynamic from 'next/dynamic';
@@ -180,6 +180,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
     const searchParams = new URLSearchParams(params);
     return site && recordMap ? mapPageUrl(site, recordMap, searchParams) : '';
   }, [site, recordMap, lite]);
+  console.log('🚀 ~ file: NotionPage.tsx:183 ~ recordMap:', recordMap);
 
   const keys = Object.keys(recordMap?.block || {});
   const block = recordMap?.block?.[keys[0]]?.value;
@@ -232,9 +233,10 @@ export const NotionPage: React.FC<types.PageProps> = ({
     recordMap &&
     config &&
     mapImageUrl(
-      getPageProperty<string>('Social Image', block, recordMap) ||
+      (getPageProperty<string>('Social Image', block, recordMap) ||
         (block as PageBlock).format?.page_cover ||
-        config.defaultPageCover,
+        config.defaultPageCover) ??
+        '',
       block
     );
   const socialDescription =
@@ -277,7 +279,9 @@ export const NotionPage: React.FC<types.PageProps> = ({
             defaultPageCover={config.defaultPageCover}
             defaultPageCoverPosition={config.defaultPageCoverPosition}
             mapPageUrl={siteMapPageUrl}
-            mapImageUrl={() => socialImage}
+            mapImageUrl={(url, block) => {
+              return mapImageUrl(url, block) || url;
+            }}
             searchNotion={config.isSearchEnabled ? searchNotion : undefined}
             pageAside={pageAside}
             footer={footer}

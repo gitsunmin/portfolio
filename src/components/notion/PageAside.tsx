@@ -13,5 +13,5 @@ export const PageAside: React.FC<{
     return null;
   }
 
-  return <div>aside</div>;
+  return <div></div>;
 };
