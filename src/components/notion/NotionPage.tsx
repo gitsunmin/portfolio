@@ -11,7 +11,7 @@ import { getCanonicalPageUrl, mapPageUrl } from '@/lib/map-page-url';
 import Footer from '@/components/ui/Footer';
 // import { Loading } from './Loading';
 // import { NotionPageHeader } from './NotionPageHeader';
-import Header from '@/components/ui/Header';
+import NotionPageHeader from '@/components/notion/NotionPageHeader';
 import Image from 'next/legacy/image';
 import Link from 'next/link';
 import { NotionRenderer } from 'react-notion-x';
@@ -160,7 +160,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
       Pdf,
       Modal,
       Tweet: null,
-      Header,
+      Header: NotionPageHeader,
       propertyLastEditedTimeValue,
       propertyTextValue,
       propertyDateValue,

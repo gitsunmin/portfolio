@@ -4,7 +4,7 @@ import 'prismjs/themes/prism-tomorrow.css';
 import 'katex/dist/katex.min.css';
 
 import Footer from '@/components/ui/Footer';
-import Header from '@/components/ui/Header';
+import NotionPageHeader from '@/components/notion/NotionPageHeader';
 import { Inter } from 'next/font/google';
 import type { Metadata } from 'next';
 import { NotionAPI } from 'notion-client';
@@ -40,7 +40,6 @@ export const metadata: Metadata = {
 const RootLayout = async ({ children }: { children: React.ReactNode }) => (
   <html lang="kr">
     <body className={inter.className}>
-      <Header>Gitsunmin Blog</Header>
       {children}
       <Footer />
     </body>
