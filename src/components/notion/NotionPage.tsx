@@ -180,7 +180,6 @@ export const NotionPage: React.FC<types.PageProps> = ({
     const searchParams = new URLSearchParams(params);
     return site && recordMap ? mapPageUrl(site, recordMap, searchParams) : '';
   }, [site, recordMap, lite]);
-  console.log('🚀 ~ file: NotionPage.tsx:183 ~ recordMap:', recordMap);
 
   const keys = Object.keys(recordMap?.block || {});
   const block = recordMap?.block?.[keys[0]]?.value;
