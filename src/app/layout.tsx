@@ -3,7 +3,6 @@ import 'react-notion-x/src/styles.css';
 import 'prismjs/themes/prism-tomorrow.css';
 import 'katex/dist/katex.min.css';
 
-import Footer from '@/components/ui/Footer';
 import { Inter } from 'next/font/google';
 import type { Metadata } from 'next';
 
@@ -91,10 +90,7 @@ export const metadata: Metadata = {
 
 const RootLayout = async ({ children }: { children: React.ReactNode }) => (
   <html lang="kr">
-    <body className={inter.className}>
-      {children}
-      <Footer />
-    </body>
+    <body className={inter.className}>{children}</body>
   </html>
 );
 

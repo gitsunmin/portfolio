@@ -8,7 +8,7 @@ import { formatDate, getBlockTitle, getPageProperty } from 'notion-utils';
 import { getCanonicalPageUrl, mapPageUrl } from '@/lib/map-page-url';
 
 // import BodyClassName from 'react-body-classname';
-import Footer from '@/components/ui/Footer';
+import NotionPageFooter from '@/components/notion/NotionPageFooter';
 // import { Loading } from './Loading';
 // import { NotionPageHeader } from './NotionPageHeader';
 import NotionPageHeader from '@/components/notion/NotionPageHeader';
@@ -204,7 +204,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
     else return null;
   }, [block, recordMap, isBlogPost]);
 
-  const footer = React.useMemo(() => <Footer />, []);
+  const footer = React.useMemo(() => <NotionPageFooter />, []);
 
   // if (router.isFallback) {
   //   return <div>loading...</div>;
