@@ -12,7 +12,6 @@ export const mapPageUrl =
   (site: Site, recordMap: ExtendedRecordMap, searchParams: URLSearchParams) =>
   (pageId = '') => {
     const pageUuid = parsePageId(pageId, { uuid: true });
-
     if (uuidToId(pageUuid) === site.rootNotionPageId) {
       return createUrl('/', searchParams);
     } else {

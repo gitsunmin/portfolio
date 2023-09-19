@@ -1,16 +1,18 @@
-export async function generateStaticParams() {
-  const posts = [{ slug: 'post-1' }, { slug: 'post-2' }];
+import { getSiteMap } from '@/lib/get-site-map';
+import { NotionAPI } from 'notion-client';
+import { NotionPage } from '@/components/notion/NotionPage';
+import SiteConfig from '~/site.config';
 
-  return posts.map((post) => ({
-    slug: post.slug,
-  }));
-}
+const notionApi = new NotionAPI();
 
-export default function Page({ params }: { params: { slug: string } }) {
+const BlogContent = async ({ params }: { params: { slug: string } }) => {
   const { slug } = params;
-  return (
-    <main>
-      <div>slug: {slug}</div>
-    </main>
-  );
-}
+  const pageId: string = slug.split('-').pop() || SiteConfig.rootNotionPageId;
+
+  const recordMap = await notionApi.getPage(pageId);
+  const siteMap = await getSiteMap();
+
+  return <NotionPage recordMap={recordMap} site={siteMap.site} />;
+};
+
+export default BlogContent;

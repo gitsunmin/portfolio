@@ -154,6 +154,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
     () => ({
       nextImage: Image,
       nextLink: Link,
+
       Code,
       Collection,
       Equation,
@@ -224,7 +225,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
     g.block = block;
   }
   const canonicalPageUrl =
-    !config.isDev && getCanonicalPageUrl(site, recordMap)(pageId);
+    (!config.isDev && getCanonicalPageUrl(site, recordMap)(pageId)) || '';
 
   const socialImage =
     block &&
@@ -250,7 +251,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
           title={title}
           description={socialDescription}
           image={socialImage}
-          // url={canonicalPageUrl}
+          url={canonicalPageUrl}
         />
       )}
       {/* {isLiteMode && <BodyClassName className='notion-lite' />}
@@ -268,6 +269,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
             bodyClassName="index-page"
             components={components}
             recordMap={recordMap}
+            rootPageId={site.rootNotionPageId}
             rootDomain={site.domain}
             fullPage={!isLiteMode}
             previewImages={!!recordMap.preview_images}

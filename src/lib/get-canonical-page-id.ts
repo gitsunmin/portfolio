@@ -5,6 +5,8 @@ import {
 
 import { ExtendedRecordMap } from 'notion-types';
 
+import { inversePageUrlOverrides } from '@/lib/config';
+
 export function getCanonicalPageId(
   pageId: string,
   recordMap: ExtendedRecordMap,
@@ -15,7 +17,12 @@ export function getCanonicalPageId(
     return null;
   }
 
-  return getCanonicalPageIdImpl(pageId, recordMap, {
-    uuid,
-  });
+  const override = inversePageUrlOverrides[cleanPageId];
+  if (override) {
+    return override;
+  } else {
+    return getCanonicalPageIdImpl(pageId, recordMap, {
+      uuid,
+    });
+  }
 }
