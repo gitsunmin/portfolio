@@ -14,3 +14,7 @@
   min-height: 30vh !important;
   max-height: 30vh !important;
 }
+
+.notion-page-icon {
+  border-radius: 50% !important;
+}
