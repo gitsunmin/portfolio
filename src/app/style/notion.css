@@ -1,0 +1,16 @@
+.notion-frame {
+  padding: 0 !important;
+}
+
+.notion-page-cover {
+  max-width: 1200px !important;
+  border-radius: 24px;
+}
+
+.notion-page-cover-wrapper img,
+.notion-page-cover-wrapper span {
+  width: 100% !important;
+  height: 30vh !important;
+  min-height: 30vh !important;
+  max-height: 30vh !important;
+}
