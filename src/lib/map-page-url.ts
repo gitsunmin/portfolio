@@ -16,7 +16,7 @@ export const mapPageUrl =
       return createUrl('/', searchParams);
     } else {
       return createUrl(
-        `/${getCanonicalPageId(pageUuid, recordMap, { uuid })}`,
+        `/blog/${getCanonicalPageId(pageUuid, recordMap, { uuid })}`,
         searchParams
       );
     }

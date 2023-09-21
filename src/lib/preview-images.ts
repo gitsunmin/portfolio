@@ -55,7 +55,6 @@ async function createPreviewImage(
     }
 
     const { body } = await got(url);
-    console.log('body:', body);
     // const result = await lqip(body);
 
     const previewImage = {
