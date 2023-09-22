@@ -3,6 +3,8 @@
 import * as React from 'react';
 import * as config from '@/lib/config';
 import * as types from '@/lib/types';
+import { A, D, F, O, pipe } from '@mobily/ts-belt';
+import { match, P } from 'ts-pattern';
 
 import { formatDate, getBlockTitle, getPageProperty } from 'notion-utils';
 import { getCanonicalPageUrl, mapPageUrl } from '@/lib/map-page-url';
@@ -147,7 +149,6 @@ export const NotionPage: React.FC<types.PageProps> = ({
   error,
   pageId,
 }) => {
-  // const router = useRouter();
   const lite = useSearchParam('lite');
 
   const components = React.useMemo(
@@ -182,25 +183,41 @@ export const NotionPage: React.FC<types.PageProps> = ({
     return site && recordMap ? mapPageUrl(site, recordMap, searchParams) : '';
   }, [site, recordMap, lite]);
 
-  const keys = Object.keys(recordMap?.block || {});
-  const block = recordMap?.block?.[keys[0]]?.value;
+  const keys = Object.keys(recordMap.block || {});
 
-  const isBlogPost =
-    block?.type === 'page' && block?.parent_table === 'collection';
+  const block = pipe(recordMap.block, D.values, A.head);
+
+  // const block = recordMap.block?.[keys[0]]?.value;
+
+  const isBlogPost = match(block)
+    .with(
+      {
+        value: {
+          type: 'page',
+          parent_table: 'collection',
+        },
+      },
+      () => true
+    )
+    .otherwise(F.always(false));
+
+  // block.type === 'page' && block?.parent_table === 'collection';
 
   const showTableOfContents = !!isBlogPost;
   const minTableOfContentsItems = 3;
 
   const pageAside = React.useMemo(() => {
-    if (block && recordMap)
-      return (
-        <PageAside
-          block={block}
-          recordMap={recordMap}
-          isBlogPost={isBlogPost}
-        />
-      );
-    else return null;
+    return match(block)
+      .with(P.nullish, () => null)
+      .otherwise((block) => {
+        return (
+          <PageAside
+            block={block.value}
+            recordMap={recordMap}
+            isBlogPost={isBlogPost}
+          />
+        );
+      });
   }, [block, recordMap, isBlogPost]);
 
   const footer = React.useMemo(() => <NotionPageFooter />, []);
@@ -210,7 +227,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
     return <h1>404</h1>;
   }
 
-  const title = getBlockTitle(block, recordMap) || site.name;
+  const title = getBlockTitle(block.value, recordMap) || site.name;
   if (!config.isServer) {
     // add important objects to the window global for easy debugging
     const g = window as any;
@@ -218,27 +235,28 @@ export const NotionPage: React.FC<types.PageProps> = ({
     g.recordMap = recordMap;
     g.block = block;
   }
-  const canonicalPageUrl =
-    (!config.isDev && getCanonicalPageUrl(site, recordMap)(pageId)) || '';
+
+  // const canonicalPageUrl =
+  //   (!config.isDev && getCanonicalPageUrl(site, recordMap)(pageId)) || '';
 
   const socialImage =
-    block &&
-    block.format &&
+    block.value &&
+    block.value.format &&
     recordMap &&
     config &&
     mapImageUrl(
-      (getPageProperty<string>('Social Image', block, recordMap) ||
-        (block as PageBlock).format?.page_cover ||
+      (getPageProperty<string>('Social Image', block.value, recordMap) ||
+        (block.value as PageBlock).format?.page_cover ||
         config.defaultPageCover) ??
         '',
-      block
+      block.value
     );
   const socialDescription =
-    getPageProperty<string>('Description', block, recordMap) ||
+    getPageProperty<string>('Description', block.value, recordMap) ||
     config.description;
   return (
     <>
-      {socialImage && (
+      {/* {socialImage && (
         <PageHead
           pageId={pageId}
           site={site}
@@ -247,7 +265,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
           image={socialImage}
           url={canonicalPageUrl}
         />
-      )}
+      )} */}
       {/* {isLiteMode && <BodyClassName className='notion-lite' />}
       {isDarkMode && <BodyClassName className='dark-mode' />} */}
       {config.defaultPageIcon &&

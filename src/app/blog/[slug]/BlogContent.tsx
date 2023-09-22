@@ -1,13 +1,12 @@
-import { match } from 'ts-pattern';
-import { A, O, S, pipe } from '@mobily/ts-belt';
+import { O } from '@mobily/ts-belt';
 import { getSiteMap } from '@/lib/get-site-map';
-import { NotionAPI } from 'notion-client';
 import { NotionPage } from '@/components/notion/NotionPage';
+import { NotionAPI } from 'notion-client';
 import SiteConfig from '~/site.config';
 
 const notionApi = new NotionAPI();
 
-const BlogContent = async ({ params }: { params: { slug: string } }) => {
+export const BlogContent = async ({ params }: { params: { slug: string } }) => {
   const { slug } = params;
 
   const pageId: string = slug.split('-').pop() || SiteConfig.rootNotionPageId;
@@ -20,9 +19,7 @@ const BlogContent = async ({ params }: { params: { slug: string } }) => {
       recordMap={recordMap}
       site={siteMap.site}
       error={O.None}
-      pageId={O.None}
+      pageId={pageId}
     />
   );
 };
-
-export default BlogContent;
