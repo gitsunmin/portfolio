@@ -18,3 +18,8 @@
 .notion-page-icon {
   border-radius: 50% !important;
 }
+
+.notion-title {
+  display: block;
+  text-align: center;
+}
