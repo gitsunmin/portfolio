@@ -14,6 +14,7 @@ import { NavigationLink } from '~/site.config';
  * for optional depenencies.
  */
 import { parsePageId } from 'notion-utils';
+import { P, match } from 'ts-pattern';
 
 export const rootNotionPageId: string = parsePageId(
   getSiteConfig('rootNotionPageId'),
@@ -209,9 +210,11 @@ function invertPageUrlOverrides(
   return Object.keys(pageUrlOverrides).reduce((acc, uri) => {
     const pageId = pageUrlOverrides[uri];
 
-    return {
-      ...acc,
-      [pageId]: uri,
-    };
+    return match(pageId)
+      .with(P.nullish, () => acc)
+      .with(P.string, (pageId) => ({
+        ...acc,
+        [pageId]: uri,
+      }));
   }, {});
 }

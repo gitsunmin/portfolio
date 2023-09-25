@@ -1,10 +1,11 @@
-import { PageProps } from '@/lib/types';
+import { PageError, PageProps } from '@/lib/types';
+import { O } from '@mobily/ts-belt';
 
 export async function pageAcl({
   site,
   recordMap,
   pageId,
-}: PageProps): Promise<PageProps> {
+}: PageProps): Promise<{ error: PageError }> {
   if (!site) {
     return {
       error: {
