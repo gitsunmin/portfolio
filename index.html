@@ -5,10 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./index.css" />
     <script src="./index.js" defer></script>
+    <script type="module" src="./components/header/index.js" defer></script>
     <title>Document</title>
   </head>
+
   <body>
-    <header>Gitsunmin's Poltfolio</header>
+    <layout-header>
+      <a href="/" slot="profile-link">
+        <img
+          class="round-1"
+          src="./assets/me.jpeg"
+          alt="me"
+          width="30px"
+          translate="yes"
+        />
+        <span> Gitsunmin Portfolio </span>
+      </a>
+
+      <nav slot="menu">
+        <a href="/">home</a>
+        <a href="/history">history</a>
+        <a href="/about">about</a>
+      </nav>
+    </layout-header>
+
     <main>
       <h1>history</h1>
       <section id="history-section">
@@ -19,12 +39,60 @@
           <li>444</li>
           <li>555</li>
           <li>666</li>
-        </ul>
-      </section>
-
-      <h1>Project</h1>
-      <section id="project-section">
-        <ul>
+          <li>111</li>
+          <li>222</li>
+          <li>333</li>
+          <li>444</li>
+          <li>555</li>
+          <li>666</li>
+          <li>111</li>
+          <li>222</li>
+          <li>333</li>
+          <li>444</li>
+          <li>555</li>
+          <li>666</li>
+          <li>111</li>
+          <li>222</li>
+          <li>333</li>
+          <li>444</li>
+          <li>555</li>
+          <li>666</li>
+          <li>111</li>
+          <li>222</li>
+          <li>333</li>
+          <li>444</li>
+          <li>555</li>
+          <li>666</li>
+          <li>111</li>
+          <li>222</li>
+          <li>333</li>
+          <li>444</li>
+          <li>555</li>
+          <li>666</li>
+          <li>111</li>
+          <li>222</li>
+          <li>333</li>
+          <li>444</li>
+          <li>555</li>
+          <li>666</li>
+          <li>111</li>
+          <li>222</li>
+          <li>333</li>
+          <li>444</li>
+          <li>555</li>
+          <li>666</li>
+          <li>111</li>
+          <li>222</li>
+          <li>333</li>
+          <li>444</li>
+          <li>555</li>
+          <li>666</li>
+          <li>111</li>
+          <li>222</li>
+          <li>333</li>
+          <li>444</li>
+          <li>555</li>
+          <li>666</li>
           <li>111</li>
           <li>222</li>
           <li>333</li>
@@ -33,6 +101,8 @@
           <li>666</li>
         </ul>
       </section>
+
+      <word-count></word-count>
     </main>
     <footer>footer</footer>
   </body>

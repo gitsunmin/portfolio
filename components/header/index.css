@@ -1,0 +1,21 @@
+:host {
+  display: block;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background-color: #333;
+  color: #fff;
+  box-sizing: border-box;
+  transition: transform 0.3s ease-in-out;
+  z-index: 1000;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+}
+
+header > span {
+  display: flex;
+  background-color: red;
+}
