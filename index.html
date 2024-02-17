@@ -5,33 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./index.css" />
     <script src="./index.js" defer></script>
-    <script type="module" src="./components/header/index.js" defer></script>
+    <script type="module" src="./components/layout-header.js" defer></script>
+    <script type="module" src="./components/layout-main.js" defer></script>
+    <script type="module" src="./components/layout-footer.js" defer></script>
     <title>Document</title>
   </head>
 
   <body>
-    <layout-header>
-      <a href="/" slot="profile-link">
-        <img
-          class="round-1"
-          src="./assets/me.jpeg"
-          alt="me"
-          width="30px"
-          translate="yes"
-        />
-        <span> Gitsunmin Portfolio </span>
-      </a>
+    <layout-header></layout-header>
 
-      <nav slot="menu">
-        <a href="/">home</a>
-        <a href="/history">history</a>
-        <a href="/about">about</a>
-      </nav>
-    </layout-header>
-
-    <main>
+    <layout-main>
       <h1>history</h1>
-      <section id="history-section">
+      <section>
         <ul>
           <li>111</li>
           <li>222</li>
@@ -101,9 +86,7 @@
           <li>666</li>
         </ul>
       </section>
-
-      <word-count></word-count>
-    </main>
-    <footer>footer</footer>
+    </layout-main>
+    <layout-footer></layout-footer>
   </body>
 </html>
