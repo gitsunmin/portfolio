@@ -11,10 +11,13 @@ import SectionWrapper from './section-wrapper.js';
 import HelloSection from './hello-section.js';
 
 import AboutMeSection from './about-me-section.js';
-import AboutMeScene1 from './about-me-scenes/about-me-scene1.js';
+import AboutMeScene1 from './about-me-scene1.js';
 
 import SkillsSection from './skills-section.js';
-import SkillsScene1 from './skills-scenes/skills-scene1.js';
+import SkillsScene1 from './skills-scene1.js';
+
+import ExperienceSection from './experience-section.js';
+import ExperienceScene1 from './experience-scene1.js';
 
 export const defineComponents = () => {
   customElements.define('profile-image', ProfileImage);
@@ -29,4 +32,6 @@ export const defineComponents = () => {
   customElements.define('hello-section', HelloSection);
   customElements.define('skills-section', SkillsSection);
   customElements.define('skills-scene1', SkillsScene1);
+  customElements.define('experience-section', ExperienceSection);
+  customElements.define('experience-scene1', ExperienceScene1);
 };

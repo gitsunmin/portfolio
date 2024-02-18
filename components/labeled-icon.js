@@ -12,7 +12,6 @@ style.innerHTML = /* css */ `
 
     .icon {
         border-radius: 12%;
-        border: 1px solid #000;
         box-shadow: 0 0 5px 0 white:
     }
 
