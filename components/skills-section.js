@@ -15,10 +15,6 @@ style.innerHTML = /* css */ `
     font-size: 3em;
     text-align: center;
   }
-
-  li:not(:first-child) {
-    margin-top: 100vh;
-  }
 `;
 
 template.innerHTML = /* html */ `

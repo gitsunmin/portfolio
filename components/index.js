@@ -3,6 +3,7 @@ import LayoutHeader from './layout-header.js';
 import LayoutMain from './layout-main.js';
 
 import ProfileImage from './profile-image.js';
+import LabeledIcon from './labeled-icon.js';
 
 import SectionTitle from './section-title.js';
 import SectionWrapper from './section-wrapper.js';
@@ -17,6 +18,7 @@ import SkillsScene1 from './skills-scenes/skills-scene1.js';
 
 export const defineComponents = () => {
   customElements.define('profile-image', ProfileImage);
+  customElements.define('labeled-icon', LabeledIcon);
   customElements.define('about-me-section', AboutMeSection);
   customElements.define('about-me-scene1', AboutMeScene1);
   customElements.define('section-title', SectionTitle);
