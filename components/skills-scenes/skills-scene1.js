@@ -6,16 +6,13 @@ style.innerHTML = /* css */ `
 `;
 
 template.innerHTML = /* html */ `
-    <section-wrapper>
-        <ul>
-            <li>2021.01.01 - First commit</li>
-            <li>2021.01.02 - Second commit</li>
-            <li>2021.01.03 - Third commit</li>
-        </ul>
-    </section-wrapper>
+  <div class="skills-scene1">
+    <p class="skills-scene1-description">
+    </p>
+  </div>
 `;
 
-export default class HistorySection extends HTMLElement {
+export default class SkillsScene1 extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' }); // Shadow DOM을 사용하도록 설정

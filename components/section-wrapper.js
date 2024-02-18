@@ -3,8 +3,6 @@ const style = document.createElement('style');
 
 style.innerHTML = /* css */ `
   @import "/index.css";
-  .section-wrapper {
-  }
 `;
 
 template.innerHTML = /* html */ `
@@ -20,6 +18,7 @@ export default class SectionWrapper extends HTMLElement {
 
     this.shadowRoot.appendChild(style.cloneNode(true));
     this.shadowRoot.appendChild(template.content.cloneNode(true));
+    this.sectionWrapper$el = this.shadowRoot.querySelector('.section-wrapper');
   }
 
   connectedCallback() {

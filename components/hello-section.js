@@ -5,13 +5,14 @@ style.innerHTML = /* css */ `
   @import "/index.css";
 
   .hello-section {
-    height: 100vh;
+    height: 75vh;
   }
 
   .hello-animation {
     position: relative;
     font-size: 2.5em;
     height: 30px; /* 텍스트 높이에 맞게 조정 */
+    margin-top: 25vh;
   }
   
   .hello {
@@ -25,6 +26,10 @@ style.innerHTML = /* css */ `
   .description {
     text-align: center;
     font-size: 1.5em;
+  }
+
+  .scroll-btn-wrapper {
+    text-align: center;
   }
   
   @keyframes helloAnimation {
@@ -41,6 +46,7 @@ style.innerHTML = /* css */ `
   .hello:nth-child(6) { animation-delay: 10s; }
 
   .description {
+    margin-top: 25vh;
     font-size: 1em;
     padding: 20px;
   }
@@ -62,6 +68,10 @@ template.innerHTML = /* html */ `
         스크롤을 내리면서, <br />
         포트폴리오를 확인해보세요.
       </p>
+
+      <div class="scroll-btn-wrapper">
+        <button class="show-about-me">Scroll Down</button>
+      </div>
     </section>
 `;
 
@@ -72,5 +82,15 @@ export default class HelloSection extends HTMLElement {
 
     this.shadowRoot.appendChild(style.cloneNode(true));
     this.shadowRoot.appendChild(template.content.cloneNode(true));
+  }
+
+  connectedCallback() {
+    this.shadowRoot
+      .querySelector('.show-about-me')
+      .addEventListener('click', () => {
+        document
+          .querySelector('#about-me')
+          .scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
   }
 }

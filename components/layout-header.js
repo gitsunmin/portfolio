@@ -23,14 +23,14 @@ style.innerHTML = /* css */ `
     align-items: center;
   }
 
+  .profile-image {
+    padding: 10px;
+  }
+
   .menu {
     padding: 0 20px;
     display: flex;
     align-items: center;
-  }
-
-  .profile img {
-    margin: 10px;
   }
 
   a {
@@ -41,7 +41,7 @@ style.innerHTML = /* css */ `
 template.innerHTML = /* html */ `
   <header class="header">
     <a class="profile" href="/">
-      <img id="header-me-img" src="./assets/me.jpeg" width="50px" alt="me" class="round-1" />
+      <profile-image class="profile-image" width="50px" height="50px" alt="me"></profile-image>
       <span class="site-name">
         Gitsunmin's Portfolio
       </span>
