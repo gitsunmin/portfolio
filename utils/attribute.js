@@ -1,4 +1,7 @@
 export default class Attribute {
+  /**
+   * @param {'object' | 'array' | 'number' | 'boolean' | 'string'} type
+   */
   static typeApplier(type) {
     return (value) => {
       switch (type) {

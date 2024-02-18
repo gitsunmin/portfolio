@@ -3,20 +3,19 @@ const style = document.createElement('style');
 
 style.innerHTML = /* css */ `
   @import "/index.css";
-
-  .header-case {
-    margin-top: 90px;
-  }
 `;
 
 template.innerHTML = /* html */ `
-  <div class="header-case"></div> 
-  <main class="main">
-    <slot></slot>
-  </main>
+    <section-wrapper>
+        <ul>
+            <li>2021.01.01 - First commit</li>
+            <li>2021.01.02 - Second commit</li>
+            <li>2021.01.03 - Third commit</li>
+        </ul>
+    </section-wrapper>
 `;
 
-export default class LayoutMain extends HTMLElement {
+export default class HistorySection extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' }); // Shadow DOM을 사용하도록 설정

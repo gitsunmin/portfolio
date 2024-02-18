@@ -8,16 +8,22 @@ style.innerHTML = /* css */ `
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
     height: 50px;
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+    padding: 10px 0;
+    z-index: 1000;
+    width: 100%;
     display: flex;
     justify-content: space-between;
-    padding: 10px;
-    z-index: 1000;
   }
 
   .profile {
+    display: flex;
+    align-items: center;
+  }
+
+  .menu {
+    padding: 0 20px;
     display: flex;
     align-items: center;
   }
@@ -28,7 +34,6 @@ style.innerHTML = /* css */ `
 
   a {
     color: white;
-    text-decoration: none;
   }
 `;
 
@@ -44,13 +49,14 @@ template.innerHTML = /* html */ `
     <div class="slot">
       <slot></slot>
     </div>
+
     <div class="menu">
-      <span></span>
+      <a href="https://gitsunmin.github.io/">Blog</a>
     </div>
   </header>
 `;
 
-class LayoutHeader extends HTMLElement {
+export default class LayoutHeader extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' }); // Shadow DOM을 사용하도록 설정
@@ -59,5 +65,3 @@ class LayoutHeader extends HTMLElement {
     this.shadowRoot.appendChild(template.content.cloneNode(true));
   }
 }
-
-customElements.define('layout-header', LayoutHeader);

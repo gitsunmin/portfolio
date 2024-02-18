@@ -19,7 +19,7 @@ template.innerHTML = /* html */ `
   </footer>
 `;
 
-class LayoutFooter extends HTMLElement {
+export default class LayoutFooter extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' }); // Shadow DOM을 사용하도록 설정
@@ -28,5 +28,3 @@ class LayoutFooter extends HTMLElement {
     this.shadowRoot.appendChild(template.content.cloneNode(true));
   }
 }
-
-customElements.define('layout-footer', LayoutFooter);

@@ -4,19 +4,18 @@ const style = document.createElement('style');
 style.innerHTML = /* css */ `
   @import "/index.css";
 
-  .header-case {
-    margin-top: 90px;
+  .section-title {
+    text-align: center;
   }
 `;
 
 template.innerHTML = /* html */ `
-  <div class="header-case"></div> 
-  <main class="main">
-    <slot></slot>
-  </main>
+    <h2 class="section-title">
+        <slot></slot>
+    </h2>
 `;
 
-export default class LayoutMain extends HTMLElement {
+export default class SectionTitle extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' }); // Shadow DOM을 사용하도록 설정
