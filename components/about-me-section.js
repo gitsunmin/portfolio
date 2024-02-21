@@ -23,7 +23,6 @@ style.innerHTML = /* css */ `
 
 template.innerHTML = /* html */ `
     <section-wrapper align="center">
-      <h1 class="section-title">About Me</h1>
       <ul>
           <li>
             <about-me-scene1></about-me-scene1>
@@ -57,7 +56,7 @@ export default class HistorySection extends HTMLElement {
               ],
             },
             {
-              duration: 900,
+              duration: 1200,
               iterations: 1,
               easing: 'ease-in-out',
             }

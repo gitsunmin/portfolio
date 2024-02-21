@@ -56,7 +56,7 @@ export default class HistoryScene1 extends HTMLElement {
               ],
             },
             {
-              duration: 1000,
+              duration: 1200,
               iterations: 1,
               easing: 'ease-in-out',
             }
@@ -66,7 +66,7 @@ export default class HistoryScene1 extends HTMLElement {
             opacity: [0, 1],
           },
           {
-            duration: 1000,
+            duration: 2000,
             iterations: 1,
             easing: 'ease-in-out',
           }

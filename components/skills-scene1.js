@@ -195,7 +195,7 @@ export default class SkillsScene1 extends HTMLElement {
         { transform: 'translateX(-50%)' }, // 종료 상태
       ],
       {
-        duration: 25000,
+        duration: skillList.length * 3000,
         iterations: Infinity,
         easing: 'linear',
       }

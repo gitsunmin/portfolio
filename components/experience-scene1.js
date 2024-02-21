@@ -7,14 +7,17 @@ style.innerHTML = /* css */ `
   .experience-scene1 {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
   }
 
   .experience-scene1-chart {
-    background-color: #f0f0f0;
+    background-color: orange;
+    width: 240px;
   }
 
   .experience-scene1-description {
-    background-color: #f0ff;
+    background-color: teal;
+    width: 240px;
   }
 `;
 
@@ -22,6 +25,7 @@ template.innerHTML = /* html */ `
   <div class="experience-scene1">
     <div class="experience-scene1-chart">
       <h2>Chart</h2>
+    </div>
     </div>
     <div class="experience-scene1-description">
       <h2>Description</h2>
