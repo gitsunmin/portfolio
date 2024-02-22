@@ -40,7 +40,7 @@ style.innerHTML = /* css */ `
 
 template.innerHTML = /* html */ `
   <header class="header">
-    <a class="profile" href="/">
+    <a class="profile" href="https://gitsunmin.github.io/portfolio">
       <profile-image class="profile-image" width="50px" height="50px" alt="me"></profile-image>
       <span class="site-name">
         Gitsunmin's Portfolio
