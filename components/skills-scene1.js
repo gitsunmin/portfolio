@@ -24,6 +24,7 @@ style.innerHTML = /* css */ `
     display: flex;
     flex-direction: row;
     overflow-x: scroll;
+    gap: 12px;
   }
 
   .skills-scene1-list {
