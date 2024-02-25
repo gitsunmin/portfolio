@@ -6,30 +6,41 @@ style.innerHTML = /* css */ `
 
   .experience-scene1 {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     justify-content: center;
+
+    align-items: center;
+    height: 300px;
+    max-width: 80vw;
+    overflow-x: scroll;
+
+    margin: 0 auto;
+    white-space: nowrap;
   }
 
   .experience-scene1-chart {
     background-color: orange;
-    width: 240px;
   }
 
-  .experience-scene1-description {
-    background-color: teal;
-    width: 240px;
-  }
 `;
+
+const ProjectList = [
+  {
+    name: '식봄',
+    description:
+      '식봄은 사업자 대상으로 식자재 유통 서비스를 제공하는 E-Commerce 서비스입니다.',
+    tags: ['E-Commerce', 'Re-Engineering', 'Next.js', 'TypeScript'],
+  },
+];
 
 template.innerHTML = /* html */ `
   <div class="experience-scene1">
-    <div class="experience-scene1-chart">
-      <h2>Chart</h2>
-    </div>
-    </div>
-    <div class="experience-scene1-description">
-      <h2>Description</h2>
-    </div>
+    <section class="experience-scene1-section">
+      <h2>Project</h2>
+
+      <ul class="experience-scene1-cards">
+      </ul>
+    </section>
   </div>
 `;
 
@@ -40,6 +51,17 @@ export default class HistoryScene1 extends HTMLElement {
 
     this.shadowRoot.appendChild(style.cloneNode(true));
     this.shadowRoot.appendChild(template.content.cloneNode(true));
+
+    this.cards$el = this.shadowRoot.querySelector('.skills-scene1-unordered');
+
+    this.cards$el.innerHTML = ProjectList.map((project) => {
+      return /* html */ `
+        <li class="experience-scene1-card">
+          <h3>${project.name}</h3>
+          <p>${project.description}</p>
+        </li>
+      `;
+    }).join('');
   }
 
   connectedCallback() {
