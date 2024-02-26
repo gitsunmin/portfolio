@@ -38,32 +38,5 @@ export default class HistorySection extends HTMLElement {
 
     this.shadowRoot.appendChild(style.cloneNode(true));
     this.shadowRoot.appendChild(template.content.cloneNode(true));
-
-    this.title$el = this.shadowRoot.querySelector('.section-title');
-  }
-
-  connectedCallback() {
-    let observer = new IntersectionObserver((observers) => {
-      observers.forEach((observer) => {
-        if (observer.isIntersecting)
-          this.title$el.animate(
-            {
-              opacity: [0, 1],
-              transform: [
-                'translateX(-100px)',
-                'translateX(20px)',
-                'translateX(0)',
-              ],
-            },
-            {
-              duration: 1200,
-              iterations: 1,
-              easing: 'ease-in-out',
-            }
-          );
-      });
-    });
-
-    observer.observe(this);
   }
 }
