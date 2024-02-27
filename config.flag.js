@@ -3,7 +3,7 @@ const flags = {
     hello: true,
     'about-me': true,
     skills: true,
-    experience: false,
+    experience: true,
   },
 };
 

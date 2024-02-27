@@ -22,16 +22,25 @@ style.innerHTML = /* css */ `
     background-color: orange;
   }
 
-`;
 
-const ProjectList = [
-  {
-    name: '식봄',
-    description:
-      '식봄은 사업자 대상으로 식자재 유통 서비스를 제공하는 E-Commerce 서비스입니다.',
-    tags: ['E-Commerce', 'Re-Engineering', 'Next.js', 'TypeScript'],
-  },
-];
+  .experience-scene1-cards {
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    overflow-x: scroll;
+    gap: 12px;
+  }
+
+  .experience-scene1-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 200px;
+    white-space: normal;
+  }
+
+`;
 
 template.innerHTML = /* html */ `
   <div class="experience-scene1">
@@ -44,6 +53,39 @@ template.innerHTML = /* html */ `
   </div>
 `;
 
+const ProjectList = [
+  {
+    name: '식봄',
+    description:
+      '식봄은 사업자 대상으로 식자재 유통 서비스를 제공하는 E-Commerce 서비스입니다.',
+    tags: ['E-Commerce', 'Re-Engineering', 'Next.js', 'TypeScript'],
+  },
+  {
+    name: '식봄',
+    description:
+      '식봄은 사업자 대상으로 식자재 유통 서비스를 제공하는 E-Commerce 서비스입니다.',
+    tags: ['E-Commerce', 'Re-Engineering', 'Next.js', 'TypeScript'],
+  },
+  {
+    name: '식봄',
+    description:
+      '식봄은 사업자 대상으로 식자재 유통 서비스를 제공하는 E-Commerce 서비스입니다.',
+    tags: ['E-Commerce', 'Re-Engineering', 'Next.js', 'TypeScript'],
+  },
+  {
+    name: '식봄',
+    description:
+      '식봄은 사업자 대상으로 식자재 유통 서비스를 제공하는 E-Commerce 서비스입니다.',
+    tags: ['E-Commerce', 'Re-Engineering', 'Next.js', 'TypeScript'],
+  },
+  {
+    name: '식봄',
+    description:
+      '식봄은 사업자 대상으로 식자재 유통 서비스를 제공하는 E-Commerce 서비스입니다.',
+    tags: ['E-Commerce', 'Re-Engineering', 'Next.js', 'TypeScript'],
+  },
+];
+
 export default class HistoryScene1 extends HTMLElement {
   constructor() {
     super();
@@ -52,7 +94,7 @@ export default class HistoryScene1 extends HTMLElement {
     this.shadowRoot.appendChild(style.cloneNode(true));
     this.shadowRoot.appendChild(template.content.cloneNode(true));
 
-    this.cards$el = this.shadowRoot.querySelector('.skills-scene1-unordered');
+    this.cards$el = this.shadowRoot.querySelector('.experience-scene1-cards');
 
     this.cards$el.innerHTML = ProjectList.map((project) => {
       return /* html */ `
