@@ -40,6 +40,26 @@ style.innerHTML = /* css */ `
     white-space: normal;
   }
 
+  .experience-scene1-card-wrap {
+    display: flex;
+    flex-direction: row;
+    wrap: nowrap;
+    gap: 4px;
+  }
+
+  .experience-scene1-card-tag {
+    color: #3E6D8E;
+    background-color: #E0EAF1;
+    border-bottom: 1px solid #3E6D8E;
+    border-right: 1px solid #7F9FB6;
+    padding: 3px 4px 3px 4px;
+    margin: 2px 2px 2px 0;
+    text-decoration: none;
+    font-size: 90%;
+    line-height: 2.4;
+    white-space: nowrap;
+    border-radius: 4px;
+  }
 `;
 
 template.innerHTML = /* html */ `
@@ -58,31 +78,31 @@ const ProjectList = [
     name: '식봄',
     description:
       '식봄은 사업자 대상으로 식자재 유통 서비스를 제공하는 E-Commerce 서비스입니다.',
-    tags: ['E-Commerce', 'Re-Engineering', 'Next.js', 'TypeScript'],
+    tags: ['E-Commerce'],
   },
   {
     name: '식봄',
     description:
       '식봄은 사업자 대상으로 식자재 유통 서비스를 제공하는 E-Commerce 서비스입니다.',
-    tags: ['E-Commerce', 'Re-Engineering', 'Next.js', 'TypeScript'],
+    tags: ['E-Commerce'],
   },
   {
     name: '식봄',
     description:
       '식봄은 사업자 대상으로 식자재 유통 서비스를 제공하는 E-Commerce 서비스입니다.',
-    tags: ['E-Commerce', 'Re-Engineering', 'Next.js', 'TypeScript'],
+    tags: ['E-Commerce'],
   },
   {
     name: '식봄',
     description:
       '식봄은 사업자 대상으로 식자재 유통 서비스를 제공하는 E-Commerce 서비스입니다.',
-    tags: ['E-Commerce', 'Re-Engineering', 'Next.js', 'TypeScript'],
+    tags: ['E-Commerce'],
   },
   {
     name: '식봄',
     description:
       '식봄은 사업자 대상으로 식자재 유통 서비스를 제공하는 E-Commerce 서비스입니다.',
-    tags: ['E-Commerce', 'Re-Engineering', 'Next.js', 'TypeScript'],
+    tags: ['E-Commerce'],
   },
 ];
 
@@ -101,6 +121,13 @@ export default class HistoryScene1 extends HTMLElement {
         <li class="experience-scene1-card">
           <h3>${project.name}</h3>
           <p>${project.description}</p>
+          <div class="experience-scene1-card-wrap">
+            ${project.tags
+              .map((tag) => {
+                return /* html */ `<span class="experience-scene1-card-tag">${tag}</span>`;
+              })
+              .join('')}
+          </div>
         </li>
       `;
     }).join('');
