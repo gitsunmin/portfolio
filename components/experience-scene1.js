@@ -5,29 +5,17 @@ style.innerHTML = /* css */ `
   @import "/index.css";
 
   .experience-scene1 {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-
-    align-items: center;
-    height: 300px;
     max-width: 80vw;
     overflow-x: scroll;
-
     margin: 0 auto;
     white-space: nowrap;
   }
 
-  .experience-scene1-chart {
-    background-color: orange;
-  }
-
-
   .experience-scene1-cards {
-    padding: 0;
-    list-style: none;
     display: flex;
     flex-direction: row;
+    list-style: none;
+    width: 80vw;
     overflow-x: scroll;
     gap: 12px;
   }
@@ -36,8 +24,11 @@ style.innerHTML = /* css */ `
     display: flex;
     flex-direction: column;
     align-items: center;
-    max-width: 200px;
+    width: 200px;
     white-space: normal;
+    border: 2px solid #E0EAF1;
+    border-radius: 8px;
+    padding: 24px;
   }
 
   .experience-scene1-card-wrap {
@@ -60,13 +51,16 @@ style.innerHTML = /* css */ `
     white-space: nowrap;
     border-radius: 4px;
   }
+
+  .experience-scene1-section > h2 {
+    background-color: red;
+  }
 `;
 
 template.innerHTML = /* html */ `
+  <h2>Projects</h2>
   <div class="experience-scene1">
     <section class="experience-scene1-section">
-      <h2>Project</h2>
-
       <ul class="experience-scene1-cards">
       </ul>
     </section>
@@ -75,31 +69,31 @@ template.innerHTML = /* html */ `
 
 const ProjectList = [
   {
-    name: '식봄',
+    name: '공지사항 관리 시스템 개발',
     description:
       '식봄은 사업자 대상으로 식자재 유통 서비스를 제공하는 E-Commerce 서비스입니다.',
     tags: ['E-Commerce'],
   },
   {
-    name: '식봄',
+    name: '업무 협업 프로그램 개발',
     description:
       '식봄은 사업자 대상으로 식자재 유통 서비스를 제공하는 E-Commerce 서비스입니다.',
     tags: ['E-Commerce'],
   },
   {
-    name: '식봄',
+    name: '마켓봄 프로 개발',
     description:
       '식봄은 사업자 대상으로 식자재 유통 서비스를 제공하는 E-Commerce 서비스입니다.',
     tags: ['E-Commerce'],
   },
   {
-    name: '식봄',
+    name: '공통 웹뷰 앱 개발',
     description:
       '식봄은 사업자 대상으로 식자재 유통 서비스를 제공하는 E-Commerce 서비스입니다.',
     tags: ['E-Commerce'],
   },
   {
-    name: '식봄',
+    name: '식봄, Next.js로 전환 프로젝트',
     description:
       '식봄은 사업자 대상으로 식자재 유통 서비스를 제공하는 E-Commerce 서비스입니다.',
     tags: ['E-Commerce'],
@@ -123,9 +117,10 @@ export default class HistoryScene1 extends HTMLElement {
           <p>${project.description}</p>
           <div class="experience-scene1-card-wrap">
             ${project.tags
-              .map((tag) => {
-                return /* html */ `<span class="experience-scene1-card-tag">${tag}</span>`;
-              })
+              .map(
+                (tag) =>
+                  /* html */ `<span class="experience-scene1-card-tag">${tag}</span>`
+              )
               .join('')}
           </div>
         </li>
