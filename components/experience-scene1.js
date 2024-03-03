@@ -4,65 +4,69 @@ const style = document.createElement('style');
 style.innerHTML = /* css */ `
   @import "/index.css";
 
-  .experience-scene1 {
+  .scene {
     max-width: 80vw;
     overflow-x: scroll;
     margin: 0 auto;
-    white-space: nowrap;
   }
 
-  .experience-scene1-cards {
+  .cards {
     display: flex;
     flex-direction: row;
     list-style: none;
     width: 80vw;
     overflow-x: scroll;
-    gap: 12px;
+    gap: 18px;
   }
 
-  .experience-scene1-card {
+  .card {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    width: 200px;
-    white-space: normal;
+    max-width: 200px;
+    min-width: 200px;
     border: 2px solid #E0EAF1;
     border-radius: 8px;
     padding: 24px;
   }
 
-  .experience-scene1-card-wrap {
+  .tags-warp {
     display: flex;
     flex-direction: row;
-    wrap: nowrap;
-    gap: 4px;
+    justify-content: center;
+    gap: 8px;
   }
 
-  .experience-scene1-card-tag {
-    color: #3E6D8E;
-    background-color: #E0EAF1;
-    border-bottom: 1px solid #3E6D8E;
-    border-right: 1px solid #7F9FB6;
-    padding: 3px 4px 3px 4px;
-    margin: 2px 2px 2px 0;
+  .tag {
+    color: white;
     text-decoration: none;
-    font-size: 90%;
-    line-height: 2.4;
-    white-space: nowrap;
+    border: 1px solid #E0EAF1;
+    padding: 4px;
     border-radius: 4px;
   }
 
-  .experience-scene1-section > h2 {
-    background-color: red;
+  .link-wrap {
+    margin-top: 22px;
+  }
+
+  .more-link {
+    color: #E0EAF1;
+    border-radius: 4px;
+    padding: 8px;
+    text-decoration: none;
+    border: 2px solid #E0EAF1;
+  }
+
+  .more-link:hover {
+    border: 2px solid;
+    border-image: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet) 1;
   }
 `;
 
 template.innerHTML = /* html */ `
   <h2>Projects</h2>
-  <div class="experience-scene1">
-    <section class="experience-scene1-section">
-      <ul class="experience-scene1-cards">
-      </ul>
+  <div class="scene">
+    <section>
+      <ul class="cards"></ul>
     </section>
   </div>
 `;
@@ -70,33 +74,54 @@ template.innerHTML = /* html */ `
 const ProjectList = [
   {
     name: '공지사항 관리 시스템 개발',
+    period: {
+      start: '2021-01',
+      end: '2021-03',
+    },
+    role: 'Frontend Developer',
     description:
       '식봄은 사업자 대상으로 식자재 유통 서비스를 제공하는 E-Commerce 서비스입니다.',
-    tags: ['E-Commerce'],
+    tags: ['Desktap'],
   },
   {
     name: '업무 협업 프로그램 개발',
+    period: {
+      start: '2021-01',
+      end: '2021-03',
+    },
     description:
       '식봄은 사업자 대상으로 식자재 유통 서비스를 제공하는 E-Commerce 서비스입니다.',
-    tags: ['E-Commerce'],
+    tags: ['Web', 'B2B'],
   },
   {
     name: '마켓봄 프로 개발',
+    period: {
+      start: '2021-01',
+      end: '2021-03',
+    },
     description:
       '식봄은 사업자 대상으로 식자재 유통 서비스를 제공하는 E-Commerce 서비스입니다.',
-    tags: ['E-Commerce'],
+    tags: ['Web', 'Mobile', 'B2B'],
   },
   {
     name: '공통 웹뷰 앱 개발',
+    period: {
+      start: '2021-01',
+      end: '2021-03',
+    },
     description:
       '식봄은 사업자 대상으로 식자재 유통 서비스를 제공하는 E-Commerce 서비스입니다.',
-    tags: ['E-Commerce'],
+    tags: ['App', 'Flutter'],
   },
   {
-    name: '식봄, Next.js로 전환 프로젝트',
+    name: '식봄, Next.js로 전환',
+    period: {
+      start: '2021-01',
+      end: '2021-03',
+    },
     description:
       '식봄은 사업자 대상으로 식자재 유통 서비스를 제공하는 E-Commerce 서비스입니다.',
-    tags: ['E-Commerce'],
+    tags: ['E-Commerce', 'Next.js'],
   },
 ];
 
@@ -108,24 +133,29 @@ export default class HistoryScene1 extends HTMLElement {
     this.shadowRoot.appendChild(style.cloneNode(true));
     this.shadowRoot.appendChild(template.content.cloneNode(true));
 
-    this.cards$el = this.shadowRoot.querySelector('.experience-scene1-cards');
+    this.cards$el = this.shadowRoot.querySelector('.cards');
 
     this.cards$el.innerHTML = ProjectList.map((project) => {
       return /* html */ `
-        <li class="experience-scene1-card">
-          <h3>${project.name}</h3>
-          <p>${project.description}</p>
-          <div class="experience-scene1-card-wrap">
-            ${project.tags
-              .map(
-                (tag) =>
-                  /* html */ `<span class="experience-scene1-card-tag">${tag}</span>`
-              )
-              .join('')}
+        <li class="card">
+          <div>
+            <h3>${project.name}</h3>
+            <span>${project.period.start} ~ ${project.period.end}</span>
+            <p>${project.description}</p>
+            <div class="tags-warp">
+              ${project.tags
+                .map((tag) => /* html */ `<span class="tag">${tag}</span>`)
+                .join('')}
+            </div>
+          </div>
+          <div class="link-wrap">
+            <a class="more-link" href="/">More</a>
           </div>
         </li>
       `;
-    }).join('');
+    })
+      .reverse()
+      .join('');
   }
 
   connectedCallback() {
