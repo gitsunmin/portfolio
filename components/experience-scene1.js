@@ -22,11 +22,16 @@ style.innerHTML = /* css */ `
   .card {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     max-width: 200px;
     min-width: 200px;
     border: 2px solid #E0EAF1;
     border-radius: 8px;
     padding: 24px;
+  }
+  
+  .card-content {
+    word-break: keep-all;
   }
 
   .tags-warp {
@@ -42,18 +47,6 @@ style.innerHTML = /* css */ `
     border: 1px solid #E0EAF1;
     padding: 4px;
     border-radius: 4px;
-  }
-
-  .link-wrap {
-    margin-top: 22px;
-  }
-
-  .more-link {
-    color: #E0EAF1;
-    border-radius: 4px;
-    padding: 8px;
-    text-decoration: none;
-    border: 2px solid #E0EAF1;
   }
 
   .more-link:hover {
@@ -80,7 +73,7 @@ const ProjectList = [
     },
     role: 'Frontend Developer',
     description:
-      '식봄은 사업자 대상으로 식자재 유통 서비스를 제공하는 E-Commerce 서비스입니다.',
+      '사업자 대상 식자재 E-Commerce 서비스인 식봄의 로그인/회원가입 페이지를 PHP에서 Next.js로 전환하는 작업을 하였습니다.',
     tags: ['Desktap'],
   },
   {
@@ -116,11 +109,11 @@ const ProjectList = [
   {
     name: '식봄, Next.js로 전환',
     period: {
-      start: '2021-01',
-      end: '2021-03',
+      start: '2024-01',
+      end: '2024-03',
     },
     description:
-      '식봄은 사업자 대상으로 식자재 유통 서비스를 제공하는 E-Commerce 서비스입니다.',
+      '사업자 대상 식자재 E-Commerce 서비스인 식봄의 로그인/회원가입 페이지를 PHP에서 Next.js로 전환하는 작업을 하였습니다.',
     tags: ['E-Commerce', 'Next.js'],
   },
 ];
@@ -141,15 +134,12 @@ export default class HistoryScene1 extends HTMLElement {
           <div>
             <h3>${project.name}</h3>
             <span>${project.period.start} ~ ${project.period.end}</span>
-            <p>${project.description}</p>
+            <p class="card-content">${project.description}</p>
             <div class="tags-warp">
               ${project.tags
                 .map((tag) => /* html */ `<span class="tag">${tag}</span>`)
                 .join('')}
             </div>
-          </div>
-          <div class="link-wrap">
-            <a class="more-link" href="/">More</a>
           </div>
         </li>
       `;
