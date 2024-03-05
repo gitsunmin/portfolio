@@ -1,23 +1,23 @@
-import LayoutFooter from './layout-footer.js';
-import LayoutHeader from './layout-header.js';
-import LayoutMain from './layout-main.js';
+import LayoutFooter from './layout/footer.js';
+import LayoutHeader from './layout/header.js';
+import LayoutMain from './layout/main.js';
 
-import ProfileImage from './profile-image.js';
-import LabeledIcon from './labeled-icon.js';
+import ProfileImage from './ui/profile-image.js';
+import LabeledIcon from './ui/labeled-icon.js';
 
-import SectionTitle from './section-title.js';
-import SectionWrapper from './section-wrapper.js';
+import SectionTitle from './ui/section-title.js';
+import SectionWrapper from './ui/section-wrapper.js';
 
-import HelloSection from './hello-section.js';
+import HelloSection from './section/hello/section.js';
 
-import AboutMeSection from './about-me-section.js';
-import AboutMeScene1 from './about-me-scene1.js';
+import AboutMeSection from './section/about_me/section.js';
+import AboutMeScene1 from './section/about_me/scene1.js';
 
-import SkillsSection from './skills-section.js';
-import SkillsScene1 from './skills-scene1.js';
+import SkillsSection from './section/skills/section.js';
+import SkillsScene1 from './section/skills/scene1.js';
 
-import ExperienceSection from './experience-section.js';
-import ExperienceScene1 from './experience-scene1.js';
+import ExperienceSection from './section/experience/section.js';
+import ExperienceScene1 from './section/experience/scene1.js';
 
 export const defineComponents = () => {
   customElements.define('profile-image', ProfileImage);

@@ -1,4 +1,4 @@
-import Attribute from './../utils/attribute.js';
+import Attribute from '../../utils/attribute.js';
 
 const template = document.createElement('template');
 const style = document.createElement('style');
