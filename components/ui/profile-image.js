@@ -26,15 +26,45 @@ export default class ProfileImage extends HTMLElement {
     this.profileImage$el = this.shadowRoot.querySelector('.profile-image');
   }
 
-  connectedCallback() {
-    const width = this.getAttribute('width') ?? '200px';
-    const height = this.getAttribute('height') ?? '200px';
+  static get observedAttributes() {
+    return ['width', 'height', 'round'];
+  }
 
-    const round = Attribute.typeApplier('boolean')(this.getAttribute('round'));
+  get width() {
+    return this.getAttribute('width') ?? '200px';
+  }
+  set width(value) {
+    this.setAttribute('width', value);
+  }
 
-    this.profileImage$el.setAttribute('width', width);
-    this.profileImage$el.setAttribute('height', height);
+  get height() {
+    return this.getAttribute('height') ?? '200px';
+  }
+  set height(value) {
+    this.setAttribute('height', value);
+  }
 
-    this.profileImage$el.style.borderRadius = round ? '50%' : '10%';
+  get round() {
+    return this.getAttribute('round') ?? '200px';
+  }
+  set round(value) {
+    this.setAttribute('round', value);
+  }
+
+  attributeChangedCallback(name, _, newValue) {
+    switch (name) {
+      case 'width':
+        this.profileImage$el.setAttribute('width', newValue);
+        break;
+      case 'height':
+        this.profileImage$el.setAttribute('height', newValue);
+        break;
+      case 'round':
+        this.profileImage$el.style.borderRadius = newValue ? '50%' : '10%';
+        break;
+      default:
+        throw new Error('Unexpected attribute:', name);
+        break;
+    }
   }
 }

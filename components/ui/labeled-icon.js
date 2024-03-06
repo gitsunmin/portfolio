@@ -56,16 +56,16 @@ export default class LabeledIcon extends HTMLElement {
   }
 
   attributeChangedCallback(name, _, newValue) {
-    const icon = this.shadowRoot.querySelector('.icon');
-    const label = this.shadowRoot.querySelector('.label');
+    const icon$el = this.shadowRoot.querySelector('.icon');
+    const label$el = this.shadowRoot.querySelector('.label');
 
     switch (name) {
       case 'icon':
-        icon.src = newValue;
-        icon.alt = newValue;
+        icon$el.src = newValue;
+        icon$el.alt = newValue;
         break;
       case 'label':
-        label.textContent = newValue;
+        label$el.textContent = newValue;
         break;
       default:
         throw new Error('Unexpected attribute:', name);

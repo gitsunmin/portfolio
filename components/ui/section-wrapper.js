@@ -21,6 +21,17 @@ export default class SectionWrapper extends HTMLElement {
     this.sectionWrapper$el = this.shadowRoot.querySelector('.section-wrapper');
   }
 
+  static get observedAttributes() {
+    return ['align'];
+  }
+
+  get align() {
+    return this.getAttribute('align') ?? '200px';
+  }
+  set align(value) {
+    this.setAttribute('align', value);
+  }
+
   connectedCallback() {
     this.shadowRoot.querySelector('.section-wrapper').style.textAlign =
       this.getAttribute('align');

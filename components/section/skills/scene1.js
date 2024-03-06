@@ -181,7 +181,7 @@ export default class SkillsScene1 extends HTMLElement {
       .map((skill) => {
         return /* html */ `
               <li class="skills-scene1-list">
-                <labeled-icon label="${skill.name}" icon="${skill.icon}"></labeled-icon>
+                <labeled-icon label="${skill.name}" icon="${skill.icon}" round="true"></labeled-icon>
                 <p>${skill.description}</p>
               </li>
           `;
