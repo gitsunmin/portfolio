@@ -98,8 +98,8 @@ const ProjectList = [
   {
     name: '공지사항 관리 시스템 개발',
     period: {
-      start: '2021-01',
-      end: '2021-03',
+      start: '2019.08',
+      end: '2019.10',
     },
     role: 'Frontend Developer',
     description:
@@ -110,12 +110,12 @@ const ProjectList = [
   {
     name: '업무 협업 프로그램 개발',
     period: {
-      start: '2021-01',
-      end: '2021-03',
+      start: '2019.10',
+      end: '2020.10',
     },
     description:
       '문서 공동편집기능을 기반으로 채팅, 할일 관리 등 기능의 협업툴을 개발하였습니다.',
-    tags: ['Web', 'B2B'],
+    tags: ['Web'],
     link: 'https://gitsunmin.notion.site/179c4f41db6d4e51b132738a439e5aa6',
   },
   {
@@ -130,14 +130,14 @@ const ProjectList = [
     link: 'https://gitsunmin.notion.site/9c437384d105421aafb89ef21ea673a6',
   },
   {
-    name: '공통 웹뷰 앱 개발',
+    name: '마켓보로, 공통 웹뷰 개발',
     period: {
       start: '2023.08',
       end: '2023.12',
     },
     description:
       '마켓보로에서 사용중인 네이티브 하이브리드 앱들을 Flutter로 재개발하여 공통으로 사용할 수 있는 웹뷰 앱을 개발하였습니다.',
-    tags: ['App', 'Flutter'],
+    tags: ['App', 'Flutter', 'Web View'],
     link: 'https://gitsunmin.notion.site/f098322d80274c32b621e78d1a2588ee',
   },
   {
@@ -147,8 +147,8 @@ const ProjectList = [
       end: '2024.03',
     },
     description:
-      '사업자 대상 식자재 E-Commerce 서비스인 식봄의 로그인/회원가입 페이지를 PHP에서 Next.js로 전환하는 작업을 하였습니다.',
-    tags: ['E-Commerce', 'Next.js'],
+      '사업자 대상 식자재 E-Commerce 서비스인 식봄의 유지보수 및 Next.js로 전환하는 작업을 하였습니다.',
+    tags: ['E-Commerce'],
     link: 'https://gitsunmin.notion.site/Next-js-72cf7aca6d73402cbdd8b80556887aa5',
   },
 ];
