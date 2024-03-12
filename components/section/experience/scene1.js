@@ -17,6 +17,7 @@ style.innerHTML = /* css */ `
     width: 80vw;
     overflow-x: scroll;
     gap: 24px;
+    padding: 0;
   }
 
   .card {
@@ -101,7 +102,6 @@ const ProjectList = [
       start: '2019.08',
       end: '2019.10',
     },
-    role: 'Frontend Developer',
     description:
       'Google API를 이용하여 Google Workspace에 작성한 내용을 조회하여, 사내 공지사항 및 일정을 대시보드의 형태로 제공하는 시스템을 개발하였습니다.',
     tags: ['Desktap'],
