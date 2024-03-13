@@ -153,7 +153,7 @@ const ProjectList = [
   },
 ];
 
-export default class HistoryScene1 extends HTMLElement {
+export default class ExperienceScene1 extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' }); // Shadow DOM을 사용하도록 설정
@@ -164,7 +164,6 @@ export default class HistoryScene1 extends HTMLElement {
     this.cards$el = this.shadowRoot.querySelector('.cards');
 
     this.cards$el.innerHTML = ProjectList.map((project) => {
-      console.log('project:', project);
       return /* html */ `
         <li>
           <div class="card">

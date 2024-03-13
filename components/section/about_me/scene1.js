@@ -26,7 +26,7 @@ template.innerHTML = /* html */ `
   </div>
 `;
 
-export default class HistoryScene1 extends HTMLElement {
+export default class AboutMeScene1 extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' }); // Shadow DOM을 사용하도록 설정
