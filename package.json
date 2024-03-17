@@ -6,14 +6,15 @@
     "dev": "pnpx server .",
     "builder": "bun ./.scripts/builder.ts"
   },
-  "keywords": [],
-  "author": "",
+  "author": "tjsals116@gmail.com",
   "license": "ISC",
   "dependencies": {
     "ts-pattern": "^5.0.8"
   },
   "devDependencies": {
     "@types/bun": "^1.0.8",
+    "@types/gh-pages": "^6.1.0",
+    "gh-pages": "^6.1.1",
     "typescript": "^5.4.2"
   }
 }
