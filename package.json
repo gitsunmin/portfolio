@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "dev": "pnpx server .",
+    "dev": "bun run ./.scripts/watcher.ts",
     "builder": "bun ./.scripts/builder.ts"
   },
   "author": "tjsals116@gmail.com",
@@ -13,6 +13,7 @@
   },
   "devDependencies": {
     "@types/bun": "^1.0.8",
+    "chokidar": "^3.6.0",
     "typescript": "^5.4.2"
   }
 }

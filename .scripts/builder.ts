@@ -1,13 +1,18 @@
 import { copyFiles } from './utils';
 
-await Bun.build({
-  entrypoints: ['index.ts', 'config.flag.ts'],
-  outdir: 'dist',
-  minify: true,
-  target: 'browser',
-});
+export const run = async () => {
+  console.log('Start building...');
 
-await copyFiles('public', 'dist');
-console.log(`Copied "public" to "dist"`);
+  await Bun.build({
+    entrypoints: ['index.ts', 'config.flag.ts'],
+    outdir: 'dist',
+    minify: true,
+    target: 'browser',
+  });
 
-export {};
+  await copyFiles('public', 'dist');
+
+  console.log('End building...');
+};
+
+run();

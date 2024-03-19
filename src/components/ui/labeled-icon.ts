@@ -65,6 +65,8 @@ export default class LabeledIcon extends HTMLElement {
       return;
     }
 
+    console.log(11);
+
     switch (name) {
       case 'icon':
         icon$el.setAttribute('src', newValue);
