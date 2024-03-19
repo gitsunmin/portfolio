@@ -31,6 +31,12 @@ style.innerHTML = /* css */ `
     border: 2px solid #E0EAF1;
     border-radius: 8px;
     padding: 24px;
+    color: #fff;
+  }
+
+  .card:hover {
+    border: 2px solid #2a89ff;
+    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>👀</text></svg>") 16 0,auto; /*!emojicursor.app*/
   }
   
   .card-content {
@@ -45,27 +51,16 @@ style.innerHTML = /* css */ `
   }
 
   .tag {
-    color: white;
+    color: #fff;
     text-decoration: none;
     border: 1px solid #E0EAF1;
     padding: 4px;
     border-radius: 4px;
   }
 
-  .links {
-    margin-top: 12px;
-  }
 
-  .links a {
+  a {
     text-decoration: none;
-    color: #E0EAF1;
-    font-size: 1.2rem;
-    font-weight: bold;
-    text-decoration: underline;
-  }
-
-  .more-link {
-    color: #E0EAF1;
   }
 
   .more-link:hover, .more-link:focus {
@@ -168,19 +163,18 @@ export default class ExperienceScene1 extends HTMLElement {
     cards$el.innerHTML = ProjectList.map((project) => {
       return /* html */ `
         <li>
-          <div class="card">
-            <h3>${project.name}</h3>
-            <span>${project.period.start} ~ ${project.period.end}</span>
-            <p class="card-content">${project.description}</p>
-            <div class="tags-warp">
-              ${project.tags
-                .map((tag) => /* html */ `<span class="tag">${tag}</span>`)
-                .join('')}
+          <a href="${project.link}">
+            <div class="card">
+              <h3>${project.name}</h3>
+              <span>${project.period.start} ~ ${project.period.end}</span>
+              <p class="card-content">${project.description}</p>
+              <div class="tags-warp">
+                ${project.tags
+                  .map((tag) => /* html */ `<span class="tag">${tag}</span>`)
+                  .join('')}
+              </div>
             </div>
-          </div>
-          <div class="links">
-            <a href="${project.link}" class="more-link">More</a>
-          </div>
+          </a>
         </li>
       `;
     })
