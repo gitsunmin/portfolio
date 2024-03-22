@@ -7,6 +7,7 @@ style.innerHTML = /* css */ `
   ul {
     list-style: none;
     padding-left: 0;
+    height: 500px;
   }
 
   .section-title {

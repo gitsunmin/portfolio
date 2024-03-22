@@ -1,3 +1,5 @@
+import { P, match } from 'ts-pattern';
+
 const template = document.createElement('template');
 const style = document.createElement('style');
 
@@ -27,20 +29,33 @@ style.innerHTML = /* css */ `
     max-width: 200px;
     min-width: 200px;
     max-height: 300px;
-    min-height: 300px;
     border: 2px solid #E0EAF1;
     border-radius: 8px;
     padding: 24px;
     color: #fff;
+    gap: 18px;
+  }
+
+  .card h3 {
+    margin: 0;
   }
 
   .card:hover {
     border: 2px solid #2a89ff;
     cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>👀</text></svg>") 16 0,auto; /*!emojicursor.app*/
   }
-  
+
+  .card:hover .card-content {
+    height: auto;
+    display: block;
+  }
+
   .card-content {
     word-break: keep-all;
+    margin: 0;
+    height: 0;
+    display: none;
+    transition: height 5s linear;
   }
 
   .tags-warp {
@@ -58,26 +73,8 @@ style.innerHTML = /* css */ `
     border-radius: 4px;
   }
 
-
   a {
     text-decoration: none;
-  }
-
-  .more-link:hover, .more-link:focus {
-    animation-duration: 3s;
-    animation-name: rainbowLink;
-    animation-iteration-count: infinite;
-  } 
-
-  @keyframes rainbowLink {     
-    0% { color: #ff2a2a; }
-    15% { color: #ff7a2a; }
-    30% { color: #ffc52a; }
-    45% { color: #43ff2a; }
-    60% { color: #2a89ff; }
-    75% { color: #202082; }
-    90% { color: #6b2aff; } 
-    100% { color: #e82aff; }
   }
 `;
 
@@ -153,32 +150,38 @@ export default class ExperienceScene1 extends HTMLElement {
     super();
     this.attachShadow({ mode: 'open' }); // Shadow DOM을 사용하도록 설정
 
-    this.shadowRoot?.appendChild(style.cloneNode(true));
-    this.shadowRoot?.appendChild(template.content.cloneNode(true));
+    if (this.shadowRoot === null) throw new Error('this.shadowRoot is null');
 
-    const cards$el = this.shadowRoot?.querySelector('.cards') ?? null;
+    this.shadowRoot.appendChild(style.cloneNode(true));
+    this.shadowRoot.appendChild(template.content.cloneNode(true));
 
-    if (cards$el === null) return;
-
-    cards$el.innerHTML = ProjectList.map((project) => {
-      return /* html */ `
-        <li>
-          <a href="${project.link}">
-            <div class="card">
-              <h3>${project.name}</h3>
-              <span>${project.period.start} ~ ${project.period.end}</span>
-              <p class="card-content">${project.description}</p>
-              <div class="tags-warp">
-                ${project.tags
-                  .map((tag) => /* html */ `<span class="tag">${tag}</span>`)
-                  .join('')}
-              </div>
-            </div>
-          </a>
-        </li>
-      `;
-    })
-      .reverse()
-      .join('');
+    match(this.shadowRoot.querySelector('.cards'))
+      .with(P.not(P.nullish), (cardsEl) => {
+        cardsEl.innerHTML = ProjectList.map((project) => {
+          return /* html */ `
+            <li>
+              <a href="${project.link}">
+                <div class="card">
+                  <h3>${project.name}</h3>
+                  <span>${project.period.start} ~ ${project.period.end}</span>
+                  <p class="card-content">${project.description}</p>
+                  <div class="tags-warp">
+                    ${project.tags
+                      .map(
+                        (tag) => /* html */ `<span class="tag">${tag}</span>`
+                      )
+                      .join('')}
+                  </div>
+                </div>
+              </a>
+            </li>
+          `;
+        })
+          .reverse()
+          .join('');
+      })
+      .otherwise(() => {
+        throw new Error('this.shadowRoot.querySelector(".cards") is null');
+      });
   }
 }
