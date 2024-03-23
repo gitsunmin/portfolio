@@ -1,4 +1,5 @@
 import { copyFiles } from './utils';
+import PortfolioConfig from './../portpolio.config';
 
 export const build = async () => {
   try {
@@ -9,7 +10,7 @@ export const build = async () => {
       target: 'browser',
     });
 
-    await copyFiles('public', 'dist');
+    await copyFiles(PortfolioConfig.publicDir, 'dist');
   } catch (error) {
     console.error(`[Build Error] error: ${error}`);
   }
