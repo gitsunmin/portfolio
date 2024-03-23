@@ -11,7 +11,8 @@ import AboutMeScene1 from './section/about_me/scene1';
 import SkillsSection from './section/skills/section';
 import SkillsScene1 from './section/skills/scene1';
 import ExperienceSection from './section/experience/section';
-import ExperienceScene1 from './section/experience/scene1';
+import ExperienceListWrapper from './section/experience/listWrapper';
+import ExperienceList from './section/experience/list';
 
 export const defineComponents = () => {
   customElements.define('profile-image', ProfileImage);
@@ -27,5 +28,6 @@ export const defineComponents = () => {
   customElements.define('skills-section', SkillsSection);
   customElements.define('skills-scene1', SkillsScene1);
   customElements.define('experience-section', ExperienceSection);
-  customElements.define('experience-scene1', ExperienceScene1);
+  customElements.define('experience-list-wrapper', ExperienceListWrapper);
+  customElements.define('experience-list', ExperienceList);
 };

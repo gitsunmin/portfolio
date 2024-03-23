@@ -21,11 +21,7 @@ style.innerHTML = /* css */ `
 template.innerHTML = /* html */ `
     <section-wrapper align="center">
       <h1 class="section-title">Experience</h1>
-      <ul>
-          <li>
-            <experience-scene1></experience-scene1>
-          </li>
-      </ul>
+      <experience-list-wrapper></experience-list-wrapper>
     </section-wrapper>
 `;
 

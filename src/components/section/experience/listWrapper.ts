@@ -55,7 +55,6 @@ style.innerHTML = /* css */ `
     margin: 0;
     height: 0;
     display: none;
-    transition: height 5s linear;
   }
 
   .tags-warp {
@@ -145,7 +144,7 @@ const ProjectList = [
   },
 ];
 
-export default class ExperienceScene1 extends HTMLElement {
+export default class ExperienceListWrapper extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' }); // Shadow DOM을 사용하도록 설정
@@ -159,23 +158,15 @@ export default class ExperienceScene1 extends HTMLElement {
       .with(P.not(P.nullish), (cardsEl) => {
         cardsEl.innerHTML = ProjectList.map((project) => {
           return /* html */ `
-            <li>
-              <a href="${project.link}">
-                <div class="card">
-                  <h3>${project.name}</h3>
-                  <span>${project.period.start} ~ ${project.period.end}</span>
-                  <p class="card-content">${project.description}</p>
-                  <div class="tags-warp">
-                    ${project.tags
-                      .map(
-                        (tag) => /* html */ `<span class="tag">${tag}</span>`
-                      )
-                      .join('')}
-                  </div>
-                </div>
-              </a>
-            </li>
-          `;
+            <experience-list
+              link="${project.link}"
+              name="${project.name}"
+              start="${project.period.start}"
+              end="${project.period.end}"
+              description="${project.description}"
+              tags="${project.tags.join(',')}"
+            ></experience-list>
+            `;
         })
           .reverse()
           .join('');
@@ -185,3 +176,21 @@ export default class ExperienceScene1 extends HTMLElement {
       });
   }
 }
+
+// <li>
+
+//   <a href="${project.link}">
+//     <div class="card">
+//       <h3>${project.name}</h3>
+//       <span>${project.period.start} ~ ${project.period.end}</span>
+//       <p class="card-content">${project.description}</p>
+//       <div class="tags-warp">
+//         ${project.tags
+//           .map(
+//             (tag) => /* html */ `<span class="tag">${tag}</span>`
+//           )
+//           .join('')}
+//       </div>
+//     </div>
+//   </a>
+// </li>

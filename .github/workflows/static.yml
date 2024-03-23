@@ -11,11 +11,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: bun setup
-        uses: actions/setup-node@v4
+        uses: oven-sh/setup-bun@v1
         with:
-          node-version: '20'
+          bun-version: latest
       - name: Build Project
-        run: npm i -g bun && bun run builder
+        run: bun run builder
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
