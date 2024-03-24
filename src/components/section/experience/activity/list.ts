@@ -69,7 +69,7 @@ style.innerHTML = /* css */ `
 
 template.innerHTML = /* html */ `<li></li>`;
 
-export default class ExperienceList extends HTMLElement {
+export default class ExperienceActivityList extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' }); // Shadow DOM을 사용하도록 설정

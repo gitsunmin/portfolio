@@ -11,8 +11,10 @@ import AboutMeScene1 from './section/about_me/scene1';
 import SkillsSection from './section/skills/section';
 import SkillsScene1 from './section/skills/scene1';
 import ExperienceSection from './section/experience/section';
-import ExperienceListWrapper from './section/experience/listWrapper';
-import ExperienceList from './section/experience/list';
+import ExperienceProjectListWrapper from './section/experience/project/listWrapper';
+import ExperienceProjectList from './section/experience/project/list';
+import ExperienceActivityList from './section/experience/activity/list';
+import ExperienceActivityListWrapper from './section/experience/activity/listWrapper';
 
 export const defineComponents = () => {
   customElements.define('profile-image', ProfileImage);
@@ -28,6 +30,14 @@ export const defineComponents = () => {
   customElements.define('skills-section', SkillsSection);
   customElements.define('skills-scene1', SkillsScene1);
   customElements.define('experience-section', ExperienceSection);
-  customElements.define('experience-list-wrapper', ExperienceListWrapper);
-  customElements.define('experience-list', ExperienceList);
+  customElements.define(
+    'experience-project-list-wrapper',
+    ExperienceProjectListWrapper
+  );
+  customElements.define('experience-project-list', ExperienceProjectList);
+  customElements.define('experience-activity-list', ExperienceActivityList);
+  customElements.define(
+    'experience-activity-list-wrapper',
+    ExperienceActivityListWrapper
+  );
 };

@@ -16,64 +16,11 @@ style.innerHTML = /* css */ `
     display: flex;
     flex-direction: row;
     list-style: none;
-    width: 80vw;
     overflow-x: scroll;
     gap: 24px;
     padding: 0;
-  }
-
-  .card {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    max-width: 200px;
-    min-width: 200px;
-    max-height: 300px;
-    border: 2px solid #E0EAF1;
-    border-radius: 8px;
-    padding: 24px;
-    color: #fff;
-    gap: 18px;
-  }
-
-  .card h3 {
-    margin: 0;
-  }
-
-  .card:hover {
-    border: 2px solid #2a89ff;
-    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>👀</text></svg>") 16 0,auto; /*!emojicursor.app*/
-  }
-
-  .card:hover .card-content {
-    height: auto;
-    display: block;
-  }
-
-  .card-content {
-    word-break: keep-all;
-    margin: 0;
-    height: 0;
-    display: none;
-  }
-
-  .tags-warp {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    gap: 8px;
-  }
-
-  .tag {
-    color: #fff;
-    text-decoration: none;
-    border: 1px solid #E0EAF1;
-    padding: 4px;
-    border-radius: 4px;
-  }
-
-  a {
-    text-decoration: none;
+    width: 80vw;
+    height: 400px;
   }
 `;
 
@@ -144,7 +91,7 @@ const ProjectList = [
   },
 ];
 
-export default class ExperienceListWrapper extends HTMLElement {
+export default class ExperienceProjectListWrapper extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' }); // Shadow DOM을 사용하도록 설정
@@ -158,14 +105,14 @@ export default class ExperienceListWrapper extends HTMLElement {
       .with(P.not(P.nullish), (cardsEl) => {
         cardsEl.innerHTML = ProjectList.map((project) => {
           return /* html */ `
-            <experience-list
+            <experience-project-list
               link="${project.link}"
               name="${project.name}"
               start="${project.period.start}"
               end="${project.period.end}"
               description="${project.description}"
               tags="${project.tags.join(',')}"
-            ></experience-list>
+            ></experience-project-list>
             `;
         })
           .reverse()

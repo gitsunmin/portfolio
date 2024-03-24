@@ -21,7 +21,8 @@ style.innerHTML = /* css */ `
 template.innerHTML = /* html */ `
     <section-wrapper align="center">
       <h1 class="section-title">Experience</h1>
-      <experience-list-wrapper></experience-list-wrapper>
+      <experience-project-list-wrapper></experience-project-list-wrapper>
+      <experience-activity-list-wrapper></experience-activity-list-wrapper>
     </section-wrapper>
 `;
 
