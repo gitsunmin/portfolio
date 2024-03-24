@@ -176,21 +176,3 @@ export default class ExperienceListWrapper extends HTMLElement {
       });
   }
 }
-
-// <li>
-
-//   <a href="${project.link}">
-//     <div class="card">
-//       <h3>${project.name}</h3>
-//       <span>${project.period.start} ~ ${project.period.end}</span>
-//       <p class="card-content">${project.description}</p>
-//       <div class="tags-warp">
-//         ${project.tags
-//           .map(
-//             (tag) => /* html */ `<span class="tag">${tag}</span>`
-//           )
-//           .join('')}
-//       </div>
-//     </div>
-//   </a>
-// </li>
