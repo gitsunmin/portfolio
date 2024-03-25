@@ -162,6 +162,13 @@ const skillList = [
       '스타일을 컴퓨넌트화 하고, 다른 컴포넌트와 합성 및 재사용하여 사용할 수 있습니다.',
     highlight: false,
   },
+  {
+    name: 'Tailwind CSS',
+    icon: './assets/icons/tailwind-css.png',
+    description:
+      'Utility-first CSS 프레임워크를 활용하여 스타일을 작성할 수 있습니다.',
+    highlight: false,
+  },
 ];
 
 export default class SkillsScene1 extends HTMLElement {
