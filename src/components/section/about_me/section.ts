@@ -4,30 +4,17 @@ const style = document.createElement('style');
 style.innerHTML = /* css */ `
   @import "/index.css";
 
-  ul {
-    list-style: none;
-    padding-left: 0;
-  }
-
   .section-title {
     padding-top: 100px;
     margin-top: 25vh;
     font-size: 3em;
     text-align: center;
   }
-
-  li:not(:first-child) {
-    margin-top: 100vh;
-  }
 `;
 
 template.innerHTML = /* html */ `
     <section-wrapper align="center">
-      <ul>
-          <li>
-            <about-me-scene1></about-me-scene1>
-          </li>
-      </ul>
+      <about-me-scene1></about-me-scene1>
     </section-wrapper>
 `;
 
