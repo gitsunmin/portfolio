@@ -16,6 +16,7 @@ style.innerHTML = /* css */ `
     display: flex;
     justify-content: space-between;
     backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
   }
 
   .profile {
