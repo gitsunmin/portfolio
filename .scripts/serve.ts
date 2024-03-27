@@ -1,15 +1,37 @@
-import chokidar from 'chokidar';
-import serveHandler from 'serve-handler';
-import http from 'http';
-
 import { build } from './builder';
 import { srcWatcher } from './watcher';
+import { Server } from 'bun';
+import { match } from 'ts-pattern';
 
 const PORT = 8080;
 
-const server = http.createServer((request, response) =>
-  serveHandler(request, response, { public: './dist' })
-);
+const Bunouter = async (
+  request: Request,
+  server: Server
+): Promise<Response> => {
+  const requestURL = new URL(request.url);
+
+  const { pathname } = requestURL;
+
+  return match(requestURL)
+    .with({ pathname: '/' }, () => new Response(Bun.file(`dist/index.html`)))
+    .with(
+      { pathname: '/index.css' },
+      () => new Response(Bun.file(`dist/index.css`))
+    )
+    .with(
+      { pathname: '/index.js' },
+      () => new Response(Bun.file(`dist/index.js`))
+    )
+    .otherwise(() => new Response(Bun.file(`dist${pathname}`)));
+};
+
+const server = Bun.serve({
+  port: PORT,
+  hostname: 'localhost',
+  development: true,
+  fetch: Bunouter,
+});
 
 srcWatcher.on('all', async () => {
   await build();
@@ -17,14 +39,12 @@ srcWatcher.on('all', async () => {
 
 srcWatcher.on('error', (error) => {
   console.error(`Watcher error: ${error}`);
-  server.close();
+  server.stop();
 });
 
 srcWatcher.on('ready', () => {
-  server.listen(
-    {
-      port: PORT,
-    },
-    () => console.log(`Running at http://localhost:${PORT}`)
-  );
+  console.log(`Server is running at http://localhost:${PORT}`);
+  server.reload({
+    fetch: Bunouter,
+  });
 });
