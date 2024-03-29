@@ -8,21 +8,6 @@ style.innerHTML = /* css */ `
     height: 75vh;
   }
 
-  .hello-animation {
-    position: relative;
-    font-size: 2.5em;
-    height: 30px; /* 텍스트 높이에 맞게 조정 */
-    margin-top: 25vh;
-  }
-  
-  .hello {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    opacity: 0;
-    animation: helloAnimation 12s infinite;
-  }
-
   .description {
     text-align: center;
     font-size: 1.5em;
@@ -31,20 +16,6 @@ style.innerHTML = /* css */ `
   .scroll-btn-wrapper {
     text-align: center;
   }
-  
-  @keyframes helloAnimation {
-    0%, 100% { opacity: 0; }
-    10% { opacity: 1; }
-    20% { opacity: 0; }
-  }
-
-  .hello:nth-child(1) { animation-delay: 0s; }
-  .hello:nth-child(2) { animation-delay: 2s; }
-  .hello:nth-child(3) { animation-delay: 4s; }
-  .hello:nth-child(4) { animation-delay: 6s; }
-  .hello:nth-child(5) { animation-delay: 8s; }
-  .hello:nth-child(6) { animation-delay: 10s; }
-
   .description {
     margin-top: 25vh;
     font-size: 1em;
@@ -55,14 +26,7 @@ style.innerHTML = /* css */ `
 
 template.innerHTML = /* html */ `
     <section class="hello-section">
-      <div class="hello-animation">
-        <span class="hello">Hello</span>
-        <span class="hello">안녕하세요</span>
-        <span class="hello">こんにちは</span>
-        <span class="hello">Hallo</span>
-        <span class="hello">Bonjour</span>
-        <span class="hello">Hola</span>
-      </div>
+      <global-greetings></global-greetings>
 
       <p class="description">
         스크롤을 내리면서, <br />

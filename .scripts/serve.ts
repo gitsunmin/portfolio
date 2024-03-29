@@ -33,7 +33,8 @@ const server = Bun.serve({
   fetch: Bunouter,
 });
 
-srcWatcher.on('all', async () => {
+srcWatcher.on('all', async (eventName) => {
+  console.log(`File ${eventName}, rebuilding...`);
   await build();
 });
 

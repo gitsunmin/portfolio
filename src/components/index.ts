@@ -6,6 +6,7 @@ import LabeledIcon from './ui/labeled-icon';
 import SectionTitle from './ui/section-title';
 import SectionWrapper from './ui/section-wrapper';
 import HelloSection from './section/hello/section';
+import GlobalGreetings from './section/hello/globalGreetings';
 import AboutMeSection from './section/about_me/section';
 import AboutMeProfile from './section/about_me/profile';
 import SkillsSection from './section/skills/section';
@@ -27,6 +28,7 @@ export const defineComponents = () => {
   customElements.define('layout-header', LayoutHeader);
   customElements.define('layout-main', LayoutMain);
   customElements.define('hello-section', HelloSection);
+  customElements.define('global-greetings', GlobalGreetings);
   customElements.define('skills-section', SkillsSection);
   customElements.define('skills-scene1', SkillsScene1);
   customElements.define('experience-section', ExperienceSection);
