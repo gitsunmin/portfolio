@@ -14,7 +14,7 @@ style.innerHTML = /* css */ `
 
 template.innerHTML = /* html */ `
     <section-wrapper align="center">
-      <about-me-scene1></about-me-scene1>
+      <about-me-profile></about-me-profile>
     </section-wrapper>
 `;
 

@@ -7,7 +7,7 @@ import SectionTitle from './ui/section-title';
 import SectionWrapper from './ui/section-wrapper';
 import HelloSection from './section/hello/section';
 import AboutMeSection from './section/about_me/section';
-import AboutMeScene1 from './section/about_me/scene1';
+import AboutMeProfile from './section/about_me/profile';
 import SkillsSection from './section/skills/section';
 import SkillsScene1 from './section/skills/scene1';
 import ExperienceSection from './section/experience/section';
@@ -20,7 +20,7 @@ export const defineComponents = () => {
   customElements.define('profile-image', ProfileImage);
   customElements.define('labeled-icon', LabeledIcon);
   customElements.define('about-me-section', AboutMeSection);
-  customElements.define('about-me-scene1', AboutMeScene1);
+  customElements.define('about-me-profile', AboutMeProfile);
   customElements.define('section-title', SectionTitle);
   customElements.define('section-wrapper', SectionWrapper);
   customElements.define('layout-footer', LayoutFooter);
