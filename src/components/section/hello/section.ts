@@ -1,3 +1,5 @@
+import { P, match } from 'ts-pattern';
+
 const template = document.createElement('template');
 const style = document.createElement('style');
 
@@ -8,28 +10,36 @@ style.innerHTML = /* css */ `
     height: 75vh;
   }
 
-  .description {
-    text-align: center;
+  .guide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-size: 1.5em;
+    margin: 0;
+    margin-top: 30vh;
+    font-size: 1.2em;
+    padding: 20px;
+    line-height: 1.3;
+    width: 100%;
+    rotate: 0deg;
   }
 
   .scroll-btn-wrapper {
+    margin-top: 30px;
     text-align: center;
+    & button {
+      padding: 10px 20px;
+    }
   }
-  .description {
-    margin-top: 25vh;
-    font-size: 1em;
-    padding: 20px;
-  }
-
 `;
 
 template.innerHTML = /* html */ `
     <section class="hello-section">
       <global-greetings></global-greetings>
 
-      <p class="description">
-        스크롤을 내리면서, <br />
+      <p class="guide">
+        스크롤을 내리면서,
+        <br />
         포트폴리오를 확인해보세요.
       </p>
 
@@ -44,17 +54,48 @@ export default class HelloSection extends HTMLElement {
     super();
     this.attachShadow({ mode: 'open' }); // Shadow DOM을 사용하도록 설정
 
-    this.shadowRoot?.appendChild(style.cloneNode(true));
-    this.shadowRoot?.appendChild(template.content.cloneNode(true));
+    if (!this.shadowRoot) throw new Error('Shadow DOM를 사용할 수 없습니다.');
+
+    this.shadowRoot.appendChild(style.cloneNode(true));
+    this.shadowRoot.appendChild(template.content.cloneNode(true));
   }
 
   connectedCallback() {
-    this.shadowRoot
-      ?.querySelector('.show-about-me')
-      ?.addEventListener('click', () => {
-        document
-          ?.querySelector('#about-me')
-          ?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (!this.shadowRoot) throw new Error('Shadow DOM를 사용할 수 없습니다.');
+
+    this.shadowRoot.querySelector('.guide')?.animate(
+      [
+        {
+          opacity: 1,
+          rotate: '90deg',
+          transform: 'translateX(-80px)',
+        },
+        { opacity: 1, rotate: '90deg', transform: 'translateX(-60px)' },
+        { opacity: 1, rotate: '90deg', transform: 'translateX(-80px)' },
+        { opacity: 1, rotate: '90deg', transform: 'translateX(-60px)' },
+        { opacity: 1, rotate: '90deg', transform: 'translateX(-80px)' },
+        { opacity: 1, rotate: '90deg', transform: 'translateX(-60px)' },
+        { opacity: 1, rotate: '90deg', transform: 'translateX(-80px)' },
+      ],
+      {
+        delay: 4000,
+        fill: 'forwards',
+        duration: 3000,
+        iterations: Infinity,
+      }
+    );
+
+    match(this.shadowRoot.querySelector('.show-about-me'))
+      .with(P.not(P.nullish), (element) =>
+        element.addEventListener('click', () => {
+          document?.querySelector('#about-me')?.scrollIntoView({
+            behavior: 'smooth',
+            block: 'nearest',
+          });
+        })
+      )
+      .otherwise(() => {
+        throw new Error('.show-about-me Element를 찾을 수 없습니다.');
       });
   }
 }

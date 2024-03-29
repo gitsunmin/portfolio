@@ -49,6 +49,5 @@ srcWatcher.on('ready', () => {
   server.reload({
     fetch: Bouter,
   });
-
-  console.log(`Server is running at http://localhost:${PORT}`);
+  console.log(`Server is running at ${server.url.origin}`);
 });
