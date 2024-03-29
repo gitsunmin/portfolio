@@ -1,14 +1,11 @@
 import { build } from './builder';
 import { srcWatcher } from './watcher';
-import { Server } from 'bun';
 import { match } from 'ts-pattern';
 
 const PORT = 8080;
 
-const Bunouter = async (
-  request: Request,
-  server: Server
-): Promise<Response> => {
+/** Bun Router */
+const Bouter = async (request: Request): Promise<Response> => {
   const requestURL = new URL(request.url);
 
   const { pathname } = requestURL;
@@ -30,7 +27,7 @@ const server = Bun.serve({
   port: PORT,
   hostname: 'localhost',
   development: true,
-  fetch: Bunouter,
+  fetch: Bouter,
 });
 
 srcWatcher.on('all', async (eventName) => {
@@ -44,8 +41,8 @@ srcWatcher.on('error', (error) => {
 });
 
 srcWatcher.on('ready', () => {
-  console.log(`Server is running at http://localhost:${PORT}`);
   server.reload({
-    fetch: Bunouter,
+    fetch: Bouter,
   });
+  console.log(`Server is running at http://localhost:${PORT}`);
 });
