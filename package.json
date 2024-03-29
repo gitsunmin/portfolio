@@ -13,8 +13,6 @@
   },
   "devDependencies": {
     "@types/bun": "^1.0.8",
-    "@types/serve-handler": "^6.1.4",
-    "serve-handler": "^6.1.5",
     "chokidar": "^3.6.0",
     "typescript": "^5.4.2"
   }
