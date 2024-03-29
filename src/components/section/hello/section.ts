@@ -56,20 +56,22 @@ export default class HelloSection extends HTMLElement {
     HuideEl?.animate(
       [
         {
-          rotate: '90deg',
+          rotate: '45deg',
           transform: 'translateX(-80px)',
+          fontWight: 'bold',
         },
         {
-          rotate: '90deg',
+          rotate: '45deg',
           transform: 'translateX(-60px)',
+          fontWight: 'bold',
         },
         {
-          rotate: '90deg',
+          rotate: '45deg',
           transform: 'translateX(-80px)',
+          fontWight: 'bold',
         },
       ],
       {
-        delay: 4000,
         fill: 'forwards',
         duration: 1000,
         iterations: Infinity,
