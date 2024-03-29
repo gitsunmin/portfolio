@@ -40,9 +40,15 @@ srcWatcher.on('error', (error) => {
   server.stop();
 });
 
+srcWatcher.on('close', () => {
+  console.log('Watcher closed');
+  server.stop();
+});
+
 srcWatcher.on('ready', () => {
   server.reload({
     fetch: Bouter,
   });
+
   console.log(`Server is running at http://localhost:${PORT}`);
 });
