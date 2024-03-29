@@ -23,14 +23,6 @@ style.innerHTML = /* css */ `
     width: 100%;
     rotate: 0deg;
   }
-
-  .scroll-btn-wrapper {
-    margin-top: 30px;
-    text-align: center;
-    & button {
-      padding: 10px 20px;
-    }
-  }
 `;
 
 template.innerHTML = /* html */ `
@@ -42,10 +34,6 @@ template.innerHTML = /* html */ `
         <br />
         포트폴리오를 확인해보세요.
       </p>
-
-      <div class="scroll-btn-wrapper">
-        <button class="show-about-me">Scroll Down</button>
-      </div>
     </section>
 `;
 
@@ -63,39 +51,29 @@ export default class HelloSection extends HTMLElement {
   connectedCallback() {
     if (!this.shadowRoot) throw new Error('Shadow DOM를 사용할 수 없습니다.');
 
-    this.shadowRoot.querySelector('.guide')?.animate(
+    const HuideEl = this.shadowRoot.querySelector('.guide');
+
+    HuideEl?.animate(
       [
         {
-          opacity: 1,
           rotate: '90deg',
           transform: 'translateX(-80px)',
         },
-        { opacity: 1, rotate: '90deg', transform: 'translateX(-60px)' },
-        { opacity: 1, rotate: '90deg', transform: 'translateX(-80px)' },
-        { opacity: 1, rotate: '90deg', transform: 'translateX(-60px)' },
-        { opacity: 1, rotate: '90deg', transform: 'translateX(-80px)' },
-        { opacity: 1, rotate: '90deg', transform: 'translateX(-60px)' },
-        { opacity: 1, rotate: '90deg', transform: 'translateX(-80px)' },
+        {
+          rotate: '90deg',
+          transform: 'translateX(-60px)',
+        },
+        {
+          rotate: '90deg',
+          transform: 'translateX(-80px)',
+        },
       ],
       {
         delay: 4000,
         fill: 'forwards',
-        duration: 3000,
+        duration: 1000,
         iterations: Infinity,
       }
     );
-
-    match(this.shadowRoot.querySelector('.show-about-me'))
-      .with(P.not(P.nullish), (element) =>
-        element.addEventListener('click', () => {
-          document?.querySelector('#about-me')?.scrollIntoView({
-            behavior: 'smooth',
-            block: 'nearest',
-          });
-        })
-      )
-      .otherwise(() => {
-        throw new Error('.show-about-me Element를 찾을 수 없습니다.');
-      });
   }
 }
