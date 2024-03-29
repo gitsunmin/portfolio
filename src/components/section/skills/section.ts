@@ -20,11 +20,7 @@ style.innerHTML = /* css */ `
 template.innerHTML = /* html */ `
     <section-wrapper align="center">
       <h1 class="section-title">Skills</h1>
-      <ul>
-          <li>
-            <skills-scene1></skills-scene1>
-          </li>
-      </ul>
+      <skills-scene1></skills-scene1>
     </section-wrapper>
 `;
 
