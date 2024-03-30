@@ -10,6 +10,7 @@ style.innerHTML = /* css */ `
     justify-content: space-between;
     max-width: 200px;
     min-width: 200px;
+    min-height: 150px;
     max-height: 300px;
     border: 2px solid #E0EAF1;
     border-radius: 8px;
@@ -45,6 +46,7 @@ style.innerHTML = /* css */ `
     flex-direction: row;
     justify-content: center;
     gap: 8px;
+    flex-wrap: wrap;
   }
 
   .tag {
@@ -53,6 +55,7 @@ style.innerHTML = /* css */ `
     border: 1px solid #E0EAF1;
     padding: 4px;
     border-radius: 4px;
+    word-break: keep-all;
   }
 
   a {
