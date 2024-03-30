@@ -58,16 +58,19 @@ export default class HelloSection extends HTMLElement {
         {
           rotate: '45deg',
           transform: 'translateX(-80px)',
+          '-webkit-transform': 'translateX(-80px)',
           fontWight: 'bold',
         },
         {
           rotate: '45deg',
           transform: 'translateX(-60px)',
+          '-webkit-transform': 'translateX(-60px)',
           fontWight: 'bold',
         },
         {
           rotate: '45deg',
           transform: 'translateX(-80px)',
+          '-webkit-transform': 'translateX(-80px)',
           fontWight: 'bold',
         },
       ],
