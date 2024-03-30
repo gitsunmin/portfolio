@@ -1,3 +1,8 @@
+* {
+  font-family: 'Nanum Gothic', sans-serif;
+  font-style: normal;
+}
+
 html {
   -ms-overflow-style: none; /* IE와 Edge를 위한 설정 */
   scrollbar-width: none; /* Firefox를 위한 설정 */
