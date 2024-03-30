@@ -10,7 +10,7 @@ import GlobalGreetings from './section/hello/globalGreetings';
 import AboutMeSection from './section/about_me/section';
 import AboutMeProfile from './section/about_me/profile';
 import SkillsSection from './section/skills/section';
-import SkillsScene1 from './section/skills/scene1';
+import SkillsList from './section/skills/list';
 import ExperienceSection from './section/experience/section';
 import ExperienceProjectListWrapper from './section/experience/project/listWrapper';
 import ExperienceProjectList from './section/experience/project/list';
@@ -30,7 +30,7 @@ export const defineComponents = () => {
   customElements.define('hello-section', HelloSection);
   customElements.define('global-greetings', GlobalGreetings);
   customElements.define('skills-section', SkillsSection);
-  customElements.define('skills-scene1', SkillsScene1);
+  customElements.define('skills-list', SkillsList);
   customElements.define('experience-section', ExperienceSection);
   customElements.define(
     'experience-project-list-wrapper',

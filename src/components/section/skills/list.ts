@@ -2,7 +2,7 @@ const template = document.createElement('template');
 const style = document.createElement('style');
 
 style.innerHTML = /* css */ `
-  .skills-scene1 {
+  .skills-list {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -16,7 +16,7 @@ style.innerHTML = /* css */ `
     white-space: nowrap;
   }
 
-  .skills-scene1-unordered {
+  .skills-list-unordered {
     padding: 0;
     list-style: none;
     display: flex;
@@ -25,7 +25,7 @@ style.innerHTML = /* css */ `
     gap: 12px;
   }
 
-  .skills-scene1-list {
+  .skills-list-list {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -35,8 +35,8 @@ style.innerHTML = /* css */ `
 `;
 
 template.innerHTML = /* html */ `
-  <div class="skills-scene1">
-    <ul class="skills-scene1-unordered">
+  <div class="skills-list">
+    <ul class="skills-list-unordered">
     </ul>
   </div>
 `;
@@ -169,28 +169,29 @@ const skillList = [
   },
 ];
 
-export default class SkillsScene1 extends HTMLElement {
+export default class SkillsList extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' }); // Shadow DOM을 사용하도록 설정
 
-    this.shadowRoot?.appendChild(style.cloneNode(true));
-    this.shadowRoot?.appendChild(template.content.cloneNode(true));
+    if (this.shadowRoot === null) throw new Error('ShadowRoot is null');
+
+    this.shadowRoot.appendChild(style.cloneNode(true));
+    this.shadowRoot.appendChild(template.content.cloneNode(true));
 
     this.unOrderedList$el =
-      this.shadowRoot?.querySelector('.skills-scene1-unordered') ?? null;
+      this.shadowRoot.querySelector('.skills-list-unordered') ?? null;
 
     if (this.unOrderedList$el === null) return;
 
     this.unOrderedList$el.innerHTML = skillList
-      .concat(skillList)
       .map((skill) => {
         return /* html */ `
-              <li class="skills-scene1-list">
-                <labeled-icon label="${skill.name}" icon="${skill.icon}" round="true"></labeled-icon>
-                <p>${skill.description}</p>
-              </li>
-          `;
+          <li class="skills-list-list">
+            <labeled-icon label="${skill.name}" icon="${skill.icon}" round="true"></labeled-icon>
+            <p>${skill.description}</p>
+          </li>
+        `;
       })
       .join('');
   }
@@ -199,17 +200,26 @@ export default class SkillsScene1 extends HTMLElement {
 
   connectedCallback() {
     if (this.unOrderedList$el === null) return;
+
     const animation = this.unOrderedList$el.animate(
       [
         { transform: 'translateX(0)' }, // 시작 상태
         { transform: 'translateX(-50%)' }, // 종료 상태
       ],
       {
-        duration: skillList.length * 3000,
+        duration: skillList.length * 1500,
         iterations: Infinity,
         easing: 'linear',
       }
     );
+
+    animation.onfinish = () => {
+      if (this.unOrderedList$el === null) return;
+
+      this.unOrderedList$el.style.transform = 'translateX(0)';
+      this.unOrderedList$el.scrollLeft = 0; // 스크롤 위치를 초기화
+      play();
+    };
 
     const play = () => animation.play();
     const pause = () => animation.pause();
