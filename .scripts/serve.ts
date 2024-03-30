@@ -31,8 +31,13 @@ const server = Bun.serve({
 });
 
 srcWatcher.on('all', async (eventName) => {
-  console.log(`File ${eventName}, rebuilding...`);
+  process.stdout.clearLine(0); // 현재 라인의 내용을 지웁니다.
+  process.stdout.cursorTo(0); // 커서를 라인의 시작으로 이동합니다.
+  process.stdout.write(`File ${eventName}, rebuilding...`);
   await build();
+  process.stdout.clearLine(0); // 현재 라인의 내용을 지웁니다.
+  process.stdout.cursorTo(0); // 커서를 라인의 시작으로 이동합니다.
+  process.stdout.write(`File ${eventName}, Build Complete!`);
 });
 
 srcWatcher.on('error', (error) => {
@@ -49,5 +54,11 @@ srcWatcher.on('ready', () => {
   server.reload({
     fetch: Bouter,
   });
-  console.log(`Server is running at ${server.url.origin}`);
+  console.log(`\n
+####################################################
+##                                                ##
+##   Server is running at ${server.url.origin}   ##
+##                                                ##
+####################################################
+  `);
 });

@@ -1,5 +1,3 @@
-import { P, match } from 'ts-pattern';
-
 const template = document.createElement('template');
 const style = document.createElement('style');
 
@@ -33,6 +31,8 @@ template.innerHTML = /* html */ `
         스크롤을 내리면서,
         <br />
         포트폴리오를 확인해보세요.
+        <br />
+        감사합니다.
       </p>
     </section>
 `;
@@ -73,7 +73,7 @@ export default class HelloSection extends HTMLElement {
       ],
       {
         fill: 'forwards',
-        duration: 1000,
+        duration: 1250,
         iterations: Infinity,
       }
     );
