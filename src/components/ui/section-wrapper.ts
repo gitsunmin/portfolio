@@ -1,9 +1,7 @@
 const template = document.createElement('template');
 const style = document.createElement('style');
 
-style.innerHTML = /* css */ `
-  @import "/index.css";
-`;
+style.innerHTML = /* css */ ``;
 
 template.innerHTML = /* html */ `
     <section class="section-wrapper">

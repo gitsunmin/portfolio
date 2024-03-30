@@ -4,8 +4,6 @@ const template = document.createElement('template');
 const style = document.createElement('style');
 
 style.innerHTML = /* css */ `
-  @import "/index.css";
-
   .scene {
     max-width: 80vw;
     overflow-x: scroll;

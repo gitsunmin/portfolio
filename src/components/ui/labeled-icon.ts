@@ -1,11 +1,7 @@
-import { P, match } from 'ts-pattern';
-
 const template = document.createElement('template');
 const style = document.createElement('style');
 
 style.innerHTML = /* css */ `
-  @import "/index.css";
-
     .labeled-icon {
         display: flex;
         align-items: center;

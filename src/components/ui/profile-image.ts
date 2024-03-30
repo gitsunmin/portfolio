@@ -2,7 +2,6 @@ const template = document.createElement('template');
 const style = document.createElement('style');
 
 style.innerHTML = /* css */ `
-  @import "/index.css";
   .profile-image {
     box-shadow: 0 0 10px 0 white;
     isolation: isolate;

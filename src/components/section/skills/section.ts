@@ -2,8 +2,6 @@ const template = document.createElement('template');
 const style = document.createElement('style');
 
 style.innerHTML = /* css */ `
-  @import "/index.css";
-
   ul {
     list-style: none;
     padding-left: 0;

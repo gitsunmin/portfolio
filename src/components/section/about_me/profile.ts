@@ -2,8 +2,6 @@ const template = document.createElement('template');
 const style = document.createElement('style');
 
 style.innerHTML = /* css */ `
-  @import "/index.css";
-
   .about-me-scene1 {
     font-size: 1rem;
   }

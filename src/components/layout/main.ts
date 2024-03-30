@@ -2,8 +2,6 @@ const template = document.createElement('template');
 const style = document.createElement('style');
 
 style.innerHTML = /* css */ `
-  @import "/index.css";
-
   .header-case {
     margin-top: 90px;
   }
