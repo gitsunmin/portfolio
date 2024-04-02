@@ -14,7 +14,7 @@ style.innerHTML = /* css */ `
     max-height: 300px;
     border: 2px solid #E0EAF1;
     border-radius: 8px;
-    padding: 24px;
+    padding: 24px 30px;
     color: #fff;
     gap: 18px;
   }
