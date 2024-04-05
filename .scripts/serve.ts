@@ -1,4 +1,5 @@
-import { build } from './builder';
+// import { build } from './builder';
+import { build } from './bunBuilder';
 import { srcWatcher } from './watcher';
 import { match } from 'ts-pattern';
 

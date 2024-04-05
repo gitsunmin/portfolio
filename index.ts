@@ -6,5 +6,3 @@ function main() {
 }
 
 main();
-
-
