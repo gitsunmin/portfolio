@@ -1,5 +1,5 @@
-import LayoutFooter from './layout/footer';
-import LayoutHeader from './layout/header';
+// import LayoutFooter from './layout/Footer';
+// import LayoutHeader from './layout/Header';
 import LayoutMain from './layout/main';
 import ProfileImage from './ui/profile-image';
 import LabeledIcon from './ui/labeled-icon';
@@ -24,8 +24,8 @@ export const defineComponents = () => {
   customElements.define('about-me-profile', AboutMeProfile);
   customElements.define('section-title', SectionTitle);
   customElements.define('section-wrapper', SectionWrapper);
-  customElements.define('layout-footer', LayoutFooter);
-  customElements.define('layout-header', LayoutHeader);
+  // customElements.define('layout-footer', LayoutFooter);
+  // customElements.define('layout-header', LayoutHeader);
   customElements.define('layout-main', LayoutMain);
   customElements.define('hello-section', HelloSection);
   customElements.define('global-greetings', GlobalGreetings);
