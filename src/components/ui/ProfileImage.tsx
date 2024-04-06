@@ -2,9 +2,10 @@ type Props = {
   width: number;
   height: number;
   alt: string;
+  className: string;
 };
 
-export default ({ width, height, alt }: Props) => {
+export default ({ width, height, alt, className }: Props) => {
   return (
     <img
       style={{
@@ -15,6 +16,7 @@ export default ({ width, height, alt }: Props) => {
       }}
       alt={alt}
       src="./assets/me.jpeg"
+      className={`rounded-full ${className}`}
     />
   );
 };

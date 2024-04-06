@@ -1,5 +1,5 @@
 // import { build } from './builder';
-import { build } from './bunBuilder';
+import { build } from './builder';
 import { srcWatcher } from './watcher';
 import { match } from 'ts-pattern';
 
