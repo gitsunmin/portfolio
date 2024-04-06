@@ -10,7 +10,7 @@ export const TailwindCSSLoader = async ({
   output,
 }: TailwindCSSLoaderOptions): Promise<BunPlugin> => ({
   name: 'TailwindCSSLoader',
-  async setup(build) {
+  async setup() {
     await $`bun tailwindcss -i ${input} -o ${output}`;
   },
 });

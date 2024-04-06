@@ -134,11 +134,10 @@ const SkilCard = (props: {
   label: string;
   icon: string;
   description: string;
-  key: string | number;
 }) => {
   return (
     <div className="flex gap-y-[12px] w-[130px] flex-col break-words text-center">
-      <LabeledIcon key={props.key} icon={props.icon} label={props.label} />
+      <LabeledIcon icon={props.icon} label={props.label} />
       <p className="break-words">{props.description}</p>
     </div>
   );
@@ -151,9 +150,11 @@ export default () => {
       <div className="flex flex-col justify-center items-center h-[300px] mx-auto whitespace-nowrap mt-[12px]">
         <ul className="flex flex-row overflow-x-scroll whitespace-normal max-w-[80vw] gap-x-[12px]">
           {SKILL_LIST.map((skill) => (
-            <li className="flex flex-col items-center max-w-[200px] whitespace-normal">
+            <li
+              key={skill.name}
+              className="flex flex-col items-center max-w-[200px] whitespace-normal"
+            >
               <SkilCard
-                key={skill.name}
                 label={skill.name}
                 icon={skill.icon}
                 description={skill.description}

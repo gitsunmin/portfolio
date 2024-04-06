@@ -63,6 +63,7 @@ const PROJECT_LIST = [
 export default () => {
   return (
     <motion.div
+      key={'project-list'}
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1, transition: { duration: 1 } }}
     >
@@ -72,16 +73,16 @@ export default () => {
       <div className="max-w-[80vw] overflow-x-scroll mx-auto mt-[24px]">
         <ul className="flex flex-row gap-[24px] p-0 h-[400px]">
           {PROJECT_LIST.map((project) => (
-            <li className="min-w-[250px] max-w-[250px] max-h-[300px]">
-              <a href={project.link}>
+            <a key={project.name} href={project.link}>
+              <li className="min-w-[250px] max-w-[250px] min-h-[300px]">
                 <Card
                   title={project.name}
                   subtitle={`${project.period.start} ~ ${project.period.end}`}
                   description={project.description}
                   tags={project.tags}
                 />
-              </a>
-            </li>
+              </li>
+            </a>
           ))}
         </ul>
       </div>

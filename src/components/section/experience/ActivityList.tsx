@@ -37,9 +37,13 @@ export default () => {
       <div className="max-w-[80vw] overflow-x-scroll mx-auto mt-[24px]">
         <ul className="flex flex-row gap-[24px] p-0 h-[400px]">
           {ActivityList.map((activity) => (
-            <li className="min-w-[250px] max-w-[250px] max-h-[300px]">
+            <li
+              key={activity.name}
+              className="min-w-[250px] max-w-[250px] max-h-[300px]"
+            >
               <a href={activity.link}>
                 <Card
+                  key={activity.name}
                   title={activity.name}
                   subtitle={`${activity.period.start} ~ ${activity.period.end}`}
                   description={activity.description}

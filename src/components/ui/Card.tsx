@@ -1,7 +1,9 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 
-const Tag = ({ children }: React.PropsWithChildren) => (
+const Tag = ({
+  children,
+}: React.PropsWithChildren<{ key: string | number }>) => (
   <span className="p-[4px] rounded border-[1px] border-[#F5F0E6]">
     {children}
   </span>
@@ -36,7 +38,7 @@ export default (props: Props) => {
       >
         <p>{description}</p>
         <div className="flex flex-row justify-center gap-[8px] flex-wrap">
-          {tags.reverse().map((tag) => (
+          {tags.map((tag) => (
             <Tag key={tag}>{tag}</Tag>
           ))}
         </div>
