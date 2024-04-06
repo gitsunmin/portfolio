@@ -4,6 +4,7 @@
     "start": "bun ./.scripts/index.ts serve",
     "b": "rm -rf dist && bun ./.scripts/index.ts build"
   },
+  "homepage": "https://gitsunmin.github.io/portfolio",
   "author": "tjsals116@gmail.com",
   "dependencies": {
     "framer-motion": "^11.0.25",
