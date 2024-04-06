@@ -1,37 +1,8 @@
-import { P, match } from 'ts-pattern';
+import Card from '../../ui/Card';
+import SectionSubtitle from '../../ui/SectionSubtitle';
+import { motion } from 'framer-motion';
 
-const template = document.createElement('template');
-const style = document.createElement('style');
-
-style.innerHTML = /* css */ `
-  .scene {
-    max-width: 80vw;
-    overflow-x: scroll;
-    margin: 0 auto;
-  }
-
-  .cards {
-    display: flex;
-    flex-direction: row;
-    list-style: none;
-    overflow-x: scroll;
-    gap: 24px;
-    padding: 0;
-    width: 80vw;
-    height: 400px;
-  }
-`;
-
-template.innerHTML = /* html */ `
-  <h2>Projects</h2>
-  <div class="scene">
-    <section>
-      <ul class="cards"></ul>
-    </section>
-  </div>
-`;
-
-const ProjectList = [
+const PROJECT_LIST = [
   {
     name: '공지사항 관리 시스템 개발',
     period: {
@@ -89,35 +60,31 @@ const ProjectList = [
   },
 ];
 
-export default class ExperienceProjectListWrapper extends HTMLElement {
-  constructor() {
-    super();
-    this.attachShadow({ mode: 'open' }); // Shadow DOM을 사용하도록 설정
-
-    if (this.shadowRoot === null) throw new Error('this.shadowRoot is null');
-
-    this.shadowRoot.appendChild(style.cloneNode(true));
-    this.shadowRoot.appendChild(template.content.cloneNode(true));
-
-    match(this.shadowRoot.querySelector('.cards'))
-      .with(P.not(P.nullish), (cardsEl) => {
-        cardsEl.innerHTML = ProjectList.map((project) => {
-          return /* html */ `
-            <experience-project-list
-              link="${project.link}"
-              name="${project.name}"
-              start="${project.period.start}"
-              end="${project.period.end}"
-              description="${project.description}"
-              tags="${project.tags.join(',')}"
-            ></experience-project-list>
-            `;
-        })
-          .reverse()
-          .join('');
-      })
-      .otherwise(() => {
-        throw new Error('this.shadowRoot.querySelector(".cards") is null');
-      });
-  }
-}
+export default () => {
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1, transition: { duration: 1 } }}
+    >
+      <SectionSubtitle className="w-full text-center my-6">
+        Projects
+      </SectionSubtitle>
+      <div className="max-w-[80vw] overflow-x-scroll mx-auto mt-[24px]">
+        <ul className="flex flex-row gap-[24px] p-0 h-[400px]">
+          {PROJECT_LIST.map((project) => (
+            <li className="min-w-[250px] max-w-[250px] max-h-[300px]">
+              <a href={project.link}>
+                <Card
+                  title={project.name}
+                  subtitle={`${project.period.start} ~ ${project.period.end}`}
+                  description={project.description}
+                  tags={project.tags}
+                />
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </motion.div>
+  );
+};
