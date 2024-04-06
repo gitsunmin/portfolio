@@ -28,6 +28,6 @@ export async function copyFiles(sourcePath: string, targetPath: string) {
       )
       .run();
   } catch (error) {
-    console.error(`Error copying ${sourcePath} to ${targetPath}:`, error);
+    console.error(`Error File copying ${sourcePath} to ${targetPath}:`, error);
   }
 }

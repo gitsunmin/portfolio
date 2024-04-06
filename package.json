@@ -1,8 +1,8 @@
 {
   "name": "portfolio",
   "scripts": {
-    "start": "bun ./.scripts/serve.ts",
-    "builder": "rm -rf dist && bun ./.scripts/builder.ts"
+    "start": "bun ./.scripts/index.ts serve",
+    "b": "rm -rf dist && bun ./.scripts/index.ts build"
   },
   "author": "tjsals116@gmail.com",
   "dependencies": {

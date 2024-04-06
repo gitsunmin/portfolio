@@ -11,6 +11,10 @@ export const TailwindCSSLoader = async ({
 }: TailwindCSSLoaderOptions): Promise<BunPlugin> => ({
   name: 'TailwindCSSLoader',
   async setup() {
-    await $`bun tailwindcss -i ${input} -o ${output}`;
+    try {
+      await $`bun tailwindcss -i ${input} -o ${output}`;
+    } catch (error) {
+      console.error(`[TailwindCSSLoader Error] error: ${error}`);
+    }
   },
 });
