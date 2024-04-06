@@ -4,6 +4,7 @@ import Main from '../components/layout/Main';
 import AboutMeSection from '../components/section/about-me/AboutMeSection';
 import ExperienceSection from '../components/section/experience/ExperienceSection';
 import HelloSection from '../components/section/hello/HelloSection';
+import SkillSection from '../components/section/skills/SkillSection';
 
 const IndexPage = () => (
   <>
@@ -12,6 +13,7 @@ const IndexPage = () => (
       <HelloSection />
       <AboutMeSection />
       <ExperienceSection />
+      <SkillSection />
     </Main>
     <Footer />
   </>

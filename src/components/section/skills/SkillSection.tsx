@@ -1,47 +1,8 @@
-const template = document.createElement('template');
-const style = document.createElement('style');
+import Section from '../../layout/Section';
+import LabeledIcon from '../../ui/LabeledIcon';
+import SectionTitle from '../../ui/SectionTitle';
 
-style.innerHTML = /* css */ `
-  .skills-list {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-
-    align-items: center;
-    height: 300px;
-    max-width: 80vw;
-    overflow-x: scroll;
-
-    margin: 0 auto;
-    white-space: nowrap;
-  }
-
-  .skills-list-unordered {
-    padding: 0;
-    list-style: none;
-    display: flex;
-    flex-direction: row;
-    overflow-x: scroll;
-    gap: 12px;
-  }
-
-  .skills-list-list {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: 200px;
-    white-space: normal;
-  }
-`;
-
-template.innerHTML = /* html */ `
-  <div class="skills-list">
-    <ul class="skills-list-unordered">
-    </ul>
-  </div>
-`;
-
-const skillList = [
+const SKILL_LIST = [
   {
     name: 'HTML5',
     icon: './assets/icons/html5.svg',
@@ -169,73 +130,38 @@ const skillList = [
   },
 ];
 
-export default class SkillsList extends HTMLElement {
-  constructor() {
-    super();
-    this.attachShadow({ mode: 'open' }); // Shadow DOM을 사용하도록 설정
+const SkilCard = (props: {
+  label: string;
+  icon: string;
+  description: string;
+  key: string | number;
+}) => {
+  return (
+    <div className="flex gap-y-[12px] w-[130px] flex-col break-words text-center">
+      <LabeledIcon key={props.key} icon={props.icon} label={props.label} />
+      <p className="break-words">{props.description}</p>
+    </div>
+  );
+};
 
-    if (this.shadowRoot === null) throw new Error('ShadowRoot is null');
-
-    this.shadowRoot.appendChild(style.cloneNode(true));
-    this.shadowRoot.appendChild(template.content.cloneNode(true));
-
-    this.unOrderedList$el =
-      this.shadowRoot.querySelector('.skills-list-unordered') ?? null;
-
-    if (this.unOrderedList$el === null) return;
-
-    this.unOrderedList$el.innerHTML = skillList
-      .map((skill) => {
-        return /* html */ `
-          <li class="skills-list-list">
-            <labeled-icon label="${skill.name}" icon="${skill.icon}" round="true"></labeled-icon>
-            <p>${skill.description}</p>
-          </li>
-        `;
-      })
-      .join('');
-  }
-
-  unOrderedList$el: HTMLUListElement | null = null;
-
-  connectedCallback() {
-    if (this.unOrderedList$el === null) return;
-
-    const animation = this.unOrderedList$el.animate(
-      [
-        { transform: 'translateX(0)' }, // 시작 상태
-        { transform: 'translateX(-50%)' }, // 종료 상태
-      ],
-      {
-        duration: skillList.length * 1500,
-        iterations: Infinity,
-        easing: 'linear',
-      }
-    );
-
-    animation.onfinish = () => {
-      if (this.unOrderedList$el === null) return;
-
-      this.unOrderedList$el.style.transform = 'translateX(0)';
-      this.unOrderedList$el.scrollLeft = 0; // 스크롤 위치를 초기화
-      play();
-    };
-
-    const play = () => animation.play();
-    const pause = () => animation.pause();
-
-    this.unOrderedList$el.addEventListener('mouseover', pause);
-    this.unOrderedList$el.addEventListener('mouseout', play);
-    // mobile
-    this.unOrderedList$el.addEventListener('touchstart', pause);
-    this.unOrderedList$el.addEventListener('touchend', play);
-
-    let observer = new IntersectionObserver((observers) => {
-      observers.forEach((observer) => {
-        if (observer.isIntersecting) play();
-      });
-    });
-
-    observer.observe(this);
-  }
-}
+export default () => {
+  return (
+    <Section>
+      <SectionTitle className="w-full text-center">Skills</SectionTitle>
+      <div className="flex flex-col justify-center items-center h-[300px] mx-auto whitespace-nowrap mt-[12px]">
+        <ul className="flex flex-row overflow-x-scroll whitespace-normal max-w-[80vw] gap-x-[12px]">
+          {SKILL_LIST.map((skill) => (
+            <li className="flex flex-col items-center max-w-[200px] whitespace-normal">
+              <SkilCard
+                key={skill.name}
+                label={skill.name}
+                icon={skill.icon}
+                description={skill.description}
+              />
+            </li>
+          ))}
+        </ul>
+      </div>
+    </Section>
+  );
+};
