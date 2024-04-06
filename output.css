@@ -620,6 +620,10 @@ video {
   max-height: 300px;
 }
 
+.min-h-\[300px\] {
+  min-height: 300px;
+}
+
 .w-\[130px\] {
   width: 130px;
 }
