@@ -2,7 +2,9 @@ import { type Server } from 'bun';
 import { build } from './build';
 import { srcWatcher } from './watcher';
 import { P, match } from 'ts-pattern';
+import { readdir } from 'node:fs/promises';
 
+const pagesDirectives = await readdir('src/pages', { recursive: true });
 const PORT = 8080;
 
 enum APPStatus {
@@ -30,8 +32,13 @@ const showServerAddress = (server: Server) => {
 const Bouter = async (request: Request): Promise<Response> => {
   const { pathname } = new URL(request.url);
 
+  const pages = (pathname: string) =>
+    pagesDirectives
+      .map((file) => `/${file}`.replace('index.tsx', ''))
+      .includes(pathname);
+
   return match(pathname)
-    .with('/', () => new Response(Bun.file(`dist/index.html`)))
+    .when(pages, () => new Response(Bun.file(`dist/index.html`)))
     .otherwise((pathname) => new Response(Bun.file(`dist${pathname}`)));
 };
 
@@ -40,6 +47,10 @@ const server = Bun.serve({
   hostname: 'localhost',
   development: true,
   fetch: Bouter,
+  error(request) {
+    console.error(request);
+    return new Response(Bun.file(`dist/index.html`));
+  },
 });
 
 srcWatcher.on('all', (eventName, path) => {
@@ -68,11 +79,13 @@ srcWatcher.on('all', (eventName, path) => {
 srcWatcher.on('error', (error) => {
   console.error(`Watcher error: ${error}`);
   server.stop();
+  appStatus = APPStatus.SERVER_ERROR;
 });
 
 srcWatcher.on('close', () => {
   console.log('[[[[[ Watcher Closed ]]]]]');
   server.stop();
+  appStatus = APPStatus.STOPPED;
 });
 
 srcWatcher.addListener('build-complited', () => {
@@ -85,7 +98,7 @@ srcWatcher.on('ready', async () => {
       fetch: Bouter,
       error(request) {
         console.error(request);
-        return new Response('Not Found', { status: 404 });
+        return new Response(Bun.file(`dist/index.html`));
       },
     });
 
@@ -95,5 +108,6 @@ srcWatcher.on('ready', async () => {
     srcWatcher.emit('build-complited');
   } catch (error) {
     console.error(`[Server Error] error: ${error}`);
+    srcWatcher.emit('error', error);
   }
 });
