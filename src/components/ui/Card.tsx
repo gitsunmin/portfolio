@@ -23,6 +23,7 @@ export default (props: Props) => {
 
   return (
     <motion.div
+      aria-label={title}
       onHoverStart={() => setHover(true)}
       onHoverEnd={() => setHover(false)}
       onTapStart={() => setHover(true)}

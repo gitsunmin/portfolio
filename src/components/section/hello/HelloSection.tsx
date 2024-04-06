@@ -3,7 +3,7 @@ import GlobalGreetings from './GlobalGreetings';
 
 export default () => {
   return (
-    <Section className="pt-[30vh]">
+    <Section className="pt-[30vh]" aria-label="Hello section">
       <>
         <GlobalGreetings />
         <p className="flex justify-center mt-[25vh]">

@@ -136,7 +136,10 @@ const SkilCard = (props: {
   description: string;
 }) => {
   return (
-    <div className="flex gap-y-[12px] w-[130px] flex-col break-words text-center">
+    <div
+      className="flex gap-y-[12px] w-[130px] flex-col break-words text-center"
+      aria-label={props.label}
+    >
       <LabeledIcon icon={props.icon} label={props.label} />
       <p className="break-words">{props.description}</p>
     </div>
@@ -145,7 +148,7 @@ const SkilCard = (props: {
 
 export default () => {
   return (
-    <Section>
+    <Section aria-label="skill section">
       <SectionTitle className="w-full text-center">Skills</SectionTitle>
       <div className="flex flex-col justify-center items-center h-[300px] mx-auto whitespace-nowrap mt-[12px]">
         <ul className="flex flex-row overflow-x-scroll whitespace-normal max-w-[80vw] gap-x-[12px]">

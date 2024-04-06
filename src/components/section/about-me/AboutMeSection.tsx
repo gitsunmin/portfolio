@@ -4,7 +4,10 @@ import { motion } from 'framer-motion';
 
 export default () => {
   return (
-    <Section className="flex justify-center flex-wrap mt-[25vh] gap-[50px]">
+    <Section
+      className="flex justify-center flex-wrap mt-[25vh] gap-[50px]"
+      aria-label="about me section"
+    >
       <motion.div
         whileInView={{
           scale: 1.1,
