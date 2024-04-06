@@ -7,7 +7,7 @@ type Props = {
 export default (props: Props) => {
   const { children } = props;
   return (
-    <header className="flex p-[10px] w-full justify-between shadow-slate-700 fixed top-0 backdrop-blur-sm">
+    <header className="flex p-[10px] w-full justify-between shadow-slate-700 fixed top-0 backdrop-blur-sm z-10">
       <a
         className="flex items-center gap-[10px]"
         href="https://gitsunmin.github.io/portfolio"

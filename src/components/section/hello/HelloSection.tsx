@@ -1,9 +1,9 @@
-import Section from '../../layout/section';
+import Section from '../../layout/Section';
 import GlobalGreetings from './GlobalGreetings';
 
 export default () => {
   return (
-    <Section className="mt-[25vh]">
+    <Section className="pt-[30vh]">
       <>
         <GlobalGreetings />
         <p className="flex justify-center mt-[25vh]">

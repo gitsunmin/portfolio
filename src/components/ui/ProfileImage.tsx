@@ -1,8 +1,7 @@
-type Props = {
+type Props = React.HtmlHTMLAttributes<HTMLImageElement> & {
   width: number;
   height: number;
   alt: string;
-  className: string;
 };
 
 export default ({ width, height, alt, className }: Props) => {

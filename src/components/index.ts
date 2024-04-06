@@ -7,8 +7,8 @@ import SectionTitle from './ui/section-title';
 import SectionWrapper from './ui/section-wrapper';
 // import HelloSection from './section/hello/section';
 // import GlobalGreetings from './section/hello/GlobalGreetings';
-import AboutMeSection from './section/about_me/section';
-import AboutMeProfile from './section/about_me/profile';
+// import AboutMeSection from './section/about_me/AboutMeSection';
+// import AboutMeProfile from './section/about_me/profile';
 import SkillsSection from './section/skills/section';
 import SkillsList from './section/skills/list';
 import ExperienceSection from './section/experience/section';
@@ -20,8 +20,8 @@ import ExperienceActivityListWrapper from './section/experience/activity/listWra
 export const defineComponents = () => {
   // customElements.define('profile-image', ProfileImage);
   customElements.define('labeled-icon', LabeledIcon);
-  customElements.define('about-me-section', AboutMeSection);
-  customElements.define('about-me-profile', AboutMeProfile);
+  // customElements.define('about-me-section', AboutMeSection);
+  // customElements.define('about-me-profile', AboutMeProfile);
   customElements.define('section-title', SectionTitle);
   customElements.define('section-wrapper', SectionWrapper);
   // customElements.define('layout-footer', LayoutFooter);
