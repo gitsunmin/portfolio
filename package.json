@@ -6,6 +6,7 @@
   },
   "author": "tjsals116@gmail.com",
   "dependencies": {
+    "framer-motion": "^11.0.25",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "ts-pattern": "^5.0.8"
