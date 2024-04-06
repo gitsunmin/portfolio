@@ -58,7 +58,7 @@ const PROJECT_LIST = [
     tags: ['E-Commerce'],
     link: 'https://gitsunmin.notion.site/Next-js-72cf7aca6d73402cbdd8b80556887aa5',
   },
-];
+].reverse();
 
 export default () => {
   return (
