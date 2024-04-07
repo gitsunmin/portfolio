@@ -16,11 +16,7 @@
       document.addEventListener('DOMContentLoaded', function () {
         if (window.location.pathname !== '/') {
           // 현재 경로를 쿼리 파라미터로 전달하여 리다이렉트
-          window.history.replaceState(
-            null,
-            null,
-            '/?/' + window.location.pathname
-          );
+          window.history.replaceState(null, null, window.location.pathname);
         }
       });
     </script>
