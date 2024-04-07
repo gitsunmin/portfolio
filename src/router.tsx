@@ -1,21 +1,17 @@
-import { createHashRouter } from 'react-router-dom';
+import { createBrowserRouter } from 'react-router-dom';
 import Root from './pages/index';
-import Projects from './pages/projects';
 
-export const router = createHashRouter(
+export const router = createBrowserRouter(
   [
     {
-      path: '/',
+      path: '/*',
       element: <Root />,
-      children: [
-        {
-          path: '/projects',
-          element: <Projects />,
-        },
-      ],
     },
   ],
   {
     basename: '/portfolio',
+    future: {
+      v7_normalizeFormMethod: true,
+    },
   }
 );
