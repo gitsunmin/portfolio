@@ -1,6 +1,5 @@
 import Card from '../../ui/Card';
 import SectionSubtitle from '../../ui/SectionSubtitle';
-import { motion } from 'framer-motion';
 
 const PROJECT_LIST = [
   {
@@ -62,11 +61,7 @@ const PROJECT_LIST = [
 
 export default () => {
   return (
-    <motion.div
-      key={'project-list'}
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1, transition: { duration: 1 } }}
-    >
+    <div key="project-list">
       <SectionSubtitle className="w-full text-center my-6">
         Projects
       </SectionSubtitle>
@@ -86,6 +81,6 @@ export default () => {
           ))}
         </ul>
       </div>
-    </motion.div>
+    </div>
   );
 };

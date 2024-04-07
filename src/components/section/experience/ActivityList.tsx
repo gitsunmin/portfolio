@@ -1,6 +1,6 @@
+import Section from '../../layout/Section';
 import Card from '../../ui/Card';
 import SectionSubtitle from '../../ui/SectionSubtitle';
-import { motion } from 'framer-motion';
 
 const ActivityList = [
   {
@@ -27,10 +27,7 @@ const ActivityList = [
 
 export default () => {
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1, transition: { duration: 1 } }}
-    >
+    <Section>
       <SectionSubtitle className="w-full text-center my-6">
         Activities
       </SectionSubtitle>
@@ -54,6 +51,6 @@ export default () => {
           ))}
         </ul>
       </div>
-    </motion.div>
+    </Section>
   );
 };

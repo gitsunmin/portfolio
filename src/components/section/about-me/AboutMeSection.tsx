@@ -12,21 +12,12 @@ export default () => {
         whileInView={{
           scale: 1.1,
           transition: { duration: 1.5 },
-          opacity: 1,
         }}
-        initial={{ opacity: 0 }}
         className="flex justify-center w-full"
       >
         <ProfileImage width={200} height={200} alt="Profile Image" />
       </motion.div>
-      <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{
-          transition: { duration: 1 },
-          opacity: 1,
-        }}
-        className="flex justify-center max-w-[440px]"
-      >
+      <div className="flex justify-center max-w-[440px]">
         <p className="px-[12px]">
           안녕하세요.
           <br />
@@ -57,7 +48,7 @@ export default () => {
           <br />
           tjsals116@gmail.com
         </p>
-      </motion.div>
+      </div>
     </Section>
   );
 };
