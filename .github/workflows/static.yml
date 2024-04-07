@@ -15,7 +15,7 @@ jobs:
         with:
           bun-version: latest
       - name: Build Project
-        run: bun i && bun b
+        run: bun i && bun build:prod
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3

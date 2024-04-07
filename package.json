@@ -1,8 +1,9 @@
 {
   "name": "portfolio",
   "scripts": {
-    "start": "bun ./.scripts/index.ts serve",
-    "b": "rm -rf dist && bun ./.scripts/index.ts build"
+    "start": "bun --env-file=.env.development ./.scripts/index.ts serve",
+    "build:dev": "rm -rf dist && bun --env-file=.env.development ./.scripts/index.ts build",
+    "build:prod": "rm -rf dist && bun --env-file=.env.production ./.scripts/index.ts build"
   },
   "homepage": "https://gitsunmin.github.io/portfolio",
   "author": "tjsals116@gmail.com",

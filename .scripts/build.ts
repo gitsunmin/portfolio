@@ -15,6 +15,9 @@ export const build = async () => {
           output: 'dist/output.css',
         }),
       ],
+      define: {
+        'process.env.ENV': JSON.stringify(Bun.env.ENV),
+      },
       target: 'browser',
     });
 
