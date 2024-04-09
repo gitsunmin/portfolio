@@ -8,7 +8,6 @@
   "homepage": "https://gitsunmin.github.io/portfolio",
   "author": "tjsals116@gmail.com",
   "dependencies": {
-    "@react-spring/web": "^9.7.3",
     "framer-motion": "^11.0.25",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
