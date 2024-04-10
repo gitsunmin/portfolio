@@ -21,7 +21,7 @@ export default () => {
   }, []);
 
   return (
-    <motion.ul className="flex justify-center text-[32px]">
+    <motion.ul className="flex justify-center text-[32px] lg:text-[64px]">
       <motion.li
         key={index}
         aria-label={GREETINGS[index]}
