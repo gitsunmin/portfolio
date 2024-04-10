@@ -1,54 +1,39 @@
 import Section from '../../layout/Section';
 import ProfileImage from '../../ui/ProfileImage';
-import { motion } from 'framer-motion';
+import { MotionValue, motion, useTransform } from 'framer-motion';
 
-export default () => {
+type Props = {
+  scrollYProgress: MotionValue<number>;
+  start: number;
+  end: number;
+};
+
+export default (props: Props) => {
+  const { scrollYProgress, start, end } = props;
+  const opacity = useTransform(
+    scrollYProgress,
+    [start, (start + end) / 2, end],
+    [0, 1, 0]
+  );
+
   return (
-    <Section
-      className="flex justify-center flex-wrap mt-[25vh] gap-[50px]"
+    <motion.section
+      style={{ opacity }}
+      className="fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] w-full"
       aria-label="about me section"
     >
-      <motion.div
-        whileInView={{
-          scale: 1.1,
-          transition: { duration: 1.5 },
-        }}
-        className="flex justify-center w-full"
-      >
-        <ProfileImage width={200} height={200} alt="Profile Image" />
-      </motion.div>
-      <div className="flex justify-center max-w-[440px]">
-        <p className="px-[12px]">
-          안녕하세요.
+      <div className="flex justify-center px-[18px]">
+        <ProfileImage alt="Profile Image" />
+      </div>
+      <div className="flex justify-center">
+        <p>
+          <p className="mb-[12px]">저는</p>
+          <span className="text-[14px] lg:text-[40px]">프론트엔드 개발자 </span>
           <br />
+          <p className="text-right mt-[12px]">입니다.</p>
           <br />
-          저는 2019년부터 프론트엔드 개발을 해오고 있는 개발자입니다. 다양한
-          플랫폼에서 사용자 경험을 향상시키기 위한 작업에 참여해왔으며, 특히
-          Mobile, Desktop, Web 분야에서 실력을 쌓아왔습니다. 기술적인 도전을
-          해결하며 성장하는 과정을 중요시하고, 항상 새로운 것을 배우려는 자세를
-          가지고 있습니다.
-          <br />
-          <br />
-          개발 작업을 할 때는 사용자 중심의 디자인을 지향하며, 웹 표준과 접근성,
-          반응형 디자인을 고려하여 프로젝트를 진행합니다. JavaScript, React,
-          Vue.js 같은 현대적인 기술 스택을 활용하여, 사용자에게 보다 나은 경험을
-          제공하기 위해 노력합니다.
-          <br />
-          <br />
-          저의 포트폴리오는 저의 기술과 경험을 소개하는 공간입니다. 협업에 대한
-          열린 마음과 함께, 계속해서 배우고 성장하기 위한 저의 열정을 확인하실
-          수 있습니다.
-          <br />
-          <br />
-          만약 제 작업에 대해 더 알고 싶으시다면, 언제든지 연락 주세요.
-          <br />
-          <br />
-          감사합니다.
-          <br />
-          <br />
-          tjsals116@gmail.com
         </p>
       </div>
-    </Section>
+    </motion.section>
   );
 };

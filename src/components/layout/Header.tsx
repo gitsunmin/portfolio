@@ -12,12 +12,7 @@ export default (props: Props) => {
         className="flex items-center gap-[10px]"
         href="https://gitsunmin.github.io/portfolio"
       >
-        <ProfileImage
-          width={50}
-          height={50}
-          alt="me"
-          className=""
-        ></ProfileImage>
+        <ProfileImage alt="me" className="w-[50px] h-[50px]"></ProfileImage>
         <span className="text-[#F5F0E6]">Gitsunmin's Portfolio</span>
       </a>
 

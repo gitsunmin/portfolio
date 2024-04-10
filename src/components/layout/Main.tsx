@@ -1,18 +1,21 @@
-type Props = {
-  children: React.ReactNode;
-};
+type Props = React.PropsWithChildren<{
+  ref: React.RefObject<HTMLDivElement>;
+  sectionCount: number;
+}>;
 
 export default (props: Props) => {
-  const { children } = props;
+  const { children, sectionCount } = props;
 
   return (
     <>
-      <div
+      <div className="mt-[90px]" />
+      <main
         style={{
-          marginTop: '90px',
+          height: `${sectionCount * 100}vh`,
         }}
-      />
-      <main>{children}</main>
+      >
+        {children}
+      </main>
     </>
   );
 };

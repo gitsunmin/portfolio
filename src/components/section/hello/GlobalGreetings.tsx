@@ -21,7 +21,7 @@ export default () => {
   }, []);
 
   return (
-    <motion.ul className="flex justify-center text-[32px] lg:text-[64px]">
+    <motion.ul className="flex justify-center text-[32px] lg:text-[64px] w-full">
       <motion.li
         key={index}
         aria-label={GREETINGS[index]}
@@ -29,6 +29,7 @@ export default () => {
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 2.5 }}
+        className="w-full flex justify-center items-center"
       >
         {GREETINGS[index]}
       </motion.li>

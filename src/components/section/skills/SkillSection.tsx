@@ -1,3 +1,4 @@
+import { MotionValue, motion, useTransform } from 'framer-motion';
 import Section from '../../layout/Section';
 import LabeledIcon from '../../ui/LabeledIcon';
 import SectionTitle from '../../ui/SectionTitle';
@@ -146,26 +147,44 @@ const SkilCard = (props: {
   );
 };
 
-export default () => {
+type Props = {
+  scrollYProgress: MotionValue<number>;
+  start: number;
+  end: number;
+};
+
+export default (props: Props) => {
+  const { scrollYProgress, start, end } = props;
+
+  const opacity = useTransform(
+    scrollYProgress,
+    [start, (start + end) / 2, end],
+    [0, 1, 0]
+  );
   return (
-    <Section aria-label="skill section">
-      <SectionTitle className="w-full text-center">Skills</SectionTitle>
-      <div className="flex flex-col justify-center items-center h-[300px] mx-auto whitespace-nowrap mt-[12px]">
-        <ul className="flex flex-row overflow-x-scroll whitespace-normal max-w-[80vw] gap-x-[12px]">
-          {SKILL_LIST.map((skill) => (
-            <li
-              key={skill.name}
-              className="flex flex-col items-center max-w-[200px] whitespace-normal"
-            >
-              <SkilCard
-                label={skill.name}
-                icon={skill.icon}
-                description={skill.description}
-              />
-            </li>
-          ))}
-        </ul>
-      </div>
-    </Section>
+    <motion.section
+      style={{ opacity }}
+      className="fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]"
+    >
+      <Section aria-label="skill section">
+        <SectionTitle className="w-full text-center">Skills</SectionTitle>
+        <div className="flex flex-col justify-center items-center h-[300px] mx-auto whitespace-nowrap mt-[12px]">
+          <ul className="flex flex-row overflow-x-scroll whitespace-normal max-w-[80vw] gap-x-[12px]">
+            {SKILL_LIST.map((skill) => (
+              <li
+                key={skill.name}
+                className="flex flex-col items-center max-w-[200px] whitespace-normal"
+              >
+                <SkilCard
+                  label={skill.name}
+                  icon={skill.icon}
+                  description={skill.description}
+                />
+              </li>
+            ))}
+          </ul>
+        </div>
+      </Section>
+    </motion.section>
   );
 };
