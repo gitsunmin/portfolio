@@ -1,5 +1,4 @@
-import Section from '../../layout/Section';
-import ProfileImage from '../../ui/ProfileImage';
+import ProfileImage from '../ui/ProfileImage';
 import { MotionValue, motion, useTransform } from 'framer-motion';
 
 type Props = {
@@ -27,10 +26,12 @@ export default (props: Props) => {
       </div>
       <div className="flex justify-center">
         <p>
-          <p className="mb-[12px]">저는</p>
-          <span className="text-[14px] lg:text-[40px]">프론트엔드 개발자 </span>
+          <p className="">저는</p>
+          <span className="text-[14px] lg:text-[40px] font-mono">
+            프론트엔드 개발자
+          </span>
           <br />
-          <p className="text-right mt-[12px]">입니다.</p>
+          <p className="text-right">입니다.</p>
           <br />
         </p>
       </div>

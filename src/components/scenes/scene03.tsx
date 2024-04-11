@@ -1,8 +1,8 @@
 import { MotionValue, motion, useTransform } from 'framer-motion';
-import Section from '../../layout/Section';
-import SectionTitle from '../../ui/SectionTitle';
-import ActivityList from './ActivityList';
-import ProjectList from './ProjectList';
+import Section from '../layout/Section';
+import SectionTitle from '../ui/SectionTitle';
+import ActivityList from '../section/experience/ActivityList';
+import ProjectList from '../section/experience/ProjectList';
 
 type Props = React.PropsWithChildren<{
   scrollYProgress: MotionValue<number>;
@@ -17,6 +17,7 @@ export default (props: Props) => {
     [start, (start + end) / 2, end],
     [0, 1, 0]
   );
+
   return (
     <motion.section
       style={{ opacity }}

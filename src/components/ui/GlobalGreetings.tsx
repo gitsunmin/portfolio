@@ -10,7 +10,12 @@ const GREETINGS = [
   'Hola',
 ];
 
-export default () => {
+type Props = {
+  className?: string;
+};
+
+export default (props: Props) => {
+  const { className } = props;
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
@@ -21,7 +26,9 @@ export default () => {
   }, []);
 
   return (
-    <motion.ul className="flex justify-center text-[32px] lg:text-[64px] w-full">
+    <motion.ul
+      className={`flex justify-center text-[32px] lg:text-[64px] w-full ${className}`}
+    >
       <motion.li
         key={index}
         aria-label={GREETINGS[index]}

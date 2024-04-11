@@ -1,7 +1,7 @@
 import { MotionValue, motion, useTransform } from 'framer-motion';
-import Section from '../../layout/Section';
-import LabeledIcon from '../../ui/LabeledIcon';
-import SectionTitle from '../../ui/SectionTitle';
+import Section from '../layout/Section';
+import LabeledIcon from '../ui/LabeledIcon';
+import SectionTitle from '../ui/SectionTitle';
 
 const SKILL_LIST = [
   {

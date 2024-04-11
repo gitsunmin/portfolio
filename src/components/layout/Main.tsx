@@ -11,7 +11,7 @@ export default (props: Props) => {
       <div className="mt-[90px]" />
       <main
         style={{
-          height: `${sectionCount * 100}vh`,
+          height: `${sectionCount * 200}vh`,
         }}
       >
         {children}
