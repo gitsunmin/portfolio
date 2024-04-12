@@ -1,3 +1,4 @@
+import { P, match } from 'ts-pattern';
 import ProfileImage from '../ui/ProfileImage';
 import { MotionValue, motion, useTransform } from 'framer-motion';
 
@@ -18,22 +19,19 @@ export default (props: Props) => {
   return (
     <motion.section
       style={{ opacity }}
-      className="fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] w-full"
-      aria-label="about me section"
+      className={`fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] w-full ${match(
+        scrollYProgress
+      )
+        .with(P.number.gt(end), () => 'hidden')
+        .with(P.number.lt(start), () => 'hidden')
+        .otherwise(() => '')}`}
+      aria-label="scene02, about me section"
     >
       <div className="flex justify-center px-[18px]">
         <ProfileImage alt="Profile Image" />
       </div>
-      <div className="flex justify-center">
-        <p>
-          <p className="">저는</p>
-          <span className="text-[14px] lg:text-[40px] font-mono">
-            프론트엔드 개발자
-          </span>
-          <br />
-          <p className="text-right">입니다.</p>
-          <br />
-        </p>
+      <div className="flex justify-center mt-[12px]">
+        <p className="text-[14px] lg:text-[40px]">김선민</p>
       </div>
     </motion.section>
   );

@@ -4,7 +4,7 @@ export default () => {
   return (
     <motion.section
       className="flex justify-center items-center"
-      aria-label="scene0, Portfolio Guide"
+      aria-label="scene00, Portfolio Guide"
     >
       <p className="flex justify-center mt-[30vh]">
         스크롤을 내리면서,

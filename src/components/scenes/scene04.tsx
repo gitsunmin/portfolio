@@ -2,6 +2,7 @@ import { MotionValue, motion, useTransform } from 'framer-motion';
 import Section from '../layout/Section';
 import LabeledIcon from '../ui/LabeledIcon';
 import SectionTitle from '../ui/SectionTitle';
+import { P, match } from 'ts-pattern';
 
 const SKILL_LIST = [
   {
@@ -164,7 +165,8 @@ export default (props: Props) => {
   return (
     <motion.section
       style={{ opacity }}
-      className="fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]"
+      className={`fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] w-full`}
+      aria-label="scene04, skill section"
     >
       <Section aria-label="skill section">
         <SectionTitle className="w-full text-center">Skills</SectionTitle>
