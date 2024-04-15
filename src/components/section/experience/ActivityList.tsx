@@ -1,4 +1,3 @@
-import Section from '../../layout/Section';
 import Card from '../../ui/Card';
 import SectionSubtitle from '../../ui/SectionSubtitle';
 
@@ -27,7 +26,7 @@ const ActivityList = [
 
 export default () => {
   return (
-    <Section>
+    <>
       <SectionSubtitle className="w-full text-center my-6">
         Activities
       </SectionSubtitle>
@@ -51,6 +50,6 @@ export default () => {
           ))}
         </ul>
       </div>
-    </Section>
+    </>
   );
 };

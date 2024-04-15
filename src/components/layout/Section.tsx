@@ -1,19 +1,32 @@
-import { motion } from 'framer-motion';
+import { MotionValue, motion, useTransform } from 'framer-motion';
 
-type Props = React.HTMLAttributes<HTMLDivElement>;
+type Props = React.PropsWithChildren<{
+  scrollYProgress: MotionValue<number>;
+  start: number;
+  end: number;
+  ariaLabel: string;
+}>;
 
 export default (props: Props) => {
   const { children, ...others } = props;
+  const { scrollYProgress, start, end, ariaLabel } = others;
+
+  const opacity = useTransform(
+    scrollYProgress,
+    [start, (start + end) / 2, end],
+    [0, 1, 0]
+  );
+  const display = useTransform(opacity, (value) =>
+    value > 0 ? 'block' : 'none'
+  );
+
   return (
     <motion.section
-      whileInView={{
-        opacity: 1,
-        transition: { duration: 1.5 },
-      }}
-      initial={{ opacity: 0 }}
-      className={`flex align-center justify-center w-full`}
+      style={{ opacity, display }}
+      aria-label={ariaLabel}
+      className={`fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] w-full`}
     >
-      <div {...others}>{children}</div>
+      {children}
     </motion.section>
   );
 };

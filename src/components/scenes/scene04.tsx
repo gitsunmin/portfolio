@@ -1,7 +1,7 @@
-import { MotionValue, motion, useTransform } from 'framer-motion';
-import Section from '../layout/Section';
+import { MotionValue } from 'framer-motion';
 import LabeledIcon from '../ui/LabeledIcon';
 import SectionTitle from '../ui/SectionTitle';
+import Section from '../layout/Section';
 
 const SKILL_LIST = [
   {
@@ -156,40 +156,30 @@ type Props = {
 export default (props: Props) => {
   const { scrollYProgress, start, end } = props;
 
-  const opacity = useTransform(
-    scrollYProgress,
-    [start, (start + end) / 2, end],
-    [0, 1, 0]
-  );
-  const display = useTransform(opacity, (value) =>
-    value > 0 ? 'block' : 'none'
-  );
-
   return (
-    <motion.section
-      style={{ opacity, display }}
-      className={`fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] w-full`}
-      aria-label="scene04, skill section"
+    <Section
+      scrollYProgress={scrollYProgress}
+      start={start}
+      end={end}
+      ariaLabel="scene04, skill section"
     >
-      <Section aria-label="skill section">
-        <SectionTitle className="w-full text-center">Skills</SectionTitle>
-        <div className="flex flex-col justify-center items-center h-[300px] mx-auto whitespace-nowrap mt-[12px]">
-          <ul className="flex flex-row overflow-x-scroll whitespace-normal max-w-[80vw] gap-x-[12px]">
-            {SKILL_LIST.map((skill) => (
-              <li
-                key={skill.name}
-                className="flex flex-col items-center max-w-[200px] whitespace-normal"
-              >
-                <SkilCard
-                  label={skill.name}
-                  icon={skill.icon}
-                  description={skill.description}
-                />
-              </li>
-            ))}
-          </ul>
-        </div>
-      </Section>
-    </motion.section>
+      <SectionTitle className="w-full text-center">Skills</SectionTitle>
+      <div className="flex flex-col justify-center items-center h-[300px] mx-auto whitespace-nowrap mt-[12px]">
+        <ul className="flex flex-row overflow-x-scroll whitespace-normal max-w-[80vw] gap-x-[12px]">
+          {SKILL_LIST.map((skill) => (
+            <li
+              key={skill.name}
+              className="flex flex-col items-center max-w-[200px] whitespace-normal"
+            >
+              <SkilCard
+                label={skill.name}
+                icon={skill.icon}
+                description={skill.description}
+              />
+            </li>
+          ))}
+        </ul>
+      </div>
+    </Section>
   );
 };

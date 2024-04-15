@@ -1,8 +1,8 @@
+import { useRef } from 'react';
 import { motion, useScroll } from 'framer-motion';
 import Footer from '../components/layout/Footer';
 import Header from '../components/layout/Header';
 import Main from '../components/layout/Main';
-import { useRef } from 'react';
 import scene00 from '../components/scenes/scene00';
 import scene01 from '../components/scenes/scene01';
 import scene02 from '../components/scenes/scene02';
