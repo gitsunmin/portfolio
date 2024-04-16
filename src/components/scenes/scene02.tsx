@@ -1,6 +1,6 @@
 import Section from '../layout/Section';
 import ProfileImage from '../ui/ProfileImage';
-import { MotionValue } from 'framer-motion';
+import { MotionValue, motion } from 'framer-motion';
 
 type Props = {
   scrollYProgress: MotionValue<number>;
@@ -21,16 +21,52 @@ export default (props: Props) => {
       <div className="flex justify-center px-[18px]">
         <ProfileImage alt="Profile Image" />
       </div>
-      <div className="flex flex-col justify-center mt-[12px]">
-        <p className="text-center">
-          <span className="text-[18px] lg:text-[24px]">
-            저는 프론트엔드 개발자
-          </span>
+      <div className="flex justify-center mt-[12px]">
+        <div className="text-center px-[18px] lg:w-[400px]">
+          <p className="flex items-center justify-center text-[18px] lg:text-[24px]">
+            {'저는 프론트엔드 개발자'.split('').map((el, i) => (
+              <motion.span
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{
+                  duration: 0.25,
+                  delay: i / 10,
+                }}
+                key={i}
+              >
+                {el === ' ' ? '\u00A0' : el}
+              </motion.span>
+            ))}
+          </p>
           <br />
-          <span className="text-[36px] lg :text-[42px]">김선민</span>
+          <motion.p
+            animate={{
+              opacity: [0, 1, 1, 1],
+              y: [-15, 10, 5, 0],
+              zoom: [1.5, 1.2, 1.1, 1],
+            }}
+            transition={{ duration: 0.5, delay: 2 }}
+            className="text-[40px] lg:text-[54px]"
+          >
+            김선민
+          </motion.p>
           <br />
-          <span className="text-[18px] lg:text-[24px] text-right">입니다.</span>
-        </p>
+          <p className="text-[18px] lg:text-[24px] text-center">
+            {'입니다.'.split('').map((el, i) => (
+              <motion.span
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{
+                  duration: 0.25,
+                  delay: i / 10 + 1.2,
+                }}
+                key={i}
+              >
+                {el === ' ' ? '\u00A0' : el}
+              </motion.span>
+            ))}
+          </p>
+        </div>
       </div>
     </Section>
   );
