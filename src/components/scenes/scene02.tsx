@@ -1,6 +1,6 @@
 import Section from '../layout/Section';
 import ProfileImage from '../ui/ProfileImage';
-import { MotionValue, motion } from 'framer-motion';
+import { MotionValue, motion, useAnimation } from 'framer-motion';
 
 type Props = {
   scrollYProgress: MotionValue<number>;
@@ -10,6 +10,8 @@ type Props = {
 
 export default (props: Props) => {
   const { scrollYProgress, start, end } = props;
+  const flyingAnimation = useAnimation();
+  const writingAnimation = useAnimation();
 
   return (
     <Section
@@ -17,6 +19,16 @@ export default (props: Props) => {
       start={start}
       end={end}
       ariaLabel="scene02, about me section"
+      onInView={() => {
+        writingAnimation.start({
+          opacity: [0, 1],
+        });
+        flyingAnimation.start({
+          opacity: [0, 1, 1, 1],
+          y: [-15, 10, 5, 0],
+          zoom: [1.5, 1.2, 1.1, 1],
+        });
+      }}
     >
       <div className="flex justify-center px-[18px]">
         <ProfileImage alt="Profile Image" />
@@ -27,7 +39,7 @@ export default (props: Props) => {
             {'저는 프론트엔드 개발자'.split('').map((el, i) => (
               <motion.span
                 initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
+                animate={writingAnimation}
                 transition={{
                   duration: 0.25,
                   delay: i / 10,
@@ -40,12 +52,8 @@ export default (props: Props) => {
           </p>
           <br />
           <motion.p
-            animate={{
-              opacity: [0, 1, 1, 1],
-              y: [-15, 10, 5, 0],
-              zoom: [1.5, 1.2, 1.1, 1],
-            }}
-            transition={{ duration: 0.5, delay: 2 }}
+            animate={flyingAnimation}
+            transition={{ duration: 0.5, delay: 1.5, bounce: 0.5 }}
             className="text-[40px] lg:text-[54px]"
           >
             김선민
@@ -55,10 +63,10 @@ export default (props: Props) => {
             {'입니다.'.split('').map((el, i) => (
               <motion.span
                 initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
+                animate={writingAnimation}
                 transition={{
                   duration: 0.25,
-                  delay: i / 10 + 1.2,
+                  delay: i / 10 + 1,
                 }}
                 key={i}
               >
