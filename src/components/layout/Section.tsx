@@ -7,11 +7,12 @@ type Props = React.PropsWithChildren<{
   start: number;
   end: number;
   ariaLabel: string;
+  className?: string;
   onInView?: () => void;
 }>;
 
 export default (props: Props) => {
-  const { onInView = () => {}, children, ...others } = props;
+  const { onInView = () => {}, className, children, ...others } = props;
   const { scrollYProgress, start, end, ariaLabel } = others;
   const ref = useRef(null);
 

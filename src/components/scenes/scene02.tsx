@@ -35,7 +35,7 @@ export default (props: Props) => {
       </div>
       <div className="flex justify-center mt-[12px]">
         <div className="text-center px-[18px] lg:w-[400px]">
-          <p className="flex items-center justify-center text-[18px] lg:text-[24px]">
+          <p className="flex items-center justify-center text-[18px] lg:text-[24px] mt-[12px]">
             {'저는 프론트엔드 개발자'.split('').map((el, i) => (
               <motion.span
                 initial={{ opacity: 0 }}

@@ -1,7 +1,4 @@
 import { MotionValue } from 'framer-motion';
-import SectionTitle from '../ui/SectionTitle';
-import ActivityList from '../section/experience/ActivityList';
-import ProjectList from '../section/experience/ProjectList';
 import Section from '../layout/Section';
 
 type Props = React.PropsWithChildren<{
@@ -18,11 +15,12 @@ export default (props: Props) => {
       scrollYProgress={scrollYProgress}
       start={start}
       end={end}
-      ariaLabel="scene03, experience section"
+      ariaLabel="scene03"
     >
-      <SectionTitle className="w-full text-center">Experience</SectionTitle>
-      <ProjectList />
-      <ActivityList />
+      <p className="text-center text-[20px] sm:text-[28px]">
+        지금부터 제가 경험한 것들을
+      </p>
+      <p className="text-center text-[20px] sm:text-[28px]">소개하겠습니다.</p>
     </Section>
   );
 };

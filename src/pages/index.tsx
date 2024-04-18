@@ -45,7 +45,7 @@ const SCENES: Scene[] = [
   },
   {
     id: 'scene04',
-    title: 'Skills',
+    title: 'Developed Desktop App',
     runtime: 1,
     component: scene04,
   },
