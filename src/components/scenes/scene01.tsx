@@ -1,5 +1,5 @@
 import { MotionValue } from 'framer-motion';
-import GlobalGreetings from '../ui/GlobalGreetings';
+import GlobalGreetings from '../animatioins/SlotMachine';
 import Section from '../layout/Section';
 
 type Props = {
@@ -18,7 +18,17 @@ export default (props: Props) => {
       end={end}
       ariaLabel="scene01, greeting section"
     >
-      <GlobalGreetings className="mb-[24px]" />
+      <GlobalGreetings
+        className="mb-[24px]"
+        slotList={[
+          'Hello',
+          '안녕하세요',
+          'こんにちは',
+          'Hallo',
+          'Bonjour',
+          'Hola',
+        ]}
+      />
     </Section>
   );
 };
