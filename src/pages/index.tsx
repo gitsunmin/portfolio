@@ -6,6 +6,7 @@ import Main from '../components/layout/Main';
 import scene00 from '../components/scenes/scene00';
 import scene01 from '../components/scenes/scene01';
 import scene02 from '../components/scenes/scene02';
+import scene03 from '../components/scenes/scene03';
 
 type Scene = {
   id: string;
@@ -19,21 +20,27 @@ type Scene = {
 const SCENES: Scene[] = [
   {
     id: 'scene00',
-    title: 'guide',
+    title: '포트폴리오 가이드',
     runtime: 1,
     component: scene00,
   },
   {
     id: 'scene02',
-    title: 'About Me',
+    title: '인사 및 간단한 자기소개',
     runtime: 1,
     component: scene01,
   },
   {
     id: 'scene03',
-    title: 'Experience',
+    title: '시작하겠습니다.',
     runtime: 1,
     component: scene02,
+  },
+  {
+    id: 'scene03',
+    title: '경험한 다양한 것들',
+    runtime: 1,
+    component: scene03,
   },
 ];
 
