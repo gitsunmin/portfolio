@@ -26,13 +26,13 @@ export default (props: Props) => {
       onInView={onInView}
     >
       <motion.div
-        className="m-auto bg-gray-800 max-w-96 h-60 rounded-lg shadow-xl"
+        className="m-auto flex justify-center items-center h-screen"
         initial={{ transform: 'rotateX(deg)' }}
       >
-        <div className="bg-gray-800 max-w-96 h-60 rounded-lg shadow-xl relative">
-          <div className="bg-black w-full h-full rounded-t-lg p-[12px]">
-            <p>
-              {'저는 사용자의 요구사항을 기반으로 가능하다면 모든 플랫폼에서 개발을 하고 싶었습니다.  그래서 데스크탑에서 웹/앱 개발을 경험할 수 있었습니다.'
+        <div className="bg-black w-56 h-96 rounded-lg overflow-hidden shadow-xl relative">
+          <div className="absolute top-4 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-gray-800 rounded-xl">
+            <p className="relative -left-full pt-[24px] w-48">
+              {'뿐만 아니라, 모바일 환경에서도 개발 경험을 가지고 있습니다.'
                 .split('')
                 .map((el, i) => (
                   <motion.span
@@ -49,7 +49,8 @@ export default (props: Props) => {
                 ))}
             </p>
           </div>
-          <div className="w-24 h-3 bg-gray-600 rounded-b-full mx-auto -mt-3 self-center"></div>
+          <div className="absolute top-0 left-0 right-0 h-full border-4 border-gray-800 rounded-lg" />
+          <div className="h-full" />
         </div>
       </motion.div>
     </Section>
