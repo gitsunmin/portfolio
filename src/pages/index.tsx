@@ -6,9 +6,6 @@ import Main from '../components/layout/Main';
 import scene00 from '../components/scenes/scene00';
 import scene01 from '../components/scenes/scene01';
 import scene02 from '../components/scenes/scene02';
-import scene03 from '../components/scenes/scene03';
-import scene04 from '../components/scenes/scene04';
-import scene05 from '../components/scenes/scene05';
 
 type Scene = {
   id: string;
@@ -27,34 +24,16 @@ const SCENES: Scene[] = [
     component: scene00,
   },
   {
-    id: 'scene01',
-    title: 'hello',
-    runtime: 1,
-    component: scene01,
-  },
-  {
     id: 'scene02',
     title: 'About Me',
     runtime: 1,
-    component: scene02,
+    component: scene01,
   },
   {
     id: 'scene03',
     title: 'Experience',
     runtime: 1,
-    component: scene03,
-  },
-  {
-    id: 'scene04',
-    title: 'Developed Desktop App',
-    runtime: 1,
-    component: scene04,
-  },
-  {
-    id: 'scene05',
-    title: 'Developed Mobile App',
-    runtime: 1,
-    component: scene05,
+    component: scene02,
   },
 ];
 
