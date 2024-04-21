@@ -1,5 +1,5 @@
 import { MotionValue, useAnimation } from 'framer-motion';
-import Section from '../layout/Section';
+import Section from '../../layout/Section';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 

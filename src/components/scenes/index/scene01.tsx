@@ -1,6 +1,6 @@
-import SlotMachine from '../animatioins/SlotMachine';
-import Section from '../layout/Section';
-import ProfileImage from '../ui/ProfileImage';
+import SlotMachine from '../../animatioins/SlotMachine';
+import Section from '../../layout/Section';
+import ProfileImage from '../../ui/ProfileImage';
 import { MotionValue, motion, useAnimation } from 'framer-motion';
 
 type Props = {
@@ -19,7 +19,7 @@ export default (props: Props) => {
       scrollYProgress={scrollYProgress}
       start={start}
       end={end}
-      ariaLabel="scene02, about me section"
+      ariaLabel="scene01"
       onInView={() => {
         writingAnimation.start({
           opacity: [0, 1],
