@@ -8,11 +8,18 @@ type Props = React.PropsWithChildren<{
   end: number;
   ariaLabel: string;
   className?: string;
+  finished?: boolean;
   onInView?: () => void;
 }>;
 
 export default (props: Props) => {
-  const { onInView = () => {}, className, children, ...others } = props;
+  const {
+    onInView = () => {},
+    className,
+    finished = false,
+    children,
+    ...others
+  } = props;
   const { scrollYProgress, start, end, ariaLabel } = others;
   const ref = useRef(null);
 
@@ -21,7 +28,7 @@ export default (props: Props) => {
   const opacity = useTransform(
     scrollYProgress,
     [start, (start + end) / 2, end],
-    [0, 1, 0]
+    [0, 1, finished ? 1 : 0]
   );
   const display = useTransform(opacity, (value) =>
     value > 0 ? 'block' : 'none'

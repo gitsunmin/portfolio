@@ -1,7 +1,8 @@
 import { createBrowserRouter } from 'react-router-dom';
 import Root from './pages/index';
-import Projects from './pages/projects';
 import { match } from 'ts-pattern';
+import ActivityPage from './pages/activity';
+import CareerPage from './pages/career';
 
 const routerOptions = match(process.env['ENV'])
   .with('development', () => ({
@@ -25,8 +26,13 @@ export const router = createBrowserRouter(
       ErrorBoundary: () => <div>에러!</div>,
     },
     {
-      path: '/projects',
-      element: <Projects />,
+      path: '/activity',
+      element: <ActivityPage />,
+      ErrorBoundary: () => <div>에러!</div>,
+    },
+    {
+      path: '/career',
+      element: <CareerPage />,
       ErrorBoundary: () => <div>에러!</div>,
     },
   ],

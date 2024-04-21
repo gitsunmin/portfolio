@@ -1,5 +1,51 @@
-import { MotionValue } from 'framer-motion';
+import { MotionValue, useAnimation } from 'framer-motion';
 import Section from '../layout/Section';
+import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
+
+const HoverText = (props: { text: string; onClick: () => void }) => {
+  const { text, onClick } = props;
+
+  const parentVariants = {
+    initial: {
+      color: '#f0f0f0',
+      scale: 1,
+    },
+    hover: {
+      color: '#00FFFF', // Darken color
+      scale: 1.1, // Increase size
+      x: 10, // Move right
+    },
+  };
+
+  const arrowVariants = {
+    initial: {
+      opacity: 0,
+      x: -10,
+    },
+    hover: {
+      opacity: 1,
+      x: 0,
+    },
+  };
+
+  return (
+    <motion.button
+      variants={parentVariants}
+      initial="initial"
+      whileHover="hover"
+      whileTap="hover"
+      style={{ display: 'inline-block', cursor: 'pointer', padding: '5px' }}
+      className="flex justify-center items-center p-[5px] animate-bounce"
+      onClick={onClick}
+    >
+      {text}
+      <motion.span className="pl-[8px] items-end" variants={arrowVariants}>
+        👉
+      </motion.span>
+    </motion.button>
+  );
+};
 
 type Props = React.PropsWithChildren<{
   scrollYProgress: MotionValue<number>;
@@ -9,18 +55,58 @@ type Props = React.PropsWithChildren<{
 
 export default (props: Props) => {
   const { scrollYProgress, start, end } = props;
+  const careerLinkAnimationController = useAnimation();
+  const activityLinkAnimationController = useAnimation();
+  const navigate = useNavigate();
+
+  const goActivityPage = async (link: string) => {
+    await activityLinkAnimationController.start(
+      {
+        x: '100%',
+      },
+      {
+        duration: 0.8,
+      }
+    );
+    navigate(link);
+  };
+
+  const goCareerPage = async (link: string) => {
+    await careerLinkAnimationController.start(
+      {
+        x: '100%',
+      },
+      {
+        duration: 0.8,
+      }
+    );
+    navigate(link);
+  };
 
   return (
     <Section
       scrollYProgress={scrollYProgress}
       start={start}
       end={end}
-      ariaLabel="scene02"
+      ariaLabel="scene03"
+      finished
     >
-      <p className="text-center text-[20px] sm:text-[28px]">
-        지금부터 제가 경험한 것들을
-      </p>
-      <p className="text-center text-[20px] sm:text-[28px]">소개하겠습니다.</p>
+      <div className="flex justify-center">
+        <ul className="text-[60px]">
+          <motion.li animate={careerLinkAnimationController}>
+            <HoverText
+              text={'Career'}
+              onClick={() => goCareerPage('/career')}
+            />
+          </motion.li>
+          <motion.li animate={activityLinkAnimationController}>
+            <HoverText
+              text={'Activity'}
+              onClick={() => goActivityPage('/activity')}
+            />
+          </motion.li>
+        </ul>
+      </div>
     </Section>
   );
 };
