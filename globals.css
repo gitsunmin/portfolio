@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+
+  -ms-overflow-style: none; /* IE와 Edge를 위한 설정 */
+  scrollbar-width: none; /* Firefox를 위한 설정 */
+}
+
+/* 웹킷 기반 브라우저를 위한 스타일 */
+::-webkit-scrollbar {
+  display: none; /* 스크롤바를 숨깁니다 */
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
