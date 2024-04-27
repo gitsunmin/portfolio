@@ -29,8 +29,8 @@ export const ScrollSection = (props: Props) => {
 
   const opacity = useTransform(
     scrollYProgress,
-    [start, (start + end) / 2, end],
-    [0, 1, ending ? 1 : 0]
+    [start, start + 0.1, end - 0.1, end],
+    [0, 1, 1, ending ? 1 : 0]
   );
   const display = useTransform(opacity, (value) =>
     value > 0 ? 'block' : 'none'
