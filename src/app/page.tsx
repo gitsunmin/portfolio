@@ -4,6 +4,7 @@ import Projector, { Scene } from '@/components/layout/Projector';
 import { Scene00 } from '@/components/scenes/index/scene00';
 import { Scene01 } from '@/components/scenes/index/scene01';
 import { Scene02 } from '@/components/scenes/index/scene02';
+import { Scene03 } from '@/components/scenes/index/scene03';
 
 const SCENES: Scene[] = [
   {
@@ -22,10 +23,17 @@ const SCENES: Scene[] = [
   },
   {
     id: 'scene02',
-    type: 'ending',
-    description: '커리어와 활동 상세로 이동 가능한 링크',
+    type: 'scene',
+    description: '커리어',
     runtime: 1,
     component: Scene02,
+  },
+  {
+    id: 'scene03',
+    type: 'ending',
+    description: '프로젝트',
+    runtime: 1,
+    component: Scene03,
   },
 ];
 
