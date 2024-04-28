@@ -1,6 +1,5 @@
 'use client';
 type Props = React.PropsWithChildren<{
-  ref: React.RefObject<HTMLDivElement>;
   height: string;
 }>;
 

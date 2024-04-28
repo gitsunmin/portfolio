@@ -2,8 +2,9 @@
 import { MotionValue } from 'framer-motion';
 import { ScrollSection } from '@/components/layout/ScrollSection';
 import React from 'react';
-import TagSearch from '@/components/ui/TagSearch';
+import { TagSearch } from '@/components/ui/TagSearch';
 import ProjectCard, { Project } from '@/components/ui/ProjectCard';
+import { match } from 'ts-pattern';
 
 export const projects: Project[] = [
   {
@@ -81,6 +82,8 @@ export const projects: Project[] = [
   },
 ];
 
+const identity: <T>(a: T) => T = (a) => a;
+
 type Props = React.PropsWithChildren<{
   id: string;
   scrollYProgress: MotionValue<number>;
@@ -103,6 +106,11 @@ export const Scene03 = (props: Props) => {
     setSelectedTags(selectedTags.filter((selectedTag) => selectedTag !== tag));
   };
 
+  const searchFilter = (projects: Project[]) =>
+    projects.filter((project) =>
+      project.skills.some((skill) => selectedTags.includes(skill))
+    );
+
   return (
     <ScrollSection {...props} ariaLabel="scene03">
       <h1 className="flex justify-center text-[64px]">Projects</h1>
@@ -116,10 +124,9 @@ export const Scene03 = (props: Props) => {
         />
       </div>
       <div className="flex overflow-x-auto py-4 gap-x-[16px] w-full px-[32px] h-[400px]">
-        {projects
-          .filter((project) =>
-            project.skills.some((skill) => selectedTags.includes(skill))
-          )
+        {match(projects)
+          .when((projects) => searchFilter(projects).length > 0, searchFilter)
+          .otherwise(identity)
           .map((project) => (
             <ProjectCard key={project.id} project={project} />
           ))}
