@@ -1,13 +1,74 @@
 import React, { useState } from 'react';
 import { Combobox } from '@headlessui/react';
 import { CheckIcon } from '@heroicons/react/24/outline';
+import { P, match } from 'ts-pattern';
 
-interface TagSearchProps {
+type TagSearchProps = {
   availableTags: string[];
   selectedTags: string[];
   onSelect: (tag: string) => void;
   onRemove: (tag: string) => void;
-}
+};
+
+const Tag = (props: { name: string; onClick: (name: string) => void }) => {
+  const { name, onClick } = props;
+
+  return (
+    <span
+      key={name}
+      className="flex items-center gap-1 bg-blue-500 text-white text-sm font-medium px-2.5 py-0.5 rounded"
+    >
+      {name}
+      <button className="text-white" onClick={() => onClick(name)}>
+        &times;
+      </button>
+    </span>
+  );
+};
+
+const NothingFound = () => (
+  <div className="relative cursor-default select-none py-2 px-4 text-gray-700">
+    Nothing found.
+  </div>
+);
+
+const TagOption = (props: { tag: string }) => {
+  const { tag } = props;
+
+  return (
+    <Combobox.Option
+      key={tag}
+      className={({ active }) =>
+        `relative cursor-default select-none py-2 pl-10 pr-4 ${
+          active ? 'bg-teal-600 text-white' : 'text-gray-900'
+        }`
+      }
+      value={tag}
+    >
+      {({ selected, active }) => (
+        <>
+          <span
+            className={`block truncate ${
+              selected ? 'font-medium' : 'font-normal'
+            }`}
+          >
+            {tag}
+          </span>
+          {selected ? (
+            <span
+              className={`absolute inset-y-0 left-0 flex items-center pl-3 ${
+                active ? 'text-white' : 'text-teal-600'
+              }`}
+            >
+              b
+              <CheckIcon />
+            </span>
+          ) : null}
+        </>
+      )}
+    </Combobox.Option>
+  );
+};
 
 const TagSearch: React.FC<TagSearchProps> = ({
   availableTags,
@@ -17,12 +78,9 @@ const TagSearch: React.FC<TagSearchProps> = ({
 }) => {
   const [query, setQuery] = useState('');
 
-  const filteredTags =
-    query === ''
-      ? []
-      : availableTags.filter((tag) =>
-          tag.toLowerCase().includes(query.toLowerCase())
-        );
+  const filteredTags = availableTags.filter((tag) =>
+    tag.toLowerCase().includes(query.toLowerCase())
+  );
 
   const addTag = (tag: string) => {
     if (!selectedTags.includes(tag)) {
@@ -42,64 +100,17 @@ const TagSearch: React.FC<TagSearchProps> = ({
               onChange={(event) => setQuery(event.target.value)}
               placeholder="기술 스택을 입력해주세요."
             />
-            {/* <Combobox.Button className="absolute inset-y-0 right-0 flex items-center pr-2">
-              <MagnifyingGlassIcon />
-            </Combobox.Button> */}
           </div>
           <Combobox.Options className="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
-            {filteredTags.length === 0 && query !== '' ? (
-              <div className="relative cursor-default select-none py-2 px-4 text-gray-700">
-                Nothing found.
-              </div>
-            ) : (
-              filteredTags.map((tag) => (
-                <Combobox.Option
-                  key={tag}
-                  className={({ active }) =>
-                    `relative cursor-default select-none py-2 pl-10 pr-4 ${
-                      active ? 'bg-teal-600 text-white' : 'text-gray-900'
-                    }`
-                  }
-                  value={tag}
-                >
-                  {({ selected, active }) => (
-                    <>
-                      <span
-                        className={`block truncate ${
-                          selected ? 'font-medium' : 'font-normal'
-                        }`}
-                      >
-                        {tag}
-                      </span>
-                      {selected ? (
-                        <span
-                          className={`absolute inset-y-0 left-0 flex items-center pl-3 ${
-                            active ? 'text-white' : 'text-teal-600'
-                          }`}
-                        >
-                          b
-                          <CheckIcon />
-                        </span>
-                      ) : null}
-                    </>
-                  )}
-                </Combobox.Option>
-              ))
-            )}
+            {match(filteredTags)
+              .with([], NothingFound)
+              .otherwise((tags) => tags.map((tag) => <TagOption tag={tag} />))}
           </Combobox.Options>
         </div>
       </Combobox>
       <div className="flex flex-wrap gap-2 mt-2">
         {selectedTags.map((tag) => (
-          <span
-            key={tag}
-            className="flex items-center gap-1 bg-blue-500 text-white text-sm font-medium px-2.5 py-0.5 rounded"
-          >
-            {tag}
-            <button className="text-white" onClick={() => onRemove(tag)}>
-              &times;
-            </button>
-          </span>
+          <Tag name={tag} onClick={onRemove} />
         ))}
       </div>
     </div>
