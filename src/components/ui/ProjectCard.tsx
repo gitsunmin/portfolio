@@ -26,6 +26,7 @@ const ProjectCard: React.FC<Props> = ({ project }) => {
         height={200}
         src={project.imageUrl}
         alt={project.name}
+        style={{ height: 'auto' }}
         className="w-full h-48 object-cover"
       />
       <div className="p-5">

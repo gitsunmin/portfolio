@@ -39,19 +39,16 @@ type Props = {
   scenes: Scene[];
 };
 
-export default function Projector(props: Props) {
+export const Projector = (props: Props) => {
   const { scenes } = props;
 
-  const container = useRef(null);
-  const { scrollYProgress } = useScroll({
-    container,
-  });
+  const { scrollYProgress } = useScroll({});
 
   const film = shoot(scenes);
   const totalRuntime = `${film.length * 200}vh`;
 
   return (
-    <Main ref={container} height={totalRuntime}>
+    <Main height={totalRuntime}>
       <motion.div
         className="fixed top-0 left-0 w-full h-1 bg-gradient-to-r from-[#ff0080] to-[#7928ca]"
         style={{ scaleX: scrollYProgress }}
@@ -70,4 +67,4 @@ export default function Projector(props: Props) {
       })}
     </Main>
   );
-}
+};

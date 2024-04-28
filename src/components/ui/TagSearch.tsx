@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Combobox } from '@headlessui/react';
 import { CheckIcon } from '@heroicons/react/24/outline';
-import { P, match } from 'ts-pattern';
+import { match } from 'ts-pattern';
 
 type TagSearchProps = {
   availableTags: string[];
@@ -70,7 +70,7 @@ const TagOption = (props: { tag: string }) => {
   );
 };
 
-const TagSearch: React.FC<TagSearchProps> = ({
+export const TagSearch: React.FC<TagSearchProps> = ({
   availableTags,
   selectedTags,
   onSelect,
@@ -104,17 +104,17 @@ const TagSearch: React.FC<TagSearchProps> = ({
           <Combobox.Options className="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
             {match(filteredTags)
               .with([], NothingFound)
-              .otherwise((tags) => tags.map((tag) => <TagOption tag={tag} />))}
+              .otherwise((tags) =>
+                tags.map((tag) => <TagOption key={tag} tag={tag} />)
+              )}
           </Combobox.Options>
         </div>
       </Combobox>
       <div className="flex flex-wrap gap-2 mt-2">
         {selectedTags.map((tag) => (
-          <Tag name={tag} onClick={onRemove} />
+          <Tag key={tag} name={tag} onClick={onRemove} />
         ))}
       </div>
     </div>
   );
 };
-
-export default TagSearch;

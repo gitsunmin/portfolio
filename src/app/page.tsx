@@ -1,10 +1,11 @@
 import { Footer } from '@/components/layout/Footer';
 import { Header } from '@/components/layout/Header';
-import Projector, { Scene } from '@/components/layout/Projector';
+import { Projector, Scene } from '@/components/layout/Projector';
 import { Scene00 } from '@/components/scenes/index/scene00';
 import { Scene01 } from '@/components/scenes/index/scene01';
 import { Scene02 } from '@/components/scenes/index/scene02';
 import { Scene03 } from '@/components/scenes/index/scene03';
+import { Scene04 } from '@/components/scenes/index/scene04';
 
 const SCENES: Scene[] = [
   {
@@ -30,10 +31,17 @@ const SCENES: Scene[] = [
   },
   {
     id: 'scene03',
-    type: 'ending',
+    type: 'scene',
     description: '프로젝트',
     runtime: 1,
     component: Scene03,
+  },
+  {
+    id: 'scene04',
+    type: 'ending',
+    description: 'Learning Lab',
+    runtime: 1,
+    component: Scene04,
   },
 ];
 
