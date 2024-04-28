@@ -13,7 +13,7 @@ export const Header = (props: Props) => {
       <header className="flex p-[10px] w-full justify-between shadow-slate-700 fixed top-0 backdrop-blur-sm z-10">
         <a
           className="flex items-center gap-[10px]"
-          href="https://gitsunmin.github.io/portfolio"
+          href={process.env.NEXT_PUBLIC_BASE_URL}
         >
           <ProfileImage alt="me" className="w-[50px] h-[50px]"></ProfileImage>
           <span className="text-[#F5F0E6]">Gitsunmin&apos;s Portfolio</span>
