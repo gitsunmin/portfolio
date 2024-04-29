@@ -4,6 +4,8 @@ import { ScrollSection } from '@/components/layout/ScrollSection';
 import Timeline, {
   TimelineItemData,
 } from '@/components/scenes/index/scene02/Timeline';
+import MarketboroDialog from '@/components/scenes/index/scene02/MarketboroDialog';
+import KorensDialog from '@/components/scenes/index/scene02/KorensDialog';
 
 const timelineItems: TimelineItemData[] = [
   {
@@ -11,12 +13,14 @@ const timelineItems: TimelineItemData[] = [
     company: '(주) 마켓보로',
     period: '2020.10 ~ 재직중',
     role: 'Frontend Developer',
+    details: MarketboroDialog,
   },
   {
     id: 'korens',
     company: '(주) 코렌스',
     period: '2019.07 ~ 2020.10',
     role: 'Frontend Developer',
+    details: KorensDialog,
   },
 ];
 
