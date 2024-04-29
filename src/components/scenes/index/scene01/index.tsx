@@ -2,7 +2,7 @@
 import { MotionValue, motion, useAnimation } from 'framer-motion';
 import { SlotMachine } from '@/components/animatioins/SlotMachine';
 import { ScrollSection } from '@/components/layout/ScrollSection';
-import { ProfileImage } from '@/components/ui/ProfileImage';
+import { ProfileImage } from '@/components/images/ProfileImage';
 
 type Props = {
   id: string;

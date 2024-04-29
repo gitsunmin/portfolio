@@ -1,7 +1,9 @@
 'use client';
 import { MotionValue } from 'framer-motion';
 import { ScrollSection } from '@/components/layout/ScrollSection';
-import Timeline, { TimelineItemData } from '@/components/ui/Timeline';
+import Timeline, {
+  TimelineItemData,
+} from '@/components/scenes/index/scene02/Timeline';
 
 const timelineItems: TimelineItemData[] = [
   {

@@ -1,5 +1,5 @@
 'use client';
-import { ProfileImage } from '../ui/ProfileImage';
+import { ProfileImage } from '../images/ProfileImage';
 
 type Props = {
   children?: React.ReactNode;

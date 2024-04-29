@@ -2,8 +2,10 @@
 import { MotionValue } from 'framer-motion';
 import { ScrollSection } from '@/components/layout/ScrollSection';
 import React from 'react';
-import { TagSearch } from '@/components/ui/TagSearch';
-import ProjectCard, { Project } from '@/components/ui/ProjectCard';
+import { TagSearch } from '@/components/scenes/index/scene03/TagSearch';
+import ProjectCard, {
+  Project,
+} from '@/components/scenes/index/scene03/ProjectCard';
 import { match } from 'ts-pattern';
 
 export const projects: Project[] = [
