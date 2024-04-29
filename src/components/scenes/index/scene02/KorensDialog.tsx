@@ -33,7 +33,7 @@ const KorensDialog = (props: Props) => {
         <DialogHeader>
           <DialogTitle>(주) 코렌스</DialogTitle>
           <DialogDescription>
-            <Table>
+            <Table className="my-[12px]">
               <TableBody>
                 {BASIC_INFO.map((invoice) => (
                   <TableRow key={invoice.title}>
@@ -63,7 +63,7 @@ const KorensDialog = (props: Props) => {
         </DialogHeader>
         <DialogFooter>
           <DialogClose asChild>
-            <Button type="button" variant="secondary">
+            <Button className="w-full" type="button" variant="secondary">
               Close
             </Button>
           </DialogClose>
