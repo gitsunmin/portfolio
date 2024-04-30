@@ -19,7 +19,7 @@ const ProjectCard: React.FC<Props> = ({ project }) => {
       initial={{ opacity: 0, scale: 0.9 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.5 }}
-      className={`bg-[#090909] shadow-lg rounded-lg overflow-hidden min-w-[250px] lg:min-w-[300px]`}
+      className={`shadow-lg rounded-lg overflow-hidden min-w-[250px] lg:min-w-[300px]`}
     >
       <Image
         width={300}
