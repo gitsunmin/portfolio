@@ -17,7 +17,6 @@ export const PROJECTS: Project[] = [
     period: '2019.08 ~ 2019.10',
     imageUrl: '/thumbnails/project_1.webp',
     skills: ['Vue', 'Vuex', 'Quesar Framework', 'Google API', 'Electron'],
-    pathname: '/projects/korens-1',
   },
   {
     id: 2,
@@ -38,6 +37,7 @@ export const PROJECTS: Project[] = [
     name: '대규모 유통 관리 솔루션 개발',
     period: '2020.10 ~2023.08',
     imageUrl: '/thumbnails/project_3.webp',
+    pathname: '/projects/marketbom-pro',
     skills: [
       'Nuxt',
       'Vuetify',

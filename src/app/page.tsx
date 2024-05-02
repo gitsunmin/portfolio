@@ -1,5 +1,3 @@
-import { Footer } from '@/components/layout/Footer';
-import { Header } from '@/components/layout/Header';
 import { Projector, Scene } from '@/components/layout/Projector';
 import { Scene00 } from '@/components/scenes/index/scene00';
 import { Scene01 } from '@/components/scenes/index/scene01';
@@ -46,11 +44,5 @@ const SCENES: Scene[] = [
 ];
 
 export default function Home() {
-  return (
-    <>
-      <Header />
-      <Projector scenes={SCENES} />
-      <Footer />
-    </>
-  );
+  return <Projector scenes={SCENES} />;
 }
