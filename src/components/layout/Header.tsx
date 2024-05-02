@@ -1,7 +1,7 @@
 'use client';
 import { useTheme } from 'next-themes';
-import { ProfileImage } from '../images/ProfileImage';
 import { match } from 'ts-pattern';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
 const SunnIcon = () => (
   <svg
@@ -52,7 +52,14 @@ export const Header = (props: Props) => {
           className="flex items-center gap-[10px]"
           href={process.env.NEXT_PUBLIC_BASE_URL}
         >
-          <ProfileImage alt="me" className="w-[50px] h-[50px]"></ProfileImage>
+          <Avatar>
+            <AvatarImage
+              src="/assets/me.jpeg"
+              alt="Gitsunmin Profile"
+              width={`50px`}
+            />
+            <AvatarFallback>SM</AvatarFallback>
+          </Avatar>
           <span className="text-[#F5F0E6]">Gitsunmin&apos;s Portfolio</span>
         </a>
 
