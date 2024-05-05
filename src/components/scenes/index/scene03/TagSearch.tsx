@@ -93,9 +93,9 @@ export const TagSearch: React.FC<Props> = ({
 
   const addTag = (tag: string) => {
     if (!selectedTags.includes(tag)) {
-      onSelect(tag); // 외부로 태그를 전달, 예: 검색 결과 필터링 업데이트
+      onSelect(tag);
     }
-    setQuery(''); // 입력 필드 초기화
+    setQuery('');
   };
 
   useEffect(() => {
@@ -118,6 +118,7 @@ export const TagSearch: React.FC<Props> = ({
             onChange={onChange}
             onKeyDown={onKeyDown}
             onFocus={() => setOpen(true)}
+            onBlur={() => setTimeout(() => setOpen(false), 200)}
           />
         </PopoverTrigger>
         <PopoverContent
