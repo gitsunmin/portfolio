@@ -81,9 +81,11 @@ export const TagSearch: React.FC<Props> = ({
         setFocusedIndex((index) =>
           Math.min(index + 1, filteredTags.length - 1)
         );
+        setOpen(true);
       })
       .with('ArrowUp', () => {
         setFocusedIndex((index) => Math.max(index - 1, 0));
+        setOpen(true);
       })
       .with('Enter', () => {
         selectTag(filteredTags[focusedIndex]);
